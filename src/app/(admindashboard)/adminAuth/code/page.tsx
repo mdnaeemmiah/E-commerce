@@ -1,10 +1,10 @@
-import Login from '@/components/adminDashboard/auth/Login'
+import Code from '@/components/adminDashboard/auth/Code'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      <Login></Login>
+      <Code></Code>
     </div>
   )
 }

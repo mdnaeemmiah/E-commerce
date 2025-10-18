@@ -1,9 +1,10 @@
+import ForgetPassword from '@/components/adminDashboard/auth/ForgetPassword'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      <h1>gorget password</h1>
+      <ForgetPassword></ForgetPassword>
     </div>
   )
 }
