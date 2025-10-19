@@ -15,7 +15,8 @@ import {
 } from "react-icons/fa";
 import img1 from "@/app/assets/auth/image3.png";
 import img2 from "@/app/assets/auth/image3.png";
-import img11 from "@/app/assets/auth/image3.png"
+import img3 from "@/app/assets/auth/Ellipse 2.png";
+import img11 from "@/app/assets/auth/Icon.png"
 import { Toaster } from "react-hot-toast";
 import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 
@@ -62,7 +63,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     ];
 
     return (
-        <div className="flex min-h-screen relative ">
+        <div className="flex min-h-screen relative text-[#575757] ">
             {/* Sidebar */}
             <aside
                 className={`fixed shadow-2xl  top-0 min-h-screen left-0 w-72 lg:w-80  bg-white text-[#3E3EDF] flex flex-col justify-between p-4 z-50 transform transition-transform duration-300
@@ -73,7 +74,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <div className="flex items-center justify-between md:hidden mb-6 ">
                         <div className="flex items-center space-x-2">
                             <Image src={img1} alt="Logo" width={40} height={40} className="opacity-100" />
-                            <h1 className="font-bold text-lg">TrekBot.AI</h1>
+                            {/* <h1 className="font-bold text-lg">TrekBot.AI</h1> */}
                         </div>
                         <button onClick={() => setIsOpen(false)}>
                             <FaTimes size={24} className="text-red-500 hover:scale-105" />
@@ -81,9 +82,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </div>
 
                     {/* Desktop Logo */}
-                    <div className="hidden md:flex items-center space-x-2 mb-20   gap-4">
-                        <Image src={img1} alt="Logo" width={50} height={45} className="opacity-100" />
-                        <h1 className="font-bold text-[20px]">TrekBot.AI</h1>
+                    <div className="flex justify-center">
+                        <Image src={img1} alt="Logo" width={150} height={100} className="opacity-100" />
+                        {/* <h1 className="font-bold text-[20px]">TrekBot.AI</h1> */}
                     </div>
 
                     {/* Menu */}
@@ -109,18 +110,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
                 {/* Bottom Profile + Logout */}
                 <div className="mt-6 p-4">
-                    <div className="flex items-center space-x-3">
-                        <Image
-                            src={img2}
-                            alt="User"
-                            width={60}
-                            height={60}
-                            className="rounded-full"
-                        />
-                        <div>
-                            <h2 className="font-semibold">Willy Smith</h2>
-                        </div>
-                    </div>
                     <button className="mt-8 w-full bg-white text-blue-600 font-semibold py-3 rounded-lg hover:bg-gray-200 justify-center ">
                         <Link href="/" className="flex justify-center gap-4">
                             <Image
@@ -146,7 +135,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Main Content */}
             <main className="flex-1 bg-gray-50 p-6 w-full">
                 {/* ✅ Topbar (mobile + desktop) */}
-                <div className="h-20 rounded-2xl shadow-2xl border-[#B1B1B1] md:ml-72 lg:ml-80 bg-white px-4 flex items-center justify-between">
+                <div className="h-20 rounded-2xl shadow-2xl border-[#B1B1B1] md:ml-72 lg:ml-80 bg-white px-4 flex items-center  ">
                     {/* Left section: Hamburger + Profile */}
                     <div className="flex items-center gap-4">
                         {/* Hamburger menu (mobile only) */}
@@ -158,31 +147,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         </button>
                     </div>
 
-                    <div className="h-20  border-[#B1B1B1] bg-white px-4 flex items-center justify-between gap-5">
+                    <div className="h-20  border-[#B1B1B1] bg-white w-full  px-4 items-center flex  justify-between">
                         {/* ✅ Left: Profile section */}
-                        <div className="flex items-center gap-3 border border-[#B1B1B1] px-3 py-1 md:py-2 rounded-xl cursor-pointer hover:shadow-sm">
-                            <Image
-                                src={img2}
-                                alt="User Avatar"
-                                width={36}
-                                height={36}
-                                className="rounded-full object-cover w-8 "
-                            />
-                            <div className="text-sm leading-tight ">
-                                <div className="font-medium text-black">Olivia Rhye</div>
-                                <div className="text-gray-500 text-xs">olivia@untitledui.com</div>
-                            </div>
-                            {/* <Image
-                src={img3}
-                alt="Dropdown Arrow"
-                width={16}
-                height={16}
-                className=""
-              /> */}
+                        <div>
+                            <h1 className="text-[#3E3EDF] text-[24px]">Welcome,Tamim </h1>
+                            <p className="text-[16px]">Have a nice day!</p>
                         </div>
 
                         {/* ✅ Right: Notification + Settings */}
-                        <div className="flex items-center gap-4 ">
+                        <div className="flex items-center gap-4">
                             <div className="relative z-50" >
                                 {/* 🔔 Bell Icon */}
                                 <IoNotificationsOutline
@@ -190,10 +163,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         e.stopPropagation(); // Prevent bubbling
                                         setIsNotifOpen((prev) => !prev); // Toggle independently
                                     }}
-                                    className="text-gray-600 hover:text-black cursor-pointer"
+                                    className="text-gray-600 bg-[#E0E0E0] rounded-full hover:text-black cursor-pointer w-10 h-10 p-2"
                                     size={28}
                                 />
-                                <span className="absolute top-1 right-1 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500"></span>
+                                <span className="absolute top-2 right-2 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500"></span>
 
                                 {/* ✅ Notification Modal */}
                                 {isNotifOpen && (
@@ -240,9 +213,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                     </>
                                 )}
                             </div>
-                            <Link href="/adminDashboard/settings">
-                                <IoSettingsOutline className="text-gray-600 hover:text-black cursor-pointer " size={24} />
-                            </Link>
+                            <div className="flex gap-2">
+                                <Image
+                                    src={img3}
+                                    alt="Dropdown Arrow"
+                                    width={40}
+                                    height={40}
+                                    className="cursor-pointer"
+                                />
+                                <div className="text-[14px]">
+                                    <p>Naeem</p>
+                                    <p> Admin</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
