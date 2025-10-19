@@ -14,7 +14,7 @@ const Login: React.FC = () => {
         <div className="flex justify-center items-center min-h-screen  px-4">
             <div className="bg-white  p-8 rounded-lg shadow-md w-full max-w-lg md:pb-15">
 
-                <h2 className="text-[24px] md:text-[48px] font-semibold text-center text-gray-700 mb-2">
+                <h2 className="text-[24px] md:text-[44px] font-semibold text-center text-gray-700 mb-2">
                     Welcome Back
                 </h2>
                 <p className="text-center text-[16px] md:text-[24px] text-[#575757] mb-4">Login to your account</p>

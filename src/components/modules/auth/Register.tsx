@@ -4,7 +4,6 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Image from "next/image";
-import img1 from "@/app/assets/auth/image3.png";
 import img2 from "@/app/assets/auth/Google.png";
 import Link from "next/link";
 
@@ -14,7 +13,7 @@ const Register: React.FC = () => {
     return (
         <div className="flex justify-center items-center min-h-screen  px-4">
             <div className="bg-white  p-8 rounded-lg shadow-md w-full max-w-lg md:pb-15">
-                <h2 className="text-[24px] md:text-[48px] font-semibold text-center text-gray-700 mb-2">
+                <h2 className="text-[24px] md:text-[44px] font-semibold text-center text-gray-700 mb-2">
                     Sign In
                 </h2>
                 <p className="text-center text-[16px] md:text-[24px] text-[#575757] mb-4">It only takes a minute to create your
