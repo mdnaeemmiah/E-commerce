@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Image from "next/image";
 import img1 from "@/app/assets/auth/image3.png";
+import Link from "next/link";
 
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -72,12 +73,12 @@ const Login: React.FC = () => {
               <input type="checkbox" className="form-checkbox" />
               <span className="ml-2">Remember me</span>
             </label>
-            <a
-              href="#"
+            <Link
+              href="/adminAuth/forgetPassword"
               className="text-md text-indigo-600 hover:text-indigo-800"
             >
               Forgot password?
-            </a>
+            </Link>
           </div>
 
           {/* Submit */}

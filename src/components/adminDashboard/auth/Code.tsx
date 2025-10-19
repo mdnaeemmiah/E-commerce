@@ -5,6 +5,7 @@ import Image from "next/image";
 import img1 from "@/app/assets/auth/image3.png";
 import { IoMdArrowBack } from "react-icons/io";
 import { useState } from "react";
+import Link from "next/link";
 
 
 
@@ -80,12 +81,14 @@ const Code: React.FC = () => {
                         </div>
 
                         {/* Submit */}
-                        <button
-                            type="submit"
-                            className="w-full  cursor-pointer mt-6 py-3 md:py-4  bg-[#3E3EDF] text-white font-semibold rounded-xl hover:bg-indigo-600"
-                        >
-                            Verify Email
-                        </button>
+                        <Link href="/adminAuth/resetPassword">
+                            <button
+                                type="submit"
+                                className="w-full  cursor-pointer mt-6 py-3 md:py-4  bg-[#3E3EDF] text-white font-semibold rounded-xl hover:bg-indigo-600"
+                            >
+                                Verify Email
+                            </button>
+                        </Link>
                     </div>
 
 

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import img1 from "@/app/assets/auth/image3.png";
 import { IoMdArrowBack } from "react-icons/io";
+import Link from "next/link";
 
 const ForgetPassword: React.FC = () => {
 
@@ -42,12 +43,14 @@ const ForgetPassword: React.FC = () => {
                     </div>
 
                     {/* Submit */}
-                    <button
-                        type="submit"
-                        className="w-full cursor-pointer mt-6 py-4  bg-[#3E3EDF] text-white font-semibold rounded-xl hover:bg-indigo-600"
-                    >
-                        Send OTP
-                    </button>
+                    <Link href="/adminAuth/code">
+                        <button
+                            type="submit"
+                            className="w-full cursor-pointer mt-6 py-4  bg-[#3E3EDF] text-white font-semibold rounded-xl hover:bg-indigo-600"
+                        >
+                            Send OTP
+                        </button>
+                    </Link>
                 </form>
             </div>
         </div>
