@@ -1,9 +1,10 @@
-import React from 'react'
+import Profile from "@/components/modules/home/profile/Profile";
+
 
 export default function page() {
   return (
     <div>
-      <h3>profile page</h3>
+      <Profile></Profile>
     </div>
   )
 }
