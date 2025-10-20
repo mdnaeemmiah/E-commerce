@@ -1,10 +1,10 @@
-import Wallet from '@/components/modules/home/Wallet'
+import Faq from '@/components/modules/home/profile/Faq'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      <Wallet></Wallet>
+      <Faq></Faq>
     </div>
   )
 }

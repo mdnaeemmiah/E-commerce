@@ -1,10 +1,10 @@
-import Wallet from '@/components/modules/home/Wallet'
+import ContactUs from '@/components/modules/home/profile/ContactUs'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      <Wallet></Wallet>
+      <ContactUs></ContactUs>
     </div>
   )
 }

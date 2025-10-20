@@ -26,24 +26,33 @@ export default function Profile() {
                 <Link href='/profile/editProfile'>
                     <ProfileItem icon={<FaUserEdit />} label="Edit Profile" />
                 </Link>
-                <ProfileItem icon={<FaBookmark />} label="Saved" />
+                <Link href='/profile/savedOffer'>
+                    <ProfileItem icon={<FaBookmark />} label="Saved" />
+                </Link>
             </div>
 
             {/* Policy Center */}
             <div className="bg-white rounded-lg shadow p-4 mb-4">
                 <p className="text-[#575757] mb-2">Policy Center</p>
-                <ProfileItem icon={<MdPolicy />} label="Privacy Policy" />
-                <ProfileItem icon={<RiLockPasswordLine />} label="Terms & Condition" />
+                <Link href='/profile/Privacy'>
+                    <ProfileItem icon={<MdPolicy />} label="Privacy Policy" />
+                </Link>
+                <Link href='/profile/term'>
+                    <ProfileItem icon={<RiLockPasswordLine />} label="Terms & Condition" />
+                </Link>
+
             </div>
 
             {/* Settings */}
             <div className="bg-white rounded-lg shadow p-4">
                 <p className="text-[#575757]  mb-2">Settings</p>
                 <div className="flex items-center justify-between py-3 cursor-pointer">
-                    <div className="flex items-center gap-3 text-gray-700">
-                        <FaBell />
-                        <span>Notification</span>
-                    </div>
+                    <Link href='/profile/notifications'>
+                        <div className="flex  items-center gap-3 text-gray-700  ">
+                            <FaBell />
+                            <span>Notification</span>
+                        </div>
+                    </Link>
                     <label className="relative inline-flex items-center cursor-pointer">
                         <input
                             type="checkbox"
@@ -58,7 +67,7 @@ export default function Profile() {
                         ></div>
                     </label>
                 </div>
-                <ProfileItem icon={<FaHeadset />} label="Help & Support" />
+                <Link href='/profile/helpSupport'><ProfileItem icon={<FaHeadset />} label="Help & Support" /></Link>
                 <ProfileItem icon={<FaSignOutAlt />} label="Log Out" />
                 <ProfileItem icon={<FaTrashAlt />} label="Delete Account" textColor="text-red-500" />
             </div>

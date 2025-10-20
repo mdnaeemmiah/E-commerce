@@ -1,10 +1,10 @@
-import Wallet from '@/components/modules/home/Wallet'
+import Privacy from '@/components/modules/home/profile/Privacy'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      <Wallet></Wallet>
+      <Privacy></Privacy>
     </div>
   )
 }
