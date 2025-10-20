@@ -1,9 +1,10 @@
+import Offer from '@/components/modules/home/Offer'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      <h2>offer page</h2>
+      <Offer></Offer>
     </div>
   )
 }

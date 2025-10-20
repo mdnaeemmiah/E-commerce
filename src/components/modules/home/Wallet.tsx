@@ -30,7 +30,7 @@ export default function Wallet() {
                     </button>
                     <button
                         onClick={() => setShowHistory(true)}
-                        className="flex cursor-pointer items-center justify-center gap-2 flex-1 border border-white py-2 lg:py-3 rounded-md font-semibold duration-300 hover:bg-white hover:text-black"
+                        className="flex cursor-pointer items-center justify-center gap-2 flex-1 border border-white py-3 rounded-md font-semibold duration-300 hover:bg-white hover:text-black"
                     >
                         <IoWalletOutline className="text-xl" /> Wallet History
                     </button>
@@ -81,53 +81,77 @@ export default function Wallet() {
                 </button>
             </div>
 
-            {/* Withdraw Popup */}
+            {/* Withdraw Modal */}
             {showWithdraw && (
-                <div className="fixed inset-0 bg-white bg-opacity-40 flex justify-center items-center z-50">
-                    <div className="bg-white p-6 rounded-xl shadow-lg w-[90%] max-w-md relative">
-                        <button
-                            onClick={() => setShowWithdraw(false)}
-                            className="absolute top-3 right-3 text-gray-500 hover:text-black"
-                        >
-                            <MdOutlineClose className="text-xl" />
-                        </button>
-                        <h2 className="text-xl font-semibold mb-3">Withdraw Funds</h2>
-                        <p className="text-gray-600 text-sm mb-4">
-                            Choose an amount to withdraw from your wallet.
-                        </p>
-                        <input
-                            type="number"
-                            placeholder="Enter amount"
-                            className="w-full border rounded-md px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                        <button className="w-full bg-[#3E3EDF] text-white py-2 rounded-md font-semibold">
-                            Confirm Withdraw
-                        </button>
+                <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
+                    {/* Overlay */}
+                    <div
+                        className="absolute inset-0 bg-black opacity-80"
+                        onClick={() => setShowWithdraw(false)}
+                    ></div>
+
+                    {/* Modal */}
+                    <div className="relative z-10 bg-white rounded-2xl p-8 w-full max-w-md shadow-lg">
+                        <h3 className="text-[24px] md:text-2xl  font-semibold mb-4">
+                            Withdraw Funds
+                        </h3>
+                        <p>Withdraw $47.50 to your payout method:</p>
+
+                        <div className="flex flex-col items-center">
+                            <button className="w-[70%] mt-4 cursor-pointer bg-[#3E3EDF] text-white py-3 rounded-md font-semibold mb-2">
+                                Paypal
+                            </button>
+                            <button className="w-[70%] mt-4 border cursor-pointer border-gray-300 py-2 rounded-md text-[18px]  hover:bg-gray-100 mb-4">
+                                Venmu
+                            </button>
+                            <p>Payouts typically land in 24–48 hours.</p>
+                            <button
+                                onClick={() => setShowWithdraw(false)}
+                                className=" w-[40%] mt-4 cursor-pointer border-gray-300  text-black border  py-2 rounded-md  mb-2 hover:bg-gray-100">
+                                Cancel
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
 
-            {/* Wallet History Popup */}
+            {/* Wallet History Modal */}
             {showHistory && (
-                <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
-                    <div className="bg-white p-6 rounded-xl shadow-lg w-[90%] max-w-lg relative">
-                        <button
-                            onClick={() => setShowHistory(false)}
-                            className="absolute top-3 right-3 text-gray-500 hover:text-black"
-                        >
-                            <MdOutlineClose className="text-xl" />
-                        </button>
-                        <h2 className="text-xl font-semibold mb-4">Wallet History</h2>
-                        <div className="max-h-60 overflow-y-auto divide-y">
+                <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
+                    {/* Overlay */}
+                    <div
+                        className="absolute inset-0 bg-black opacity-80"
+                        onClick={() => setShowHistory(false)}
+                    ></div>
+
+                    {/* Modal */}
+                    <div className="relative z-10 bg-white rounded-2xl p-8 w-full max-w-lg shadow-lg">
+
+                        <h3 className="text-[24px] md:text-2xl font-semibold mb-4">
+                            Transaction Summary
+                        </h3>
+
+                        <div className="max-h-60 overflow-y-auto border border-gray-200 rounded-2xl p-3  ">
                             {[...Array(6)].map((_, i) => (
                                 <div
                                     key={i}
-                                    className="flex justify-between items-center py-2 text-gray-700"
+                                    className="flex justify-between items-center py-3 text-gray-700 border-b border-gray-200"
                                 >
-                                    <span>Rebate - Lesser Evil</span>
-                                    <span>$2.00</span>
+                                    <div className="">
+                                        <p>Rebate</p>
+                                        <p className="text-[#575757]">+ $40.00</p>
+                                    </div>
+                                    <span className="bg-[#15983B] text-[14px] text-white rounded-xl p-1 ">Completed</span>
                                 </div>
                             ))}
+                        </div>
+
+                        <div className="flex justify-center mt-6">
+                            <button
+                                onClick={() => setShowWithdraw(false)}
+                                className=" w-[40%] mt-4 cursor-pointer border-gray-300  text-black border  py-2 rounded-md  mb-2 hover:bg-gray-100">
+                                Cancel
+                            </button>
                         </div>
                     </div>
                 </div>
