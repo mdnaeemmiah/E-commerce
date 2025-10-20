@@ -9,21 +9,21 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 text-gray-700 px-6 py-10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-gray-100 text-gray-700 px-4 md:px-12 lg:px-40 py-10">
+      <div className=" mx-auto flex flex-col md:flex-row justify-around gap-8">
         {/* Logo and Newsletter */}
         <div>
           <Image src={img1} alt="Logo" width={120} height={40} />
           <p className="mt-4 text-sm">
-            Sing Up News Latter To get Update Confirmation News Indice or Promotion
+            Sing Up News Latter To get <br /> Update Confirmation News Indice or Promotion
           </p>
           <div className="mt-4 flex">
             <input
               type="email"
               placeholder="Enter Your Email"
-              className="px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none w-full"
+              className="px-3  border border-gray-300 rounded-l-md focus:outline-none py-2"
             />
-            <button className="bg-indigo-600 text-white px-4 py-2 rounded-r-md">
+            <button className="bg-indigo-600 text-white px-4 rounded-r-md ">
               Sign Up
             </button>
           </div>
@@ -50,7 +50,7 @@ export default function Footer() {
           </ul>
 
           {/* Social Icons with React Icons */}
-          <div className="flex gap-4 mt-25">
+          <div className="flex gap-4 mt-10 justify-center md:justify-start md:mt-25">
             <a
               href="#"
               className="bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-blue-700 transition"
