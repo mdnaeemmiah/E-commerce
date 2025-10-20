@@ -47,9 +47,9 @@ export default function Navbar() {
                             <li key={link.name}>
                                 <Link
                                     href={link.path}
-                                    className={`px-3 py-1 rounded-md transition-colors duration-200 ${pathname === link.path
+                                    className={`px-3 py-2 rounded-md transition-colors duration-200 ${pathname === link.path
                                         ? "bg-[#3E3EDF] text-white" // ✅ active link background
-                                        : "hover:text-[#3E3EDF]"
+                                        : "hover:text-white hover:bg-[#3E3EDF]"
                                         }`}
                                 >
                                     {link.name}
@@ -173,7 +173,7 @@ export default function Navbar() {
 
                 {/* Mobile Menu */}
                 {menuOpen && (
-                    <div className="absolute top-16 left-0 w-full bg-white shadow-md md:hidden z-50">
+                    <div className="absolute top-16 right-0 w-[50%] rounded-2xl bg-white shadow-md md:hidden z-50">
                         <ul className="flex flex-col items-center space-y-4 py-6 text-gray-700 font-medium">
                             {links.map((link) => (
                                 <li key={link.name}>
@@ -181,7 +181,7 @@ export default function Navbar() {
                                         href={link.path}
                                         className={`block px-4 py-2 rounded-md transition-colors duration-200 ${pathname === link.path
                                             ? "bg-[#3E3EDF] text-white"
-                                            : "hover:text-[#3E3EDF]"
+                                            : "hover:text-white hover:bg-[#3E3EDF] "
                                             }`}
                                         onClick={() => setMenuOpen(false)} // closes after click
                                     >
