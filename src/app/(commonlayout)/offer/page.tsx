@@ -1,10 +1,10 @@
-import Offer from '@/components/modules/home/Offer'
-import React from 'react'
+import Slider from "@/components/modules/home/offer/Slider";
+
 
 export default function page() {
   return (
     <div>
-      <Offer></Offer>
+      <Slider></Slider>
     </div>
   )
 }
