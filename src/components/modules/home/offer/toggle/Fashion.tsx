@@ -164,7 +164,7 @@ const Fashion: React.FC = () => {
                                     </div>
                                     <div className="col-span-5 ">
                                         <Link
-                                            href={offer.claimUrl}
+                                            href={`/offer/fashion/${offer?.id}`}
                                             className="flex items-center justify-center mt-3 border border-[#3E3EDF] text-black hover:bg-indigo-600 hover:text-white px-1 py-2 rounded-lg"
                                         >
                                             View Offer
