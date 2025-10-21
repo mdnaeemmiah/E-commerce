@@ -2,13 +2,18 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import img1 from "@/app/assets/home/2442F31B-698F-4BF6-BB32-6072B5FBA5AE 1.png"
+import img2 from "@/app/assets/home/2CEDCEDD-EDBE-4B6B-B11F-30DBA2DCA260 1.png"
+import img3 from "@/app/assets/home/Rectangle 15.png"
+import img4 from "@/app/assets/home/2CEDCEDD-EDBE-4B6B-B11F-30DBA2DCA260 1 (3).png"
+import img5 from "@/app/assets/home/457FC2B0-B590-407B-AE21-B28CDD2D4582 1 (1).png"
 
 const images = [
-  "/fake1.jpg",
-  "/fake2.jpg",
-  "/fake3.jpg",
-  "/fake4.jpg",
-  "/fake5.jpg",
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
 ];
 
 export default function Slider() {
@@ -23,7 +28,7 @@ export default function Slider() {
   };
 
   return (
-    <div className="relative flex items-center justify-center w-full h-[400px] overflow-hidden">
+    <div className="relative mt-20 flex items-center justify-center w-full h-[400px] overflow-hidden">
       {/* Left Button */}
       <button
         onClick={prevSlide}
@@ -65,7 +70,7 @@ export default function Slider() {
               <Image
                 src={src}
                 alt={`carousel-${index}`}
-                width={300}
+                width={400}
                 height={300}
                 className="rounded-xl shadow-lg object-cover"
               />
