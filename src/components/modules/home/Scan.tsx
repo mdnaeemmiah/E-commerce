@@ -3,6 +3,53 @@ import { FaCheckCircle, FaTimesCircle, FaRegClock } from 'react-icons/fa';
 import { FiCamera, FiImage, FiUpload, FiWatch } from 'react-icons/fi';
 import { RiHomeLine } from 'react-icons/ri';
 
+import {  FaClock, FaStar, FaUserFriends } from "react-icons/fa";
+
+interface HistoryItem {
+  id: number;
+  title: string;
+  amount: string;
+  date: string;
+  store: string;
+  status: "Verified" | "Pending" | "Rejected" | "Bonus Earned";
+  description?: string;
+}
+
+const data: HistoryItem[] = [
+  {
+    id: 1,
+    title: "Rebate Verified",
+    amount: "$1.00 added to wallet",
+    store: "Whole Foods Market",
+    date: "Apr 2, 2025",
+    status: "Verified",
+  },
+  {
+    id: 2,
+    title: "Receipt Pending Review",
+    amount: "",
+    store: "Whole Foods Market",
+    date: "Apr 2, 2025",
+    status: "Pending",
+  },
+  {
+    id: 3,
+    title: "Review Rejected",
+    amount: "$1.00",
+    store: "Whole Foods Market",
+    date: "Apr 2, 2025",
+    status: "Rejected",
+  },
+  {
+    id: 4,
+    title: "Referral Bonus",
+    amount: "$5.00 Added",
+    store: "Your friend completed their first review!",
+    date: "",
+    status: "Bonus Earned",
+  },
+];
+
 interface Receipt {
     name: string;
     date: string;
@@ -14,6 +61,38 @@ const receipts: Receipt[] = [
     { name: "LaCroix Grapefruit", date: "Apr 5, 2025", status: "pending" },
     { name: "Driscoll Strawberries", date: "Apr 8, 2025", status: "rejected" },
 ];
+
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case "Verified":
+        return <FaCheckCircle className="text-green-500 text-xl" />;
+      case "Pending":
+        return <FiWatch className="text-white text-xl bg-[#FF9400] rounded-full p-1 w-5 h-5" />;
+      case "Rejected":
+        return <FaStar className="text-yellow-400 text-xl" />;
+      case "Bonus Earned":
+        return <FaUserFriends className="text-indigo-500 text-xl" />;
+      default:
+        return null;
+    }
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "Verified":
+        return "text-green-500";
+      case "Pending":
+        return "text-yellow-500";
+      case "Rejected":
+        return "text-red-500";
+      case "Bonus Earned":
+        return "text-indigo-500";
+      default:
+        return "";
+    }
+  };
+
+
 
 const Scan: React.FC = () => {
     return (
@@ -87,6 +166,37 @@ const Scan: React.FC = () => {
                     <p className='text-[#575757]'>Recent receips are shown below- view update status anytime</p>
                 </div>
             </div>
+
+
+
+    <div className="bg-white rounded-2xl shadow-md   p-5">
+      {data.map((item) => (
+        <div
+          key={item.id}
+          className="flex items-start gap-3 border-b  border-gray-300 last:border-none py-3"
+        >
+          {getStatusIcon(item.status)}
+          <div className="flex-1">
+            <p className="text-gray-800 font-medium">{item.title}</p>
+            <p className="text-sm text-gray-600">{item.amount}</p>
+            <p className="text-sm text-gray-500">
+              {item.store} {item.date && `- ${item.date}`}
+            </p>
+          </div>
+          <p className={`text-sm font-medium ${getStatusColor(item.status)}`}>
+            {item.status}
+          </p>
+        </div>
+      ))}
+
+      <button className="text-[#3E3EDF] text-[20px] font-semibold mt-3 w-full hover:underline ">
+        View Full History
+      </button>
+    </div>
+
+
+
+
 
             {/* Invite Friends Section */}
             <div className="bg-white mt-10 p-4 rounded-lg shadow-md mb-6 text-center border-gray-100 border">

@@ -60,20 +60,22 @@ export default function Navbar() {
 
                     {/* Right: Notification + Settings */}
                     <div className="flex items-center gap-4">
-                        <div className="relative z-50">
-                            {/* Bell Icon */}
-                            <IoNotificationsOutline
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setIsNotifOpen((prev) => !prev);
-                                }}
-                                className="text-gray-600 bg-[#E0E0E0] rounded-full hover:text-black cursor-pointer w-10 h-10 p-2"
-                                size={28}
-                            />
-                            <span className="absolute top-2 right-2 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500"></span>
-
-                            {/* Notification Modal */}
-                            {isNotifOpen && (
+                        <Link href='/profile/notifications'>
+                            <div className="relative z-50">
+                                {/* Bell Icon */}
+                                <IoNotificationsOutline
+                                    // onClick={(e) => {
+                                    //     e.stopPropagation();
+                                    //     setIsNotifOpen((prev) => !prev);
+                                    // }}
+                                    className="text-gray-600 bg-[#E0E0E0] rounded-full hover:text-black cursor-pointer w-10 h-10 p-2"
+                                    size={28}
+                                />
+                                <span className="absolute top-1 right-1 bg-indigo-600 text-white text-[10px] rounded-full px-1">
+                                    2
+                                </span>
+                                {/* Notification Modal */}
+                                {/* {isNotifOpen && (
                                 <>
                                     <div className="fixed inset-0 bg-black opacity-50 z-[99]" onClick={() => setIsNotifOpen(false)}></div>
                                     <div className="fixed top-20 right-8 md:right-20 w-80 md:w-96 bg-white rounded-xl shadow-xl z-[100] p-4" onClick={(e) => e.stopPropagation()}>
@@ -99,8 +101,9 @@ export default function Navbar() {
                                         </div>
                                     </div>
                                 </>
-                            )}
-                        </div>
+                            )} */}
+                            </div>
+                        </Link>
                         <div className="flex gap-2">
                             <Image src={img1} alt="Dropdown Arrow" width={40} height={40} className="cursor-pointer" />
                         </div>
@@ -111,22 +114,23 @@ export default function Navbar() {
                 {/* Small Device Right Side */}
                 <div className="flex md:hidden items-center space-x-4">
                     <div className="flex items-center gap-4">
-                        <div className="relative z-50">
-                            {/* Bell Icon */}
-                            <IoNotificationsOutline
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setIsNotifOpen((prev) => !prev);
-                                }}
-                                className="text-gray-600 bg-[#E0E0E0] rounded-full hover:text-black cursor-pointer w-10 h-10 p-2"
-                                size={28}
-                            />
-                            <span className="absolute top-1 right-1 bg-indigo-600 text-white text-[10px] rounded-full px-1">
-                                2
-                            </span>
+                        <Link href='/profile/notifications'>
+                            <div className="relative z-50">
+                                {/* Bell Icon */}
+                                <IoNotificationsOutline
+                                    // onClick={(e) => {
+                                    //     e.stopPropagation();
+                                    //     setIsNotifOpen((prev) => !prev);
+                                    // }}
+                                    className="text-gray-600 bg-[#E0E0E0] rounded-full hover:text-black cursor-pointer w-10 h-10 p-2"
+                                    size={28}
+                                />
+                                <span className="absolute top-1 right-1 bg-indigo-600 text-white text-[10px] rounded-full px-1">
+                                    2
+                                </span>
 
-                            {/* Notification Modal */}
-                            {isNotifOpen && (
+                                {/* Notification Modal */}
+                                {/* {isNotifOpen && (
                                 <>
                                     <div className="fixed inset-0 bg-black opacity-50 z-[99]" onClick={() => setIsNotifOpen(false)}></div>
                                     <div className="fixed top-20 right-8 md:right-20 w-80 md:w-96 bg-white rounded-xl shadow-xl z-[100] p-4" onClick={(e) => e.stopPropagation()}>
@@ -152,8 +156,9 @@ export default function Navbar() {
                                         </div>
                                     </div>
                                 </>
-                            )}
-                        </div>
+                            )} */}
+                            </div>
+                        </Link>
                     </div>
 
                     <Image

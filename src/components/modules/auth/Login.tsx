@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Image from "next/image";
-import img1 from "@/app/assets/auth/image3.png";
+import img1 from "@/app/assets/auth/Frame 427319652.png";
 import img2 from "@/app/assets/auth/Google.png";
 import Link from "next/link";
 
@@ -99,6 +99,12 @@ const Login: React.FC = () => {
                     >
                         <Image src={img2} alt="Icon" width={30} height={30} />
                         <span className="text-[16px] sm:text-base md:text-[18px] ">Continue with Google</span>
+                    </button>
+                    <button
+                        className="flex text-black p-3 md:p-4 w-full cursor-pointer hover:bg-gray-100 duration-300 items-center space-x-2 justify-center border border-gray-300 rounded-2xl outline-[#319EE1]"
+                    >
+                        <Image src={img1} alt="Icon" width={35} height={30} />
+                        <span className="text-[16px] sm:text-base md:text-[18px] ">Continue with Apple</span>
                     </button>
                 </div>
 
