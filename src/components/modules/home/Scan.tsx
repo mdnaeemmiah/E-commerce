@@ -3,7 +3,7 @@ import { FaCheckCircle, FaTimesCircle, FaRegClock } from 'react-icons/fa';
 import { FiCamera, FiImage, FiUpload, FiWatch } from 'react-icons/fi';
 import { RiHomeLine } from 'react-icons/ri';
 
-import {  FaClock, FaStar, FaUserFriends } from "react-icons/fa";
+import { FaStar, FaUserFriends } from "react-icons/fa";
 
 interface HistoryItem {
   id: number;
