@@ -5,8 +5,7 @@ import Image from 'next/image';
 import img1 from '@/app/assets/saved/2CEDCEDD-EDBE-4B6B-B11F-30DBA2DCA260 1 (1).png';
 import img2 from '@/app/assets/saved/457FC2B0-B590-407B-AE21-B28CDD2D4582 1 (1).png';
 import { useState } from 'react';
-import img3 from "@/app/assets/auth/Group 66.png"
-import img4 from "@/app/assets/auth/Vector (11).png"
+
 import Link from 'next/link';
 
 
