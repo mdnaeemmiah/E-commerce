@@ -1,26 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import { FaWallet } from "react-icons/fa";
 import { IoWalletOutline } from "react-icons/io5";
-import { MdOutlineClose } from "react-icons/md";
 import { FaCheckCircle } from 'react-icons/fa';
+import { AiOutlineDollarCircle } from "react-icons/ai";
+import img1 from "@/app/assets/saved/paypal-3384015_1280.webp"
+import img2 from "@/app/assets/saved/8380003.jpg"
+import Image from "next/image";
 
 
 export default function Wallet() {
     const [showWithdraw, setShowWithdraw] = useState(false);
     const [showHistory, setShowHistory] = useState(false);
+     const [showPopup, setShowPopup] = useState(false);
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gray-50 py-10">
             {/* Wallet Header */}
-            <div className="bg-[#3E3EDF] md:px-16 text-white w-[90%] md:max-w-4xl lg:max-w-5xl rounded-2xl p-6 shadow-lg md:h-60 lg:h-80 ">
-                <div className="flex items-center space-x-2 mb-2 md:mt-10 lg:mt-20">
-                    <FaWallet className="text-2xl" />
-                    <h2 className="text-2xl font-semibold">Wallet</h2>
-                </div>
-                <p className="text-3xl font-bold md:mb-6 lg:mb-12">$51.25</p>
+            <div className="bg-[#7676FF] md:px-16 text-white w-[90%] md:max-w-4xl lg:max-w-5xl rounded-2xl p-6 shadow-lg md:h-60 lg:h-80 ">
+                <div className="flex flex-col items-center justify-center md:mt-10 lg:mt-20 md:mb-7 lg:mb-15">
+                    {/* Wallet Header */}
+                    <div className="flex items-center gap-2 mb-1">
+                        <IoWalletOutline className="text-[24px]" />
+                        <h2 className="text-2xl font-semibold">Wallet</h2>
+                    </div>
 
+                    {/* Balance Section */}
+                    <div className="flex items-center justify-center gap-4 ">
+                        <AiOutlineDollarCircle className="text-[28px]" />
+                        <p className="text-2xl font-bold">51.25</p>
+                    </div>
+                </div>
                 <div className="flex gap-3">
                     <button
                         onClick={() => setShowWithdraw(true)}
@@ -67,7 +77,7 @@ export default function Wallet() {
             </div>
 
             {/* PayPal Options */}
-            <div className="bg-white w-[90%] md:max-w-3xl lg:max-w-4xl mt-12 rounded-xl shadow p-5 text-center">
+            {/* <div className="bg-white w-[90%] md:max-w-3xl lg:max-w-4xl mt-12 rounded-xl shadow p-5 text-center">
                 <h3 className="font-semibold text-[24px]">PayPal Options</h3>
                 <p className="text-gray-500 text-[18px] mb-4">
                     Choose where to receive your rewards
@@ -79,8 +89,107 @@ export default function Wallet() {
                 <button className="w-full mt-4 border cursor-pointer border-gray-300 py-4 rounded-md text-[18px] font-medium hover:bg-gray-100">
                     Link Venmo Account
                 </button>
+            </div> */}
+
+      {/* Wallet Header Section */}
+      <div className="flex flex-col items-center justify-center mt-10">
+        {/* Wallet Header */}
+        <div className="flex items-center gap-2 mb-2">
+          <IoWalletOutline className="text-[30px]" />
+          <h2 className="text-3xl font-semibold">Wallet</h2>
+        </div>
+
+        {/* Balance Section */}
+        <div className="flex items-center justify-center gap-2">
+          <AiOutlineDollarCircle className="text-[34px]" />
+          <p className="text-3xl font-bold">51.25</p>
+        </div>
+      </div>
+
+      {/* Withdraw Button */}
+      <div className="bg-white w-[90%] md:max-w-3xl lg:max-w-4xl mt-12 rounded-xl shadow p-5 text-center">
+        <h3 className="font-semibold text-[24px]">PayPal Options</h3>
+        <p className="text-gray-500 text-[18px] mb-4">
+          Choose where to receive your rewards
+        </p>
+
+        {/* Button to trigger the modal */}
+        <button
+          onClick={() => setShowPopup(true)}
+          className="w-full mt-4 cursor-pointer bg-[#3E3EDF] text-white py-4 rounded-md font-semibold mb-2"
+        >
+          Send To PayPal
+        </button>
+
+        {/* Link Venmo Button */}
+        <button
+          className="w-full mt-4 border cursor-pointer border-gray-300 py-4 rounded-md text-[18px] font-medium hover:bg-gray-100"
+        >
+          Link Venmo Account
+        </button>
+      </div>
+
+      {/* Popup Modal for Payment Method Selection */}
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black opacity-70"
+            onClick={() => setShowPopup(false)}
+          ></div>
+
+          {/* Modal Content */}
+          <div className="relative z-10 bg-white rounded-xl p-8 w-full max-w-md shadow-lg">
+            <h3 className="text-[24px] font-semibold mb-4">
+              Withdraw $47.50
+            </h3>
+            <p className="text-gray-500 mb-6">Payment Method</p>
+
+            {/* Payment Method Options */}
+            <div className="flex flex-col gap-4">
+              {/* Venmo Option */}
+              <button className="flex items-center justify-between w-full px-4 py-3 border border-gray-300 rounded-md text-lg font-medium hover:bg-gray-100">
+                <div className="flex items-center">
+                  <Image
+                    src={img1} // Use the image for Venmo or PayPal
+                    alt="Venmo"
+                    width={30}
+                    height={30}
+                    className="mr-2"
+                  />
+                  <span>Venmo</span>
+                </div>
+                <span>&gt;</span>
+              </button>
+
+              {/* PayPal Option */}
+              <button className="flex items-center justify-between w-full px-4 py-3 border border-gray-300 rounded-md text-lg font-medium hover:bg-gray-100">
+                <div className="flex items-center">
+                  <Image
+                    src={img2} // Use PayPal image here
+                    alt="PayPal"
+                    width={30}
+                    height={30}
+                    className="mr-2"
+                  />
+                  <span>PayPal</span>
+                </div>
+                <span>&gt;</span>
+              </button>
             </div>
 
+            {/* Close Button */}
+            <div className="text-center mt-6">
+              <button
+                onClick={() => setShowPopup(false)}
+                className="text-gray-600 underline cursor-pointer"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
             {/* Withdraw Modal */}
             {showWithdraw && (
                 <div className="fixed inset-0 z-50 flex justify-center items-center px-4">

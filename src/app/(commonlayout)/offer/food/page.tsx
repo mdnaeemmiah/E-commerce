@@ -1,4 +1,4 @@
-import Restaurant from '@/components/modules/home/offer/toggle/Restaurant'
+import Restaurant from '@/components/modules/home/offer/toggle/Food'
 import React from 'react'
 
 export default function page() {

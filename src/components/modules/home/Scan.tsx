@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { FaCheckCircle, FaTimesCircle, FaRegClock } from 'react-icons/fa';
 import { FiCamera, FiImage, FiUpload, FiWatch } from 'react-icons/fi';
 import { RiHomeLine } from 'react-icons/ri';
+import popcorn from "@/app/assets/home/Rectangle 15.png"; 
 
 
 import { FaStar, FaUserFriends } from "react-icons/fa";
+import Image from 'next/image';
 
 interface HistoryItem {
   id: number;
@@ -147,14 +149,12 @@ const Scan: React.FC = () => {
         </div>
       </div> */}
 
-
       <div className="bg-[#E8E8FF] p-4 rounded-lg shadow-md mb-6 mt-10">
-        {/* Earn More Section */}
         <div className="text-center mb-2">
           <h3 className="text-[24px] font-medium">Want to earn more?</h3>
           <p>
             Complete quick reviews from any verified receipt to earn an extra $1
-            per review
+            per review.
           </p>
         </div>
 
@@ -176,42 +176,101 @@ const Scan: React.FC = () => {
             )
           )}
         </div>
+      </div>
 
-        {/* Popup Modal */}
-        {showPopup && (
-          <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
-            {/* Overlay */}
-            <div
-              className="absolute inset-0 bg-black opacity-80"
-              onClick={() => setShowPopup(false)}
-            ></div>
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black opacity-70"
+            onClick={() => setShowPopup(false)}
+          ></div>
 
-            {/* Modal */}
-            <div className="relative z-10 bg-white rounded-2xl p-8 w-full max-w-md shadow-lg">
-              <h3 className="text-[24px] md:text-2xl font-semibold mb-4">
-                Withdraw Funds
-              </h3>
-              <p>Withdraw $47.50 to your payout method:</p>
+          {/* Modal */}
+          <div className="relative z-10 bg-white rounded-2xl p-6 w-full max-w-md shadow-lg overflow-y-auto max-h-[90vh]">
+            {/* Chat-style section */}
+            <div className="space-y-4">
+              <div className="flex flex-col items-start">
+                <p className="text-gray-600 mb-2">
+                  <span className="text-lg">👋</span> Hey there! How did you like
+                  the popcorn?
+                </p>
+                <Image
+                  src={popcorn}
+                  alt="Popcorn"
+                  width={100}
+                  height={100}
+                  className="rounded-lg"
+                />
+              </div>
 
-              <div className="flex flex-col items-center">
-                <button className="w-[70%] mt-4 cursor-pointer bg-[#3E3EDF] text-white py-3 rounded-md font-semibold mb-2">
-                  Paypal
-                </button>
-                <button className="w-[70%] mt-4 border cursor-pointer border-gray-300 py-2 rounded-md text-[18px] hover:bg-gray-100 mb-4">
-                  Venmo
-                </button>
-                <p>Payouts typically land in 24–48 hours.</p>
+              <div className="text-right">
+                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-xl">
+                  It was delicious, and the whole bag was super fresh!
+                </div>
+              </div>
+
+              <div className="flex flex-col items-start">
+                <p className="text-gray-600">
+                  Glad to hear it! What did you like most—taste, texture, or
+                  ingredients?
+                </p>
+              </div>
+
+              <div className="text-right">
+                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-xl">
+                  Mostly the great flavor.
+                </div>
+              </div>
+
+              <div className="flex flex-col items-start">
+                <p className="text-gray-600">
+                  Would you purchase it again or recommend it to others?
+                </p>
+              </div>
+
+              <div className="text-right">
+                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-xl">
+                  Yes, it’s a tasty and healthy snack.
+                </div>
+              </div>
+
+              <div className="bg-gray-100 p-4 rounded-lg mt-4">
+                <p className="text-gray-800 text-sm mb-2">
+                  “The popcorn was delicious, and the whole bag tasted super
+                  fresh. I also loved the great flavor. It’s a tasty and healthy
+                  snack.”
+                </p>
+                <button className="text-blue-600 text-sm underline">Edit</button>
+              </div>
+
+              <div className="text-center mt-4">
+                <p className="text-gray-700 mb-2 font-medium">
+                  First-time purchase?
+                </p>
+                <div className="flex justify-center gap-4">
+                  <button className="border border-gray-300 bg-white  text-black hover:bg-[#3E3EDF] hover:text-white px-10 py-2 rounded-md cursor-pointer">
+                    Yes
+                  </button>
+                  <button className="border border-gray-300 px-10 py-2 rounded-md bg-white  text-black hover:bg-[#3E3EDF] hover:text-white cursor-pointer">
+                    No
+                  </button>
+                </div>
+              </div>
+
+              <div className="text-center mt-6">
                 <button
                   onClick={() => setShowPopup(false)}
-                  className="w-[40%] mt-4 cursor-pointer border-gray-300 text-black border py-2 rounded-md mb-2 hover:bg-gray-100"
+                  className="text-gray-600 underline cursor-pointer"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
 
 

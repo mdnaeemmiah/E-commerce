@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Fashion from './Fashion';
-import Restaurant from './Restaurant';
-import OrganicFood from './OrganicFood';
-import Essentials from './Essentials';
+import Food from './Food';
+import Electronics from './Electronics';
+import All from './All';
 
 export default function SettingsTabs() {
   // State for the active tab
-  const [activeTab, setActiveTab] = useState<'Fashion' | 'Restaurant' | 'Organic' | 'Essentials'>('Fashion');
+  const [activeTab, setActiveTab] = useState<'Fashion' | 'Food' | 'All' | 'Electronics'>('Fashion');
   const [isClient, setIsClient] = useState(false);  // Client-side check to handle localStorage only on the client
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function SettingsTabs() {
     // Get the active tab from localStorage when the component mounts
     const savedTab = localStorage.getItem('activeTab');
     if (savedTab) {
-      setActiveTab(savedTab as 'Fashion' | 'Restaurant' | 'Organic' | 'Essentials');
+      setActiveTab(savedTab as 'Fashion' | 'Food' | 'All' | 'Electronics');
     }
   }, []);
 
@@ -34,51 +34,51 @@ export default function SettingsTabs() {
 
   return (
     <div className=" ">
+      <h2 className='text-2xl mb-4 font-semibold'>Your Rewards</h2>
       {/* Responsive Tab Buttons Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 shadow-2xl p-3 rounded-2xl md:w-1/2">
+
+        <button
+          onClick={() => setActiveTab('All')}
+          className={`py-2 rounded w-full text-center cursor-pointer ${activeTab === 'All' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
+            }`}
+        >
+          All
+        </button>
+
         <button
           onClick={() => setActiveTab('Fashion')}
-          className={`py-2 rounded w-full text-center cursor-pointer ${
-            activeTab === 'Fashion' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
-          }`}
+          className={`py-2 rounded w-full text-center cursor-pointer ${activeTab === 'Fashion' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
+            }`}
         >
           Fashion
         </button>
 
         <button
-          onClick={() => setActiveTab('Restaurant')}
-          className={`py-2 rounded w-full text-center cursor-pointer ${
-            activeTab === 'Restaurant' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
-          }`}
+          onClick={() => setActiveTab('Food')}
+          className={`py-2 rounded w-full text-center cursor-pointer ${activeTab === 'Food' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
+            }`}
         >
-          Restaurant
+          Food
         </button>
 
-        <button
-          onClick={() => setActiveTab('Organic')}
-          className={`py-2 rounded w-full text-center cursor-pointer ${
-            activeTab === 'Organic' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
-          }`}
-        >
-          Organic food
-        </button>
+
 
         <button
-          onClick={() => setActiveTab('Essentials')}
-          className={`py-2 rounded w-full text-center cursor-pointer ${
-            activeTab === 'Essentials' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
-          }`}
+          onClick={() => setActiveTab('Electronics')}
+          className={`py-2 rounded w-full text-center cursor-pointer ${activeTab === 'Electronics' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
+            }`}
         >
-          Essentials
+          Electronics
         </button>
       </div>
 
       {/* Tab Content */}
       <div className="">
         {activeTab === 'Fashion' && <Fashion />}
-        {activeTab === 'Restaurant' && <Restaurant />}
-        {activeTab === 'Organic' && <OrganicFood />}
-        {activeTab === 'Essentials' && <Essentials />}
+        {activeTab === 'Food' && <Food />}
+        {activeTab === 'All' && <All />}
+        {activeTab === 'Electronics' && <Electronics />}
       </div>
     </div>
   );

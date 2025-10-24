@@ -111,7 +111,7 @@ const offers = [
     }
 ];
 
-const Essentials: React.FC = () => {
+const Electronics: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
@@ -165,7 +165,7 @@ const Essentials: React.FC = () => {
                                     </div>
                                     <div className="col-span-5 ">
                                         <Link
-                                            href={`/offer/essentials/${offer?.id}`}
+                                            href={`/offer/electronics/${offer?.id}`}
                                             className="flex items-center justify-center mt-3 border border-[#3E3EDF] text-black hover:bg-indigo-600 hover:text-white px-1 py-2 rounded-lg"
                                         >
                                             View Offer
@@ -188,4 +188,4 @@ const Essentials: React.FC = () => {
     );
 };
 
-export default Essentials;
+export default Electronics;

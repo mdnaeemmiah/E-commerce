@@ -1,4 +1,4 @@
-import OrganicFood from '@/components/modules/home/offer/toggle/OrganicFood'
+import OrganicFood from '@/components/modules/home/offer/toggle/All'
 import React from 'react'
 
 export default function page() {

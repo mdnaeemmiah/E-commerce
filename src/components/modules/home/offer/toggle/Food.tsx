@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import img1 from '@/app/assets/saved/2CEDCEDD-EDBE-4B6B-B11F-30DBA2DCA260 1 (1).png';
@@ -13,7 +12,7 @@ const offers = [
     {
         id: 1,
         title: 'Tech Essentials Sale',
-        image: img1,
+        image: img2,
         expiration: '2025-02-28',
         claimUrl: '#',
         discount: '20%',
@@ -23,7 +22,7 @@ const offers = [
     {
         id: 2,
         title: 'Happy Meal Deal',
-        image: img2,
+        image: img1,
         expiration: '2025-01-30',
         claimUrl: '#',
         discount: '10%',
@@ -33,7 +32,7 @@ const offers = [
     {
         id: 3,
         title: 'Gadget Master Deal',
-        image: img1,
+        image: img2,
         expiration: '2025-03-15',
         claimUrl: '#',
         discount: '15%',
@@ -112,7 +111,7 @@ const offers = [
     }
 ];
 
-const OrganicFood: React.FC = () => {
+const Food: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
@@ -166,7 +165,7 @@ const OrganicFood: React.FC = () => {
                                     </div>
                                     <div className="col-span-5 ">
                                         <Link
-                                            href={`/offer/organic/${offer?.id}`}
+                                            href={`/offer/food/${offer?.id}`}
                                             className="flex items-center justify-center mt-3 border border-[#3E3EDF] text-black hover:bg-indigo-600 hover:text-white px-1 py-2 rounded-lg"
                                         >
                                             View Offer
@@ -189,4 +188,4 @@ const OrganicFood: React.FC = () => {
     );
 };
 
-export default OrganicFood;
+export default Food;
