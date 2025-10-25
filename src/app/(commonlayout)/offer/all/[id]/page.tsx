@@ -8,6 +8,7 @@ import { useState } from 'react';
 import img3 from "@/app/assets/auth/Group 66.png"
 import img4 from "@/app/assets/auth/Vector (11).png"
 import Link from 'next/link';
+import { MdOutlineWatchLater } from 'react-icons/md';
 
 
 const offers = [
@@ -210,15 +211,15 @@ export default function Page() {
 
 
             <div className="relative z-10 bg-white rounded-2xl p-8 w-full max-w-sm shadow-lg">
-              <h3 className="text-[20px] md:text-xl font-semibold mb-4 text-center">
+              <h3 className="text-[20px] md:text-xl font-semibold  text-center ">
                 Claim Offer
               </h3>
-              <p>Receipts must be uploaded within 7 days of claiming this offer.</p>
+              <p className='text-[#FF5C5C] text-center mb-2 flex w-[50%]flex items-center justify-center'>Receipts must be uploaded within 7 days of claiming this offer.</p>
 
 
-              <div>
-                <p>Please sign in or sign up
-                  to continue</p>
+              <div className='flex items-center gap-2'>
+                <MdOutlineWatchLater />
+                <p>Please sign in or sign up to continue</p>
               </div>
 
 
