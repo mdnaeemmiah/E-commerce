@@ -7,7 +7,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { useState } from "react";
 import img1 from "@/app/assets/auth/Ellipse 2.png"; // profile
-import img2 from "@/app/assets/auth/image_3-removebg-preview.png"; // logo
+import img2 from "@/app/assets/auth/logo.png"; // logo
 import { IoNotificationsOutline } from "react-icons/io5";
 
 export default function Navbar() {

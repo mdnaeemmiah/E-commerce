@@ -176,13 +176,14 @@ export default function Page() {
                 <p className="text-sm text-gray-700">{offer?.description}</p>
 
                 {/* Claim Offer Button */}
-                <Link href='/scan'>
-                  <button
-                    className="w-full cursor-pointer bg-[#3E3EDF] text-white py-2 rounded-md hover:bg-indigo-700 transition"
-                  >
-                    Claim Offer
-                  </button>
-                </Link>
+                {/* <Link href='/scan'> */}
+                <button
+                  onClick={() => setShowHistory(true)}
+                  className="w-full cursor-pointer bg-[#3E3EDF] text-white py-2 rounded-md hover:bg-indigo-700 transition"
+                >
+                  Claim Offer
+                </button>
+                {/* </Link> */}
 
                 {/* More Details */}
                 <p className="text-xs text-gray-500 mt-2">
@@ -199,52 +200,40 @@ export default function Page() {
           </div>
         </div>
 
-        {/* {showHistory && (
+        {showHistory && (
           <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
-          
+
             <div
               className="absolute inset-0 bg-black opacity-80"
               onClick={() => setShowHistory(false)}
             ></div>
 
-         
+
             <div className="relative z-10 bg-white rounded-2xl p-8 w-full max-w-sm shadow-lg">
               <h3 className="text-[20px] md:text-xl font-semibold mb-4 text-center">
-                Enter your E-mail or Number
+                Claim Offer
               </h3>
+              <p>Receipts must be uploaded within 7 days of claiming this offer.</p>
 
-            
-              <input
-                type="text"
-                placeholder="E-mail address or phone number"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
-              />
 
-     
-              <button className="w-full bg-[#3E3EDF] text-white py-3 rounded-lg cursor-pointer transition">
-                Next
-              </button>
-
-             
-              <div className="flex items-center my-4">
-                <div className="flex-grow border-t border-gray-300"></div>
-                <span className="mx-2 text-gray-500">or</span>
-                <div className="flex-grow border-t border-gray-300"></div>
+              <div>
+                <p>Please sign in or sign up
+                  to continue</p>
               </div>
 
- 
-              <div className="flex justify-center gap-4">
-<button className="p-2 cursor-pointer border border-gray-300 shadow-2xl rounded-full  transition">
-  <Image src={img3} alt="Google" width={24} height={24} />
-</button>
 
-<button className="p-2 cursor-pointer border border-gray-300 shadow-2xl rounded-full  transition">
-  <Image src={img4} alt="Apple" width={24} height={24} />
-</button>
+              <div className=''>
+                <button className="w-full mt-4 border border-gray-300 hover:bg-[#3E3EDF] hover:text-white py-3 rounded-lg cursor-pointer transition">
+                  Sign In
+                </button>
+                <button className="w-full border border-gray-300 hover:bg-[#3E3EDF] mt-2 hover:text-white py-3 rounded-lg cursor-pointer transition">
+                  Sign Up
+                </button>
               </div>
+              <p className='text-[#575757] text-center pt-6'>New here? It only takes a few seconds.</p>
             </div>
           </div>
-        )} */}
+        )}
 
 
       </div>

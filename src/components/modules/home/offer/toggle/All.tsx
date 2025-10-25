@@ -114,7 +114,7 @@ const offers = [
 
 const All: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 6;
+    const itemsPerPage = 4;
 
     // Calculate the total number of pages
     const totalPages = Math.ceil(offers.length / itemsPerPage);
