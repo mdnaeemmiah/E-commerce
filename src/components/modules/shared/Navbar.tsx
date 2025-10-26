@@ -36,9 +36,11 @@ export default function Navbar() {
         <div className="">
             <nav className="flex justify-between items-center px-4 md:px-12 lg:px-40 py-4 bg-white shadow-sm relative">
                 {/* Left - Logo */}
-                <div className="flex items-center space-x-2">
-                    <Image src={img2} alt="Logo" width={120} height={60} />
-                </div>
+                <Link href='/offer'>
+                    <div className="flex items-center space-x-2 cursor-pointer">
+                        <Image src={img2} alt="Logo" width={120} height={60} />
+                    </div>
+                </Link>
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-8">
