@@ -26,7 +26,7 @@ const reviews = [
 
 export default function Page() {
   return (
-    <div className="w-full md:w-[70%] lg:w-[50%] mx-auto p-6 space-y-6 mt-10">
+    <div className="w-full md:w-[91%] lg:w-[50%] mx-auto p-6 space-y-6 mt-10">
       <div>
         <h2 className="text-xl font-semibold">Summer Athletic Collection</h2>
         <p className="text-sm text-gray-500">Expires 2025-02-28</p>
