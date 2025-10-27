@@ -101,7 +101,7 @@ const getStatusColor = (status: string) => {
 const Scan: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   return (
-    <div className="max-w-4xl mx-auto p-6 mt-6">
+    <div className="max-w-4xl lg:max-w-5xl mx-auto py-6 mt-6">
       {/* Header */}
       <div className="text-center mb-10">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold">Your rewards Hub</h2>

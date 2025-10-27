@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function Profile() {
     const [enabled, setEnabled] = useState(true);
     return (
-        <div className=" md:w-[60%]  lg:w-[40%] mx-auto p-6 mt-4 md:mt-10">
+        <div className=" md:w-[90%]  lg:w-[50%] mx-auto py-6 mt-4 md:mt-10">
             {/* Profile Header */}
             <div className="flex flex-col items-center mb-6">
                 <Image src={img1} alt="Profile" width={80} height={80} className="rounded-full" />

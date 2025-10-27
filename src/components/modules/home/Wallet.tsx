@@ -48,7 +48,7 @@ export default function Wallet() {
             </div>
 
             {/* Recent Rewards */}
-            <div className="bg-white w-[90%] md:max-w-3xl lg:max-w-4xl mt-12 rounded-xl shadow p-5">
+            <div className="bg-white w-[90%] md:max-w-4xl lg:max-w-5xl mt-12 rounded-xl shadow p-5">
                 <h3 className="font-semibold mb-4 text-[24px]">Recent Rewards</h3>
 
                 <div className="shadow-xl p-4 rounded-2xl mb-4">
@@ -107,7 +107,7 @@ export default function Wallet() {
       </div>
 
       {/* Withdraw Button */}
-      <div className="bg-white w-[90%] md:max-w-3xl lg:max-w-4xl mt-12 rounded-xl shadow p-5 text-center">
+      <div className="bg-white w-[90%] md:max-w-4xl lg:max-w-5xl mt-12 rounded-xl shadow p-5 text-center">
         <h3 className="font-semibold text-[24px]">PayPal Options</h3>
         <p className="text-gray-500 text-[18px] mb-4">
           Choose where to receive your rewards
