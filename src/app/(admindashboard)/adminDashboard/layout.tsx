@@ -16,7 +16,7 @@ import {
     FaGift,
 } from "react-icons/fa";
 import img1 from "@/app/assets/auth/image3.png";
-import img2 from "@/app/assets/auth/image3.png";
+import img2 from "@/app/assets/auth/logo.png";
 import img3 from "@/app/assets/auth/Ellipse 2.png";
 import img11 from "@/app/assets/auth/Icon.png";
 import { Toaster } from "react-hot-toast";
@@ -55,7 +55,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     {/* Mobile Close Button */}
                     <div className="flex items-center justify-between md:hidden mb-6">
                         <div className="flex items-center space-x-2">
-                            <Image src={img1} alt="Logo" width={40} height={40} />
+                            <Image src={img1} alt="Logo" width={100} height={40} />
                         </div>
                         <button onClick={() => setIsOpen(false)}>
                             <FaTimes size={24} className="text-red-500 hover:scale-105" />
@@ -63,8 +63,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </div>
 
                     {/* Desktop Logo */}
-                    <div className="flex justify-center">
-                        <Image src={img1} alt="Logo" width={150} height={100} />
+                    <div className="md:flex justify-center sm:block hidden my-10">
+                        <Image src={img2} alt="Logo" width={150} height={100} />
                     </div>
 
                     {/* Menu */}
@@ -106,7 +106,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 {/* Topbar (mobile + desktop) */}
                 <div className="h-20 rounded-2xl shadow-xl md:ml-72 lg:ml-80 px-4 flex items-center justify-between bg-white">
                     {/* Left section: Hamburger + Profile */}
-                    <div className="flex items-center gap-4">
+                    <div className=" items-center gap-4 block md:hidden">
                         {/* Hamburger menu (mobile only) */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
@@ -117,14 +117,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </div>
 
                     {/* Left: Profile section */}
-                    <div className="sm:block hidden">
+                    <div className="sm:block hidden ">
                         <h1 className="text-[#3E3EDF] text-[24px]">Welcome, Tamim</h1>
                         <p className="text-[16px]">Have a nice day!</p>
                     </div>
 
                     {/* Right: Notification + Settings */}
                     <div className="flex items-center gap-4">
-                        <div className="relative z-50">
+                        <div className="relative z-10">
                             {/* Bell Icon */}
                             <IoNotificationsOutline
                                 onClick={(e) => {

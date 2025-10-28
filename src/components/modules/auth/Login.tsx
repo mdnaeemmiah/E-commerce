@@ -107,6 +107,10 @@ const Login: React.FC = () => {
                         <span className="text-[16px] sm:text-base md:text-[18px] ">Continue with Apple</span>
                     </button>
                 </div>
+                {/* Login Link */}
+                <div className="mt-4 text-center">
+                    <h1 className="text-[#828282]">Don’t have an account ?<span className="font-semibold text-[#3E3EDF] cursor-pointer"> <Link href='/auth/register'>Sign up</Link> </span></h1>
+                </div>
 
             </div>
         </div>
