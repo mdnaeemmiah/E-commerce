@@ -22,7 +22,7 @@ export default function ViewWallet() {
                       <div className="flex items-center justify-center text-center">
                           <button
                             //   onClick={() => setShowWithdraw(true)}
-                              className="flex-1 cursor-pointer border border-white  duration-300 bg-white text-black font-medium py-2 rounded-md shadow-sm "
+                              className="flex-1 cursor-pointer border border-white  duration-300 bg-white text-black font-medium py-3 rounded-md shadow-sm "
                           >
                               View Wallet
                           </button>
