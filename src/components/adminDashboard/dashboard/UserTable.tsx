@@ -1,3 +1,4 @@
+
 "use client";
 
 import Pagination from "@/components/modules/shared/Pagination";
@@ -5,7 +6,7 @@ import { useState, useEffect } from "react";
 import { FiEye, FiSearch, FiX } from "react-icons/fi";
 import jsPDF from "jspdf";
 
-export default function Earning() {
+export default function UserTable() {
   const [searchDate, setSearchDate] = useState("");
   const [searchUser, setSearchUser] = useState("");
   const [searchBrand, setSearchBrand] = useState("");
@@ -69,29 +70,14 @@ const transactions = [
 
   const handlePageChange = (page: number) => setCurrentPage(page);
 
-  // PDF download
-  const handleDownload = () => {
-    if (!selectedTransaction) return;
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text("Transaction Details", 20, 20);
-    doc.setFontSize(12);
-    doc.text(`Transaction ID: ${selectedTransaction.id}`, 20, 40);
-    doc.text(`Date: ${selectedTransaction.date}`, 20, 50);
-    doc.text(`User Name: ${selectedTransaction.user}`, 20, 60);
-    doc.text(`A/C Number: ${selectedTransaction.acNumber}`, 20, 70);
-    doc.text(`A/C Holder: ${selectedTransaction.acHolder}`, 20, 80);
-    doc.text(`Transaction Amount: ${selectedTransaction.amount}`, 20, 90);
-    doc.text(`Provider Name: ${selectedTransaction.provider}`, 20, 100);
-    doc.save(`${selectedTransaction.id}.pdf`);
-  };
+
 
   return (
     <div>
       <div className="bg-white shadow-md rounded-xl p-5 w-full mt-10">
-        <div className="flex justify-between flex-col lg:flex-row">
+        <div className="flex justify-between flex-col md:flex-row">
           <h2 className="text-[22px] text-[#1F1D1D] font-semibold mb-5">
-            Recent Transactions
+            User List
           </h2>
 
           {/* Search Fields */}
@@ -114,17 +100,6 @@ const transactions = [
                 className="outline-none text-sm text-gray-700 w-32 sm:w-40"
               />
             </div>
-
-            <div className="flex items-center border rounded-lg px-3 py-2 sm:w-auto">
-              <input
-                type="text"
-                placeholder="Brand Name"
-                value={searchBrand}
-                onChange={(e) => setSearchBrand(e.target.value)}
-                className="outline-none text-sm text-gray-700 w-32 sm:w-40"
-              />
-            </div>
-
             <button className="bg-[#3B46F1] text-white p-2 rounded-full hover:bg-[#2f35c9] transition">
               <FiSearch size={18} />
             </button>
@@ -136,10 +111,10 @@ const transactions = [
           <table className="w-full border-collapse">
             <thead>
               <tr className="bg-[#3B46F1] text-white text-left text-sm">
-                <th className="py-3 px-4 rounded-tl-lg">#Tr.ID</th>
+                <th className="py-3 px-4 rounded-tl-lg">#Sl</th>
                 <th className="py-3 px-4">User Name</th>
-                <th className="py-3 px-4">Brand Name</th>
-                <th className="py-3 px-4">Amount</th>
+                <th className="py-3 px-4">Email</th>
+                <th className="py-3 px-4">Number</th>
                 <th className="py-3 px-4">Date</th>
                 <th className="py-3 px-4 rounded-tr-lg text-center">Action</th>
               </tr>
@@ -196,32 +171,15 @@ const transactions = [
             </button>
 
             <h3 className="text-lg font-semibold mb-4 text-center border-b pb-2">
-              Transaction Details
+              User Details
             </h3>
 
             <div className="space-y-2 text-sm text-gray-700">
-              <p><strong>Transaction ID:</strong> #{selectedTransaction.id}</p>
-              <p><strong>Date:</strong> {selectedTransaction.date}</p>
-              <p><strong>User name:</strong> {selectedTransaction.user}</p>
-              <p><strong>A/C number:</strong> {selectedTransaction.acNumber}</p>
-              <p><strong>A/C holder name:</strong> {selectedTransaction.acHolder}</p>
-              <p><strong>Transaction amount:</strong> {selectedTransaction.amount}</p>
-              <p><strong>Provider name:</strong> {selectedTransaction.provider}</p>
-            </div>
-
-            <div className="flex justify-center gap-4 mt-6">
-              <button
-                onClick={handleDownload}
-                className="border border-[#3B46F1] text-[#3B46F1] px-5 py-2 rounded-lg hover:bg-[#f0f2ff] transition"
-              >
-                Download
-              </button>
-              <button
-                onClick={() => window.print()}
-                className="bg-[#3B46F1] text-white px-5 py-2 rounded-lg hover:bg-[#2f35c9] transition"
-              >
-                Print
-              </button>
+              <p><strong>User name:</strong> #{selectedTransaction.id}</p>
+              <p><strong>Email:</strong> {selectedTransaction.date}</p>
+              <p><strong>Phone number:</strong> {selectedTransaction.acNumber}</p>
+              <p><strong>Address:</strong> {selectedTransaction.acHolder}</p>
+              <p><strong>Joing Date:</strong> {selectedTransaction.amount}</p>
             </div>
           </div>
         </div>
