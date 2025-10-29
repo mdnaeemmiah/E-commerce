@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-import { FaCheckCircle, FaTimesCircle, FaRegClock } from 'react-icons/fa';
-import { FiCamera, FiImage, FiUpload, FiWatch } from 'react-icons/fi';
+import { FaCheckCircle } from 'react-icons/fa';
+import { FiCamera, FiUpload, FiWatch } from 'react-icons/fi';
 import { RiHomeLine } from 'react-icons/ri';
 import popcorn from "@/app/assets/home/Rectangle 15.png"; 
 
@@ -54,17 +54,17 @@ const data: HistoryItem[] = [
   },
 ];
 
-interface Receipt {
-  name: string;
-  date: string;
-  status: 'verified' | 'pending' | 'rejected';
-}
+// interface Receipt {
+//   name: string;
+//   date: string;
+//   status: 'verified' | 'pending' | 'rejected';
+// }
 
-const receipts: Receipt[] = [
-  { name: "Noosa 50$ Rebates", date: "Apr 2, 2025", status: "verified" },
-  { name: "LaCroix Grapefruit", date: "Apr 5, 2025", status: "pending" },
-  { name: "Driscoll Strawberries", date: "Apr 8, 2025", status: "rejected" },
-];
+// const receipts: Receipt[] = [
+//   { name: "Noosa 50$ Rebates", date: "Apr 2, 2025", status: "verified" },
+//   { name: "LaCroix Grapefruit", date: "Apr 5, 2025", status: "pending" },
+//   { name: "Driscoll Strawberries", date: "Apr 8, 2025", status: "rejected" },
+// ];
 
 const getStatusIcon = (status: string) => {
   switch (status) {

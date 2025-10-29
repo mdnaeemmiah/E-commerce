@@ -13,7 +13,7 @@ const Otp: React.FC = () => {
 
     const [otp, setOtp] = useState(["", "", "", "", "", ""]);
 
-    const handleChange = (value: string, index: number, event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (value: string, index: number) => {
         if (/^[0-9]?$/.test(value)) {
             const newOtp = [...otp];
             newOtp[index] = value;
@@ -39,7 +39,7 @@ const Otp: React.FC = () => {
         }
     };
 
-    const isOtpComplete = otp.every((digit) => digit !== ""); // Check if all OTP fields are filled
+    // const isOtpComplete = otp.every((digit) => digit !== ""); // Check if all OTP fields are filled
 
 
 
@@ -68,7 +68,7 @@ const Otp: React.FC = () => {
                                     type="text"
                                     maxLength={1}
                                     value={digit}
-                                    onChange={(e) => handleChange(e.target.value, index, e)}
+                                    onChange={(e) => handleChange(e.target.value, index)}
                                     onKeyDown={(e) => handleBackspace(index, e)}
                                     className="w-10 md:w-14 h-10 md:h-14 text-center border border-gray-400 rounded-md text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 duration-900 text-[#575757]"
                                 />

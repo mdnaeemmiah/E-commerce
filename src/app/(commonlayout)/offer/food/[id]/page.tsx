@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 import img1 from '@/app/assets/saved/2CEDCEDD-EDBE-4B6B-B11F-30DBA2DCA260 1 (1).png';
 import img2 from '@/app/assets/saved/457FC2B0-B590-407B-AE21-B28CDD2D4582 1 (1).png';
-import { useState } from 'react';
 import Link from 'next/link';
 
 
@@ -122,7 +121,7 @@ const offers = [
 ];
 
 export default function Page() {
-  const [showHistory, setShowHistory] = useState(false);
+
 
   const params = useParams();
   const id = Number(params.id);
