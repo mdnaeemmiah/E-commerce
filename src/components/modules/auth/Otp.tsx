@@ -1,8 +1,7 @@
 
 "use client";
 
-import Image from "next/image";
-import img1 from "@/app/assets/auth/image3.png";
+
 import { IoMdArrowBack } from "react-icons/io";
 import { useState } from "react";
 import Link from "next/link";

@@ -4,7 +4,7 @@
 import Pagination from "@/components/modules/shared/Pagination";
 import { useState, useEffect } from "react";
 import { FiEye, FiSearch, FiX } from "react-icons/fi";
-import jsPDF from "jspdf";
+
 
 export default function UserTable() {
   const [searchDate, setSearchDate] = useState("");

@@ -2,7 +2,7 @@
 
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Using React Icons for arrows
 import { MdMoreHoriz } from 'react-icons/md'; // For the "..." dots
-import { useState } from 'react';
+
 
 interface PaginationProps {
     currentPage: number;

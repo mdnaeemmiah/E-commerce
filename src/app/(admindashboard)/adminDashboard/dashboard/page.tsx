@@ -1,7 +1,6 @@
 import DEarning from '@/components/adminDashboard/dashboard/DEarning'
 import DTable from '@/components/adminDashboard/dashboard/DTable'
 import React from 'react'
-import { FaGift, FaStore, FaUsers } from 'react-icons/fa';
 
 const stats = [
   { label: 'Total Earnings', value: "$1251 K", },
