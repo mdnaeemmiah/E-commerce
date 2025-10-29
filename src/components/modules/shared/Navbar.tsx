@@ -225,7 +225,7 @@ export default function Navbar() {
         { name: "Wallet", path: "/wallet" },
         { name: "Scan", path: "/scan" },
         { name: "Profile", path: "/profile" },
-        { name: "Brand", path: "/brand" },
+        // { name: "Brand", path: "/brand" },
     ];
 
     return (
