@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { AiOutlineDollarCircle } from 'react-icons/ai'
 import { IoWalletOutline } from 'react-icons/io5'
@@ -20,12 +21,12 @@ export default function ViewWallet() {
                           </div>
                       </div>
                       <div className="flex items-center justify-center text-center">
-                          <button
+                          <Link href='/wallet'
                             //   onClick={() => setShowWithdraw(true)}
                               className="flex-1 cursor-pointer border border-white  duration-300 bg-white text-black font-medium py-3 rounded-md shadow-sm "
                           >
                               View Wallet
-                          </button>
+                          </Link>
                       </div>
                   </div>
     </div>

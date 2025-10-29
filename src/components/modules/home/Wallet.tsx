@@ -151,7 +151,7 @@ export default function Wallet() {
               <button className="flex items-center justify-between w-full px-4 py-3 border border-gray-300 rounded-md text-lg font-medium hover:bg-gray-100">
                 <div className="flex items-center">
                   <Image
-                    src={img1} // Use the image for Venmo or PayPal
+                    src={img2} // Use the image for Venmo or PayPal
                     alt="Venmo"
                     width={30}
                     height={30}
@@ -166,7 +166,7 @@ export default function Wallet() {
               <button className="flex items-center justify-between w-full px-4 py-3 border border-gray-300 rounded-md text-lg font-medium hover:bg-gray-100">
                 <div className="flex items-center">
                   <Image
-                    src={img2} // Use PayPal image here
+                    src={img1} // Use PayPal image here
                     alt="PayPal"
                     width={30}
                     height={30}
@@ -207,10 +207,10 @@ export default function Wallet() {
                         <p>Withdraw $47.50 to your payout method:</p>
 
                         <div className="flex flex-col items-center">
-                            <button className="w-[70%] mt-4 cursor-pointer bg-[#3E3EDF] text-white py-3 rounded-md font-semibold mb-2">
+                            <button className="w-[70%] mt-4 cursor-pointer hover:bg-[#3E3EDF] border border-gray-300 hover:text-white py-3 rounded-md font-semibold mb-2">
                                 Paypal
                             </button>
-                            <button className="w-[70%] mt-4 border cursor-pointer border-gray-300 py-2 rounded-md text-[18px]  hover:bg-gray-100 mb-4">
+                            <button className="w-[70%] mt-4 border cursor-pointer hover:bg-[#3E3EDF] border-gray-300 hover:text-white py-2 rounded-md text-[18px]   mb-4">
                                 Venmu
                             </button>
                             <p>Payouts typically land in 24–48 hours.</p>
@@ -257,7 +257,7 @@ export default function Wallet() {
 
                         <div className="flex justify-center mt-6">
                             <button
-                                onClick={() => setShowWithdraw(false)}
+                                onClick={() => setShowHistory(false)}
                                 className=" w-[40%] mt-4 cursor-pointer border-gray-300  text-black border  py-2 rounded-md  mb-2 hover:bg-gray-100">
                                 Cancel
                             </button>

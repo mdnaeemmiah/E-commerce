@@ -100,6 +100,7 @@ const getStatusColor = (status: string) => {
 
 const Scan: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [showPopup1, setShowPopup1] = useState(false);
   return (
     <div className="max-w-4xl lg:max-w-5xl mx-auto py-6 mt-6">
       {/* Header */}
@@ -125,29 +126,6 @@ const Scan: React.FC = () => {
           <p className='text-[#575757]'>Upload receipts to complete pending rebate offers.</p>
         </div>
       </div>
-
-      {/* Earn More Section */}
-      {/* <div className="bg-[#E8E8FF] p-4 rounded-lg shadow-md mb-6 mt-10">
-        <div className='text-center mb-2'>
-          <h3 className="text-[24px]  font-medium">Want to earn more?</h3>
-          <p>Completed quick reviews from any verified receipt an extra $1 per
-            review</p>
-        </div>
-        <div className="space-y-4 mt-8">
-          <div className="flex justify-between items-center border-b  pb-3 border-gray-300 ">
-            <span>Lacroix Grapefruit 12pk</span>
-            <button className="bg-[#3E3EDF] text-white px-4 py-2 rounded cursor-pointer">started Review</button>
-          </div>
-          <div className="flex justify-between items-center border-b  pb-3 border-gray-300 ">
-            <span>Noosa Honey Youhut</span>
-            <button className="bg-[#3E3EDF] text-white px-4 py-2 rounded cursor-pointer">started Review</button>
-          </div>
-          <div className="flex justify-between items-center border-b  pb-3 border-gray-300 ">
-            <span>Driscoll Strawberries</span>
-            <button className="bg-[#3E3EDF] text-white px-4 py-2 rounded cursor-pointer">started Review</button>
-          </div>
-        </div>
-      </div> */}
 
       <div className="bg-[#E8E8FF] p-4 rounded-lg shadow-md mb-6 mt-10">
         <div className="text-center mb-2">
@@ -332,8 +310,63 @@ const Scan: React.FC = () => {
       <div className="bg-white mt-10 p-4 rounded-lg shadow-md mb-6 text-center border-gray-100 border">
         <h3 className="text-2xl font-medium">Invite Friends, Earn $5</h3>
         <p className='text-[#575757] mb-2'>Get $5 when your friend uploads their first receipt and completes $5 in review.</p>
-        <button className="bg-[#3E3EDF] text-[20px] cursor-pointer w-full text-white px-4 py-4 rounded mt-4">Next</button>
+        <button
+        onClick={() => setShowPopup1(true)}
+        className="bg-[#3E3EDF] text-[20px] cursor-pointer w-full text-white px-4 py-4 rounded mt-4">Next</button>
       </div>
+
+
+{showPopup1 && (
+  <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
+    {/* Overlay */}
+    <div
+      className="absolute inset-0 bg-black opacity-70"
+      onClick={() => setShowPopup1(false)}
+    ></div>
+
+    {/* Modal */}
+    <div className="relative z-10 bg-white rounded-2xl p-6 w-full max-w-md shadow-lg overflow-y-auto max-h-[90vh] text-center">
+      {/* Header */}
+      <h2 className="text-xl font-semibold mb-2">Invite Friends, Earn $5</h2>
+      <p className="text-gray-500 mb-6 text-sm">
+        Get $5 when your friend uploads their first receipt and completes $5 in review.
+      </p>
+
+      {/* Form */}
+      <div className="space-y-4">
+        <input
+          type="text"
+          placeholder="Friend's full name"
+          className="border border-gray-300 w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
+        />
+        <input
+          type="text"
+          placeholder="E-mail address or phone number"
+          className="border border-gray-300 w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
+        />
+
+        <button className="bg-[#3E3EDF] text-white w-full py-3 rounded-md hover:bg-[#2e2edf] transition duration-200">
+          Send Invite
+        </button>
+      </div>
+
+      {/* Close Button */}
+      <div className="text-center mt-6">
+        <button
+          onClick={() => setShowPopup1(false)}
+          className="text-gray-600 underline cursor-pointer"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
+
+
+
 
       {/* Upload New Receipt Section */}
       <div className="bg-white p-4 rounded-lg shadow-md my-10 border-gray-100 border">
