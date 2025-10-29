@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 import { FiCamera, FiUpload, FiWatch } from 'react-icons/fi';
 import { RiHomeLine } from 'react-icons/ri';
-import popcorn from "@/app/assets/home/Rectangle 15.png"; 
+import popcorn from "@/app/assets/home/Rectangle 15.png";
+
 
 
 import { FaStar, FaUserFriends } from "react-icons/fa";
 import Image from 'next/image';
+import { IoSend } from 'react-icons/io5';
 
 interface HistoryItem {
   id: number;
@@ -54,17 +56,6 @@ const data: HistoryItem[] = [
   },
 ];
 
-// interface Receipt {
-//   name: string;
-//   date: string;
-//   status: 'verified' | 'pending' | 'rejected';
-// }
-
-// const receipts: Receipt[] = [
-//   { name: "Noosa 50$ Rebates", date: "Apr 2, 2025", status: "verified" },
-//   { name: "LaCroix Grapefruit", date: "Apr 5, 2025", status: "pending" },
-//   { name: "Driscoll Strawberries", date: "Apr 8, 2025", status: "rejected" },
-// ];
 
 const getStatusIcon = (status: string) => {
   switch (status) {
@@ -101,6 +92,29 @@ const getStatusColor = (status: string) => {
 const Scan: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup1, setShowPopup1] = useState(false);
+
+
+
+  // const [message, setMessage] = useState("");
+  // const [chatMessages, setChatMessages] = useState([
+  //   { sender: "bot", text: "👋 Hey there! How did you like the popcorn?" },
+  //   { sender: "user", text: "It was delicious, and the whole bag was super fresh!" },
+  //   { sender: "bot", text: "Glad to hear it! What did you like most—taste, texture, or ingredients?" },
+  //   { sender: "user", text: "Mostly the great flavor." },
+  //   { sender: "bot", text: "Would you purchase it again or recommend it to others?" },
+  //   { sender: "user", text: "Yes, it’s a tasty and healthy snack." },
+  // ]);
+
+  // // Handle sending a message
+  // const handleSendMessage = () => {
+  //   if (message.trim() !== "") {
+  //     const newMessage = { sender: "user", text: message };
+  //     setChatMessages((prevMessages) => [...prevMessages, newMessage]);
+  //     setMessage(""); // Clear the input field
+  //   }
+  // };
+
+
   return (
     <div className="max-w-4xl lg:max-w-5xl mx-auto py-6 mt-6">
       {/* Header */}
@@ -156,7 +170,10 @@ const Scan: React.FC = () => {
         </div>
       </div>
 
-      {/* Popup Modal */}
+
+
+
+
       {showPopup && (
         <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
           {/* Overlay */}
@@ -166,90 +183,86 @@ const Scan: React.FC = () => {
           ></div>
 
           {/* Modal */}
-          <div className="relative z-10 bg-white rounded-2xl p-6 w-full max-w-md shadow-lg overflow-y-auto max-h-[90vh]">
-            {/* Chat-style section */}
-            <div className="space-y-4">
+          <div className="relative z-10 bg-white rounded-2xl p-6 w-full max-w-md shadow-xl overflow-y-auto max-h-[90vh]">
+            {/* Chat Section */}
+            <div className="space-y-5">
+              {/* Bot message */}
               <div className="flex flex-col items-start">
-                <p className="text-gray-600 mb-2">
-                  <span className="text-lg">👋</span> Hey there! How did you like
-                  the popcorn?
+                <p className="text-gray-700 mb-2 flex items-center gap-1">
+                  <span className="text-lg">👋</span> Hey there! How did you like the popcorn?
                 </p>
                 <Image
                   src={popcorn}
                   alt="Popcorn"
-                  width={100}
-                  height={100}
-                  className="rounded-lg"
+                  width={120}
+                  height={120}
+                  className="rounded-lg border border-gray-200"
                 />
               </div>
 
+              {/* User reply */}
               <div className="text-right">
-                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-xl">
+                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
                   It was delicious, and the whole bag was super fresh!
                 </div>
               </div>
 
+              {/* Bot question */}
               <div className="flex flex-col items-start">
-                <p className="text-gray-600">
-                  Glad to hear it! What did you like most—taste, texture, or
-                  ingredients?
+                <p className="text-gray-700">
+                  Glad to hear it! What did you like most—taste, texture, or ingredients?
                 </p>
               </div>
 
+              {/* User reply */}
               <div className="text-right">
-                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-xl">
+                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
                   Mostly the great flavor.
                 </div>
               </div>
 
+              {/* Bot question */}
               <div className="flex flex-col items-start">
-                <p className="text-gray-600">
+                <p className="text-gray-700">
                   Would you purchase it again or recommend it to others?
                 </p>
               </div>
 
+              {/* User reply */}
               <div className="text-right">
-                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-xl">
+                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
                   Yes, it’s a tasty and healthy snack.
                 </div>
               </div>
 
-              <div className="bg-gray-100 p-4 rounded-lg mt-4">
-                <p className="text-gray-800 text-sm mb-2">
-                  “The popcorn was delicious, and the whole bag tasted super
-                  fresh. I also loved the great flavor. It’s a tasty and healthy
-                  snack.”
+              {/* Summary Box */}
+              <div className="bg-gray-100 p-4 rounded-xl mt-4 border border-gray-200">
+                <p className="text-gray-800 text-sm mb-2 leading-relaxed">
+                  The popcorn was delicious, and the whole bag tasted super fresh. I also loved the great flavor.
+                  It’s a tasty and healthy snack.
                 </p>
-                <button className="text-blue-600 text-sm underline">Edit</button>
+                <button className="text-blue-600 text-sm underline hover:text-blue-800">Edit</button>
               </div>
 
-              <div className="text-center mt-4">
-                <p className="text-gray-700 mb-2 font-medium">
-                  First-time purchase?
-                </p>
-                <div className="flex justify-center gap-4">
-                  <button className="border border-gray-300 bg-white  text-black hover:bg-[#3E3EDF] hover:text-white px-10 py-2 rounded-md cursor-pointer">
-                    Yes
-                  </button>
-                  <button className="border border-gray-300 px-10 py-2 rounded-md bg-white  text-black hover:bg-[#3E3EDF] hover:text-white cursor-pointer">
-                    No
+              {/* Message Input Section */}
+              <div className="mt-6 pt-4">
+                <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2">
+                  <input
+                    type="text"
+                    placeholder="Write message"
+                    className="flex-1 bg-transparent outline-none text-gray-700 text-sm"
+                  />
+                  <button
+                    className=" text-[#2b2bd4] p-2 rounded-lg transition"
+                  >
+                    <IoSend className="text-xl" />
                   </button>
                 </div>
-              </div>
-
-              <div className="text-center mt-6">
-                <button
-                  onClick={() => setShowPopup(false)}
-                  className="text-gray-600 underline cursor-pointer"
-                >
-                  Close
-                </button>
               </div>
             </div>
           </div>
         </div>
       )}
-
 
 
       {/* Receipt History Section */}
@@ -274,8 +287,6 @@ const Scan: React.FC = () => {
           <p className='text-[#575757]'>Recent receips are shown below- view update status anytime</p>
         </div>
       </div>
-
-
 
       <div className="bg-white rounded-2xl shadow-md   p-5">
         {data.map((item) => (
@@ -311,61 +322,57 @@ const Scan: React.FC = () => {
         <h3 className="text-2xl font-medium">Invite Friends, Earn $5</h3>
         <p className='text-[#575757] mb-2'>Get $5 when your friend uploads their first receipt and completes $5 in review.</p>
         <button
-        onClick={() => setShowPopup1(true)}
-        className="bg-[#3E3EDF] text-[20px] cursor-pointer w-full text-white px-4 py-4 rounded mt-4">Next</button>
+          onClick={() => setShowPopup1(true)}
+          className="bg-[#3E3EDF] text-[20px] cursor-pointer w-full text-white px-4 py-4 rounded mt-4">Next</button>
       </div>
 
 
-{showPopup1 && (
-  <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
-    {/* Overlay */}
-    <div
-      className="absolute inset-0 bg-black opacity-70"
-      onClick={() => setShowPopup1(false)}
-    ></div>
+      {showPopup1 && (
+        <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black opacity-70"
+            onClick={() => setShowPopup1(false)}
+          ></div>
 
-    {/* Modal */}
-    <div className="relative z-10 bg-white rounded-2xl p-6 w-full max-w-md shadow-lg overflow-y-auto max-h-[90vh] text-center">
-      {/* Header */}
-      <h2 className="text-xl font-semibold mb-2">Invite Friends, Earn $5</h2>
-      <p className="text-gray-500 mb-6 text-sm">
-        Get $5 when your friend uploads their first receipt and completes $5 in review.
-      </p>
+          {/* Modal */}
+          <div className="relative z-10 bg-white rounded-2xl p-6 w-full max-w-md shadow-lg overflow-y-auto max-h-[90vh] text-center">
+            {/* Header */}
+            <h2 className="text-xl font-semibold mb-2">Invite Friends, Earn $5</h2>
+            <p className="text-gray-500 mb-6 text-sm">
+              Get $5 when your friend uploads their first receipt and completes $5 in review.
+            </p>
 
-      {/* Form */}
-      <div className="space-y-4">
-        <input
-          type="text"
-          placeholder="Friend's full name"
-          className="border border-gray-300 w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
-        />
-        <input
-          type="text"
-          placeholder="E-mail address or phone number"
-          className="border border-gray-300 w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
-        />
+            {/* Form */}
+            <div className="space-y-4">
+              <input
+                type="text"
+                placeholder="Friend's full name"
+                className="border border-gray-300 w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
+              />
+              <input
+                type="text"
+                placeholder="E-mail address or phone number"
+                className="border border-gray-300 w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
+              />
 
-        <button className="bg-[#3E3EDF] text-white w-full py-3 rounded-md hover:bg-[#2e2edf] transition duration-200">
-          Send Invite
-        </button>
-      </div>
+              <button className="bg-[#3E3EDF] text-white w-full py-3 rounded-md hover:bg-[#2e2edf] transition duration-200">
+                Send Invite
+              </button>
+            </div>
 
-      {/* Close Button */}
-      <div className="text-center mt-6">
-        <button
-          onClick={() => setShowPopup1(false)}
-          className="text-gray-600 underline cursor-pointer"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
-
-
-
+            {/* Close Button */}
+            <div className="text-center mt-6">
+              <button
+                onClick={() => setShowPopup1(false)}
+                className="text-gray-600 underline cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
 
       {/* Upload New Receipt Section */}
