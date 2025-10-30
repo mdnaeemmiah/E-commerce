@@ -5,20 +5,23 @@ import { IoMdArrowBack } from "react-icons/io";
 import { FaPen } from "react-icons/fa";
 import img1 from "@/app/assets/dashboard/Rectangle 923.png"
 import img2 from "@/app/assets/dashboard/IMG_8526[1] 1.png"
+import Link from "next/link";
 
 export default function Info() {
   return (
     <div className="  py-6 flex justify-center items-center">
-      <div className="w-full max-w-4xl bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+      <div className="w-full  bg-white rounded-lg p-6 shadow-sm border border-gray-200 ">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
-          <div className="flex items-center gap-2">
-            <IoMdArrowBack className="text-lg cursor-pointer" />
-            <h2 className="text-lg font-semibold text-gray-700">Personal Information</h2>
-          </div>
-          <button className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+            <div className="flex items-center gap-2 mb-10">
+                <Link href='/adminDashboard/settings'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
+                <h2 className="text-xl font-semibold text-gray-700">
+                    Personal Information
+                </h2>
+            </div>
+          <Link href='/adminDashboard/settings/edit' className="flex items-center cursor-pointer gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
             <FaPen size={14} /> Edit Profile
-          </button>
+          </Link>
         </div>
 
         {/* Body */}
@@ -61,7 +64,7 @@ export default function Info() {
             <div className="flex flex-col sm:col-span-2">
               <label className="text-sm text-gray-500 mb-1">Phone Number</label>
               <div className="flex">
-                <div className="flex items-center gap-2 border border-gray-300 px-3 py-2 rounded-l-md  bg-[#3E3EDF]">
+                <div className="flex items-center gap-2 border border-gray-300 px-8 py-2 rounded-l-md  bg-[#3E3EDF]">
                   <Image
                     src={img1}
                     alt="flag"
