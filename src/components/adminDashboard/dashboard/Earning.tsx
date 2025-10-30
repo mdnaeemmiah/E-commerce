@@ -396,7 +396,7 @@ export default function Earning() {
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">
             <thead>
-              <tr className="bg-[#3B46F1] text-white text-left text-sm">
+              <tr className="bg-[#3E3EDF] text-white text-left text-sm">
                 <th className="py-3 px-4 rounded-tl-lg">#Tr.ID</th>
                 <th className="py-3 px-4">User Name</th>
                 <th className="py-3 px-4">Brand Name</th>
@@ -425,7 +425,7 @@ export default function Earning() {
                     <td className="py-3 px-4">{formatDate(item.date)}</td>
                     <td className="py-3 px-4 text-center">
                       <button
-                        className="text-[#3B46F1] hover:text-[#2e36c8] hover:scale-110 transition-transform"
+                        className="text-[#3B46F1] cursor-pointer hover:text-[#2e36c8] hover:scale-110 transition-transform"
                         onClick={() => setSelectedTransaction(item)}
                       >
                         <FiEye size={18} />

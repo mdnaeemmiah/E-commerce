@@ -1,9 +1,10 @@
-import React from 'react'
+import WithdrawTable from '@/components/adminDashboard/dashboard/WithdrawTable'
+
 
 export default function page() {
   return (
     <div>
-      <h2>withdrawRequest page</h2>
+      <WithdrawTable></WithdrawTable>
     </div>
   )
 }

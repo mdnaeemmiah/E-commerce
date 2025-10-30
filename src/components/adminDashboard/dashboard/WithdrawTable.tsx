@@ -1,63 +1,58 @@
 
+
 // "use client";
 
 // import Pagination from "@/components/modules/shared/Pagination";
 // import { useState, useEffect } from "react";
 // import { FiEye, FiSearch, FiX } from "react-icons/fi";
 
+// interface Transaction {
+//   id: string;
+//   user: string;
+//   email: string;
+//   number: string;
+//   date: string;
+// }
 
-// export default function UserTable() {
+// export default function WithdrawTable() {
 //   const [searchDate, setSearchDate] = useState("");
 //   const [searchUser, setSearchUser] = useState("");
-//   const [searchBrand, setSearchBrand] = useState("");
-//   const [selectedTransaction, setSelectedTransaction] = useState<any | null>(null);
+//   const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
 
-// const transactions = [
-//   { id: "12345678", user: "Tamim", brand: "John Doe", amount: "$250", date: "2024-04-16", acNumber: "**** **** **** *545", acHolder: "Tamim", provider: "XYZ" },
-//   { id: "12345679", user: "John", brand: "Acme Inc.", amount: "$500", date: "2024-04-17", acNumber: "**** **** **** *432", acHolder: "John", provider: "ABC" },
-//   { id: "12345680", user: "Sarah", brand: "Tech Corp.", amount: "$350", date: "2024-04-18", acNumber: "**** **** **** *321", acHolder: "Sarah", provider: "DEF" },
-//   { id: "12345681", user: "Mike", brand: "Green Innovations", amount: "$450", date: "2024-04-19", acNumber: "**** **** **** *112", acHolder: "Mike", provider: "GHI" },
-//   { id: "12345682", user: "Alice", brand: "Future Tech", amount: "$600", date: "2024-04-20", acNumber: "**** **** **** *987", acHolder: "Alice", provider: "JKL" },
-//   { id: "12345683", user: "David", brand: "Global Solutions", amount: "$700", date: "2024-04-21", acNumber: "**** **** **** *256", acHolder: "David", provider: "MNO" },
-//   { id: "12345684", user: "Emma", brand: "Innovative Products", amount: "$800", date: "2024-04-22", acNumber: "**** **** **** *789", acHolder: "Emma", provider: "PQR" },
-//   { id: "12345685", user: "Chris", brand: "NextGen Industries", amount: "$900", date: "2024-04-23", acNumber: "**** **** **** *654", acHolder: "Chris", provider: "STU" },
-//   { id: "12345686", user: "Sophia", brand: "Smart Ventures", amount: "$1,000", date: "2024-04-24", acNumber: "**** **** **** *321", acHolder: "Sophia", provider: "VWX" },
-//   { id: "12345687", user: "Ethan", brand: "Eco Green", amount: "$1,200", date: "2024-04-25", acNumber: "**** **** **** *878", acHolder: "Ethan", provider: "YZA" },
-// ];
+//   // Sample static data
+//   const transactions: Transaction[] = [
+//     { id: "1", user: "Tamim", email: "tamim@example.com", number: "01711-123456", date: "2024-04-16" },
+//     { id: "2", user: "John", email: "john@example.com", number: "01722-654321", date: "2024-04-17" },
+//     { id: "3", user: "Sarah", email: "sarah@example.com", number: "01733-987654", date: "2024-04-18" },
+//     { id: "4", user: "Mike", email: "mike@example.com", number: "01744-456789", date: "2024-04-19" },
+//     { id: "5", user: "Alice", email: "alice@example.com", number: "01755-111222", date: "2024-04-20" },
+//     { id: "6", user: "David", email: "david@example.com", number: "01766-333444", date: "2024-04-21" },
+//     { id: "7", user: "Emma", email: "emma@example.com", number: "01777-555666", date: "2024-04-22" },
+//     { id: "8", user: "Chris", email: "chris@example.com", number: "01788-777888", date: "2024-04-23" },
+//     { id: "9", user: "Sophia", email: "sophia@example.com", number: "01799-999000", date: "2024-04-24" },
+//     { id: "10", user: "Ethan", email: "ethan@example.com", number: "01700-222333", date: "2024-04-25" },
+//   ];
 
-
-//   // Load saved filters
+//   // Load filters from localStorage
 //   useEffect(() => {
 //     const savedDate = localStorage.getItem("searchDate");
 //     const savedUser = localStorage.getItem("searchUser");
-//     const savedBrand = localStorage.getItem("searchBrand");
 //     if (savedDate) setSearchDate(savedDate);
 //     if (savedUser) setSearchUser(savedUser);
-//     if (savedBrand) setSearchBrand(savedBrand);
 //   }, []);
 
 //   // Save filters
 //   useEffect(() => {
 //     localStorage.setItem("searchDate", searchDate);
 //     localStorage.setItem("searchUser", searchUser);
-//     localStorage.setItem("searchBrand", searchBrand);
-//   }, [searchDate, searchUser, searchBrand]);
+//   }, [searchDate, searchUser]);
 
+//   // Filtering
 //   const filtered = transactions.filter(
 //     (item) =>
 //       (searchDate ? item.date === searchDate : true) &&
-//       item.user.toLowerCase().includes(searchUser.toLowerCase()) &&
-//       item.brand.toLowerCase().includes(searchBrand.toLowerCase())
+//       item.user.toLowerCase().includes(searchUser.toLowerCase())
 //   );
-
-//   const formatDate = (dateStr: string) => {
-//     const date = new Date(dateStr);
-//     return date.toLocaleDateString("en-GB", {
-//       day: "2-digit",
-//       month: "short",
-//       year: "numeric",
-//     });
-//   };
 
 //   // Pagination
 //   const [currentPage, setCurrentPage] = useState(1);
@@ -70,52 +65,36 @@
 
 //   const handlePageChange = (page: number) => setCurrentPage(page);
 
-
+//   const formatDate = (dateStr: string) => {
+//     const date = new Date(dateStr);
+//     return date.toLocaleDateString("en-GB", {
+//       day: "2-digit",
+//       month: "short",
+//       year: "numeric",
+//     });
+//   };
 
 //   return (
 //     <div>
 //       <div className="bg-white shadow-md rounded-xl p-5 w-full mt-10">
 //         <div className="flex justify-between flex-col md:flex-row">
 //           <h2 className="text-[22px] text-[#1F1D1D] font-semibold mb-5">
-//             User List
+//             Withdraw Request List
 //           </h2>
-
-//           {/* Search Fields */}
-//           <div className="flex flex-wrap items-center gap-3 mb-5">
-//             <div className="flex items-center border rounded-lg px-0 md:px-3 py-2 sm:w-auto">
-//               <input
-//                 type="date"
-//                 value={searchDate}
-//                 onChange={(e) => setSearchDate(e.target.value)}
-//                 className="outline-none text-sm text-gray-700 w-40 sm:w-48"
-//               />
-//             </div>
-
-//             <div className="flex items-center border rounded-lg px-3 py-2 sm:w-auto">
-//               <input
-//                 type="text"
-//                 placeholder="User Name"
-//                 value={searchUser}
-//                 onChange={(e) => setSearchUser(e.target.value)}
-//                 className="outline-none text-sm text-gray-700 w-32 sm:w-40"
-//               />
-//             </div>
-//             <button className="bg-[#3B46F1] text-white p-2 rounded-full hover:bg-[#2f35c9] transition">
-//               <FiSearch size={18} />
-//             </button>
-//           </div>
 //         </div>
 
 //         {/* Table */}
 //         <div className="overflow-x-auto">
 //           <table className="w-full border-collapse">
 //             <thead>
-//               <tr className="bg-[#3B46F1] text-white text-left text-sm">
+//               <tr className="bg-[#3E3EDF] text-white text-left text-sm">
 //                 <th className="py-3 px-4 rounded-tl-lg">#Sl</th>
 //                 <th className="py-3 px-4">User Name</th>
-//                 <th className="py-3 px-4">Email</th>
-//                 <th className="py-3 px-4">Number</th>
-//                 <th className="py-3 px-4">Date</th>
+//                 <th className="py-3 px-4">Bank Name</th>
+//                 <th className="py-3 px-4">A/C Type</th>
+//                 <th className="py-3 px-4">A/C Number</th>
+//                 <th className="py-3 px-4">Withdraw Amount</th>
+//                 <th className="py-3 px-4">Status</th>
 //                 <th className="py-3 px-4 rounded-tr-lg text-center">Action</th>
 //               </tr>
 //             </thead>
@@ -123,23 +102,23 @@
 //               {currentItems.length === 0 ? (
 //                 <tr>
 //                   <td colSpan={6} className="py-3 px-4 text-center text-gray-500">
-//                     No transactions found.
+//                     No users found.
 //                   </td>
 //                 </tr>
 //               ) : (
-//                 currentItems.map((item) => (
+//                 currentItems.map((item, index) => (
 //                   <tr
 //                     key={item.id}
-//                     className="hover:bg-gray-50 text-sm text-gray-700 last:border-none"
+//                     className="hover:bg-gray-50 text-sm text-gray-700 border-b last:border-none"
 //                   >
-//                     <td className="py-3 px-4">{item.id}</td>
+//                     <td className="py-3 px-4">{(currentPage - 1) * itemsPerPage + index + 1}</td>
 //                     <td className="py-3 px-4">{item.user}</td>
-//                     <td className="py-3 px-4">{item.brand}</td>
-//                     <td className="py-3 px-4">{item.amount}</td>
+//                     <td className="py-3 px-4">{item.email}</td>
+//                     <td className="py-3 px-4">{item.number}</td>
 //                     <td className="py-3 px-4">{formatDate(item.date)}</td>
 //                     <td className="py-3 px-4 text-center">
 //                       <button
-//                         className="text-[#3B46F1] hover:text-[#2e36c8] hover:scale-110 transition-transform"
+//                         className="text-[#3B46F1] cursor-pointer hover:text-[#2e36c8] hover:scale-110 transition-transform"
 //                         onClick={() => setSelectedTransaction(item)}
 //                       >
 //                         <FiEye size={18} />
@@ -175,11 +154,11 @@
 //             </h3>
 
 //             <div className="space-y-2 text-sm text-gray-700">
-//               <p><strong>User name:</strong> #{selectedTransaction.id}</p>
-//               <p><strong>Email:</strong> {selectedTransaction.date}</p>
-//               <p><strong>Phone number:</strong> {selectedTransaction.acNumber}</p>
-//               <p><strong>Address:</strong> {selectedTransaction.acHolder}</p>
-//               <p><strong>Joing Date:</strong> {selectedTransaction.amount}</p>
+//               <p><strong>User ID:</strong> {selectedTransaction.id}</p>
+//               <p><strong>User Name:</strong> {selectedTransaction.user}</p>
+//               <p><strong>Email:</strong> {selectedTransaction.email}</p>
+//               <p><strong>Phone Number:</strong> {selectedTransaction.number}</p>
+//               <p><strong>Join Date:</strong> {formatDate(selectedTransaction.date)}</p>
 //             </div>
 //           </div>
 //         </div>
@@ -187,7 +166,6 @@
 //     </div>
 //   );
 // }
-
 
 
 "use client";
@@ -201,26 +179,31 @@ interface Transaction {
   user: string;
   email: string;
   number: string;
+  bankName: string;
+  accountType: string;
+  accountNumber: string;
+  withdrawAmount: string;
+  status: string;
   date: string;
 }
 
-export default function UserTable() {
+export default function WithdrawTable() {
   const [searchDate, setSearchDate] = useState("");
   const [searchUser, setSearchUser] = useState("");
   const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
 
-  // Sample static data
+  // Sample static data with new fields
   const transactions: Transaction[] = [
-    { id: "1", user: "Tamim", email: "tamim@example.com", number: "01711-123456", date: "2024-04-16" },
-    { id: "2", user: "John", email: "john@example.com", number: "01722-654321", date: "2024-04-17" },
-    { id: "3", user: "Sarah", email: "sarah@example.com", number: "01733-987654", date: "2024-04-18" },
-    { id: "4", user: "Mike", email: "mike@example.com", number: "01744-456789", date: "2024-04-19" },
-    { id: "5", user: "Alice", email: "alice@example.com", number: "01755-111222", date: "2024-04-20" },
-    { id: "6", user: "David", email: "david@example.com", number: "01766-333444", date: "2024-04-21" },
-    { id: "7", user: "Emma", email: "emma@example.com", number: "01777-555666", date: "2024-04-22" },
-    { id: "8", user: "Chris", email: "chris@example.com", number: "01788-777888", date: "2024-04-23" },
-    { id: "9", user: "Sophia", email: "sophia@example.com", number: "01799-999000", date: "2024-04-24" },
-    { id: "10", user: "Ethan", email: "ethan@example.com", number: "01700-222333", date: "2024-04-25" },
+    { id: "1", user: "Tamim", email: "tamim@example.com", number: "01711-123456", bankName: "Bank A", accountType: "Savings", accountNumber: "1234567890", withdrawAmount: "$500", status: "Pending", date: "2024-04-16" },
+    { id: "2", user: "John", email: "john@example.com", number: "01722-654321", bankName: "Bank B", accountType: "Current", accountNumber: "9876543210", withdrawAmount: "$300", status: "Approved", date: "2024-04-17" },
+    { id: "3", user: "Sarah", email: "sarah@example.com", number: "01733-987654", bankName: "Bank C", accountType: "Savings", accountNumber: "1122334455", withdrawAmount: "$700", status: "Rejected", date: "2024-04-18" },
+    { id: "4", user: "Mike", email: "mike@example.com", number: "01744-456789", bankName: "Bank D", accountType: "Current", accountNumber: "2233445566", withdrawAmount: "$1000", status: "Approved", date: "2024-04-19" },
+    { id: "5", user: "Alice", email: "alice@example.com", number: "01755-111222", bankName: "Bank E", accountType: "Savings", accountNumber: "3344556677", withdrawAmount: "$200", status: "Pending", date: "2024-04-20" },
+    { id: "6", user: "David", email: "david@example.com", number: "01766-333444", bankName: "Bank F", accountType: "Current", accountNumber: "4455667788", withdrawAmount: "$150", status: "Approved", date: "2024-04-21" },
+    { id: "7", user: "Emma", email: "emma@example.com", number: "01777-555666", bankName: "Bank G", accountType: "Savings", accountNumber: "5566778899", withdrawAmount: "$900", status: "Rejected", date: "2024-04-22" },
+    { id: "8", user: "Chris", email: "chris@example.com", number: "01788-777888", bankName: "Bank H", accountType: "Current", accountNumber: "6677889900", withdrawAmount: "$400", status: "Pending", date: "2024-04-23" },
+    { id: "9", user: "Sophia", email: "sophia@example.com", number: "01799-999000", bankName: "Bank I", accountType: "Savings", accountNumber: "7788990011", withdrawAmount: "$600", status: "Approved", date: "2024-04-24" },
+    { id: "10", user: "Ethan", email: "ethan@example.com", number: "01700-222333", bankName: "Bank J", accountType: "Current", accountNumber: "8899001122", withdrawAmount: "$500", status: "Rejected", date: "2024-04-25" },
   ];
 
   // Load filters from localStorage
@@ -231,7 +214,7 @@ export default function UserTable() {
     if (savedUser) setSearchUser(savedUser);
   }, []);
 
-  // Save filters
+  // Save filters to localStorage
   useEffect(() => {
     localStorage.setItem("searchDate", searchDate);
     localStorage.setItem("searchUser", searchUser);
@@ -269,33 +252,8 @@ export default function UserTable() {
       <div className="bg-white shadow-md rounded-xl p-5 w-full mt-10">
         <div className="flex justify-between flex-col md:flex-row">
           <h2 className="text-[22px] text-[#1F1D1D] font-semibold mb-5">
-            User List
+            Withdraw Request List
           </h2>
-
-          {/* Search Fields */}
-          <div className="flex flex-wrap items-center gap-3 mb-5">
-            <div className="flex items-center border rounded-lg px-0 md:px-3 py-2 sm:w-auto">
-              <input
-                type="date"
-                value={searchDate}
-                onChange={(e) => setSearchDate(e.target.value)}
-                className="outline-none text-sm text-gray-700 w-40 sm:w-48"
-              />
-            </div>
-
-            <div className="flex items-center border rounded-lg px-3 py-2 sm:w-auto">
-              <input
-                type="text"
-                placeholder="User Name"
-                value={searchUser}
-                onChange={(e) => setSearchUser(e.target.value)}
-                className="outline-none text-sm text-gray-700 w-32 sm:w-40"
-              />
-            </div>
-            <button className="bg-[#3B46F1] text-white p-2 rounded-full hover:bg-[#2f35c9] transition">
-              <FiSearch size={18} />
-            </button>
-          </div>
         </div>
 
         {/* Table */}
@@ -305,16 +263,18 @@ export default function UserTable() {
               <tr className="bg-[#3E3EDF] text-white text-left text-sm">
                 <th className="py-3 px-4 rounded-tl-lg">#Sl</th>
                 <th className="py-3 px-4">User Name</th>
-                <th className="py-3 px-4">Email</th>
-                <th className="py-3 px-4">Number</th>
-                <th className="py-3 px-4">Date</th>
+                <th className="py-3 px-4">Bank Name</th>
+                <th className="py-3 px-4">A/C Type</th>
+                <th className="py-3 px-4">A/C Number</th>
+                <th className="py-3 px-4">Withdraw Amount</th>
+                <th className="py-3 px-4">Status</th>
                 <th className="py-3 px-4 rounded-tr-lg text-center">Action</th>
               </tr>
             </thead>
             <tbody>
               {currentItems.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="py-3 px-4 text-center text-gray-500">
+                  <td colSpan={8} className="py-3 px-4 text-center text-gray-500">
                     No users found.
                   </td>
                 </tr>
@@ -322,13 +282,15 @@ export default function UserTable() {
                 currentItems.map((item, index) => (
                   <tr
                     key={item.id}
-                    className="hover:bg-gray-50 text-sm text-gray-700 border-b last:border-none"
+                    className="hover:bg-gray-50 text-sm text-gray-700  last:border-none"
                   >
                     <td className="py-3 px-4">{(currentPage - 1) * itemsPerPage + index + 1}</td>
                     <td className="py-3 px-4">{item.user}</td>
-                    <td className="py-3 px-4">{item.email}</td>
-                    <td className="py-3 px-4">{item.number}</td>
-                    <td className="py-3 px-4">{formatDate(item.date)}</td>
+                    <td className="py-3 px-4">{item.bankName}</td>
+                    <td className="py-3 px-4">{item.accountType}</td>
+                    <td className="py-3 px-4">{item.accountNumber}</td>
+                    <td className="py-3 px-4">{item.withdrawAmount}</td>
+                    <td className="py-3 px-4">{item.status}</td>
                     <td className="py-3 px-4 text-center">
                       <button
                         className="text-[#3B46F1] cursor-pointer hover:text-[#2e36c8] hover:scale-110 transition-transform"
@@ -371,6 +333,11 @@ export default function UserTable() {
               <p><strong>User Name:</strong> {selectedTransaction.user}</p>
               <p><strong>Email:</strong> {selectedTransaction.email}</p>
               <p><strong>Phone Number:</strong> {selectedTransaction.number}</p>
+              <p><strong>Bank Name:</strong> {selectedTransaction.bankName}</p>
+              <p><strong>Account Type:</strong> {selectedTransaction.accountType}</p>
+              <p><strong>Account Number:</strong> {selectedTransaction.accountNumber}</p>
+              <p><strong>Withdraw Amount:</strong> {selectedTransaction.withdrawAmount}</p>
+              <p><strong>Status:</strong> {selectedTransaction.status}</p>
               <p><strong>Join Date:</strong> {formatDate(selectedTransaction.date)}</p>
             </div>
           </div>
