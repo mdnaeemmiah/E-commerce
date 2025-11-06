@@ -7,6 +7,7 @@ import img2 from '@/app/assets/saved/457FC2B0-B590-407B-AE21-B28CDD2D4582 1 (1).
 import { useState } from 'react';
 import Link from 'next/link';
 import { MdOutlineWatchLater } from 'react-icons/md';
+import { FaStar } from 'react-icons/fa';
 
 
 const offers = [
@@ -161,15 +162,16 @@ export default function Page() {
 
               <div className="bg-white shadow-2xl mt-10 md:px-20 lg:px-30   rounded-lg p-4 text-center space-y-2 ">
                 {/* Ratings */}
-                <div className="flex items-center justify-center space-x-1">
-                  <div className="text-yellow-400 text-sm">
-                    {'⭐️'.repeat(Math.round(offer.rating))}
-                  </div>
-                  <span className="text-gray-700 text-sm font-medium">
-                    {offer.rating.toFixed(1)}
-                  </span>
-                  <span className="text-gray-500 text-sm">({offer.reviews})</span>
-                </div>
+<h3 className="flex items-center justify-center gap-1 mb-2">
+  <div className="flex items-center gap-1 mb-1 text-[20px]">
+    <FaStar className="text-[#FF9F19] " />
+    <FaStar className="text-[#FF9F19]" />
+    <FaStar className="text-[#FF9F19]" />
+    <FaStar className="text-[#FF9F19]" />
+  </div>
+  <span className="font-semibold ml-2">{offer.rating}</span>
+  <span className="text-[#575757]">({offer.reviews})</span>
+</h3>
 
                 {/* Description */}
                 <p className="text-sm text-gray-700">{offer?.description}</p>

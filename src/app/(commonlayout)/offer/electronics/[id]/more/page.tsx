@@ -72,7 +72,7 @@ export default function Page() {
             </div>
 
             {/* Stars */}
-            <div className="text-yellow-500 text-sm mb-1">
+            <div className="text-[#FF9F19] text-sm mb-1">
               {'⭐'.repeat(review.rating)}
             </div>
 
