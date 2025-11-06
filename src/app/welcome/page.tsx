@@ -9,7 +9,7 @@ import { FaSackDollar } from "react-icons/fa6";
 export default function Page() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-            <div className="bg-white rounded-2xl shadow-lg p-8 w-full md:w-[60%] lg:w-[40%] text-center">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 w-full md:w-[60%] lg:w-[40%] text-center">
                 {/* Logo */}
                 <div className="flex items-center justify-center">
                     <Image

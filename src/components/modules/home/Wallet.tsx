@@ -31,7 +31,7 @@ export default function Wallet() {
                         <p className="text-2xl font-bold">51.25</p>
                     </div>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-3 mt-4 md:mt-0">
                     <button
                         onClick={() => setShowWithdraw(true)}
                         className="flex-1 cursor-pointer border border-white text-white duration-300 hover:bg-white hover:text-black font-semibold py-2 rounded-md shadow-sm"

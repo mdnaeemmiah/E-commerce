@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Pagination from '@/components/modules/shared/Pagination';
+import { FaStar } from 'react-icons/fa';
 
 const offers = [
     {
@@ -149,9 +150,16 @@ const Food: React.FC = () => {
                                 <p className="text-gray-500 text-sm">Beast By</p>
                                 <p className="text-gray-500 text-sm">Expires {offer.expiration}</p>
                             </div>
-                            <h3 className="text-[18px] font-semibold text-[#2D2D2D] mb-1">{offer.title}</h3>
-                            <h3>
-                                <span className="font-semibold">{offer.rating}</span> ({offer.reviews})
+                            <h3 className="text-[18px] mt-2 font-semibold text-[#2D2D2D] mb-1">{offer.title}</h3>
+                            <h3 className="flex items-center gap-1 mb-2">
+                                <div className="flex items-center gap-1 mb-1 text-[20px]">
+                                    <FaStar className="text-[#FF9F19] " />
+                                    <FaStar className="text-[#FF9F19]" />
+                                    <FaStar className="text-[#FF9F19]" />
+                                    <FaStar className="text-[#FF9F19]" />
+                                </div>
+                                <span className="font-semibold ml-2">{offer.rating}</span>
+                                <span className="text-[#575757]">({offer.reviews})</span>
                             </h3>
                             <div className="flex">
                                 <div className="grid grid-cols-12 gap-2 w-full">

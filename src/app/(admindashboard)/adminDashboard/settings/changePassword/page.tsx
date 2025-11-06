@@ -1,9 +1,10 @@
+import ChangePass from '@/components/adminDashboard/dashboard/settings/ChangePass'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      <h2>change password</h2>
+      <ChangePass></ChangePass>
     </div>
   )
 }
