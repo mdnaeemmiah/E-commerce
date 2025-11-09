@@ -5,7 +5,7 @@ import Image from "next/image"
 export default function UploadScan() {
   return (
     <div className="mt-20">
-      <h2 className='text-2xl text-center font-semibold '>Recent Offer</h2>
+      <h2 className='text-2xl text-center font-semibold '>Scan & Receipt</h2>
       <div className='w-[90%] mx-auto lg:container mt-10 mb-10 flex items-center justify-center '>
         <div className="flex flex-col md:flex-row gap-6">
           <div className="border border-gray-100 w-56 p-6 rounded-2xl flex flex-col  items-center shadow">
