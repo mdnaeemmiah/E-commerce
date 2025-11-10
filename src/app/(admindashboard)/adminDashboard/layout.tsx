@@ -126,7 +126,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <div className="flex items-center gap-4">
                         <div className="relative z-10">
                             {/* Bell Icon */}
-                            <IoNotificationsOutline
+                            {/* <IoNotificationsOutline
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     setIsNotifOpen((prev) => !prev);
@@ -134,10 +134,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 className="text-gray-600 bg-[#E0E0E0] rounded-full hover:text-black cursor-pointer w-10 h-10 p-2"
                                 size={28}
                             />
-                            <span className="absolute top-2 right-2 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500"></span>
+                            <span className="absolute top-2 right-2 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500"></span> */}
+
+                            <Link href='/adminDashboard/notifications'>
+                                <div className="relative z-50">
+                                    <IoNotificationsOutline
+                                        className="text-gray-600 bg-[#E0E0E0] rounded-full hover:text-black cursor-pointer w-10 h-10 p-2"
+                                    />
+                                    <span className="absolute top-1 right-1 bg-indigo-600 text-white text-[10px] rounded-full px-1">
+                                        2
+                                    </span>
+                                </div>
+                            </Link>
 
                             {/* Notification Modal */}
-                            {isNotifOpen && (
+                            {/* {isNotifOpen && (
                                 <>
                                     <div className="fixed inset-0 bg-black opacity-50 z-[99]" onClick={() => setIsNotifOpen(false)}></div>
                                     <div className="fixed top-20 right-8 md:right-20 w-80 md:w-96 bg-white rounded-xl shadow-xl z-[100] p-4" onClick={(e) => e.stopPropagation()}>
@@ -163,7 +174,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         </div>
                                     </div>
                                 </>
-                            )}
+                            )} */}
                         </div>
                         <div className="flex gap-2">
                             <Image src={img3} alt="Dropdown Arrow" width={40} height={40} className="cursor-pointer" />
