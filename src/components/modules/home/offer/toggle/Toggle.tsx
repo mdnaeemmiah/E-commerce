@@ -36,7 +36,7 @@ export default function SettingsTabs() {
     <div className=" ">
       <h2 className='text-2xl mb-4 font-semibold'>Your Rewards</h2>
       {/* Responsive Tab Buttons Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 shadow-2xl p-3 rounded-2xl md:w-1/2">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 shadow-sm p-3 rounded-2xl md:w-1/2">
 
         <button
           onClick={() => setActiveTab('All')}

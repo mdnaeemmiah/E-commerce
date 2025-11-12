@@ -2,6 +2,7 @@
 
 import Footer from '@/components/modules/shared/Footer';
 import Navbar from '@/components/modules/shared/Navbar';
+import SemiSticky from '@/components/modules/shared/SemiSticky';
 import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Toaster position="top-center" reverseOrder={false} />
                     {children}
                 </div>
+                <SemiSticky></SemiSticky>
                 <Footer />
             </div>
         </>

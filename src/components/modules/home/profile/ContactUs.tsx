@@ -14,7 +14,7 @@ export default function ContactUs() {
   ];
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-white">
+    <div className="flex justify-center items-center pt-20 px-2 md:px-0 md:pt-50 bg-white">
       <div className="bg-white border border-gray-200 shadow-sm rounded-lg p-6 w-100">
         <h2 className="text-[24px] font-semibold mb-4">Contact Us</h2>
 

@@ -3,7 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 
 export default function Search() {
   return (
-    <div className="flex flex-col  items-center shadow-2xl bg-white border border-gray-100 mt-8 md:mt-12 w-[90%] md:w-[90%] lg:w-[1550px] mx-auto rounded-xl">
+    <div className="flex flex-col  items-center shadow-sm bg-white border border-gray-100 mt-6 w-[90%] md:w-[90%] lg:w-[1550px] mx-auto rounded-xl">
       <div className="flex flex-row gap-4 items-center w-full px-5">
         {/* Search Input and Icon */}
         <div className="flex items-center w-full  border border-gray-100 bg-white rounded-xl overflow-hidden my-4 focus-within:ring-2 focus-within:ring-[#3E3EDF] transition-all duration-200 ">
