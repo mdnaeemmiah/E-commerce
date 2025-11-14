@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Image from "next/image";
-import img1 from "@/app/assets/auth/image3.png";
+import img1 from "@/app/assets/auth/logo.png";
 import Link from "next/link";
+import img3 from "@/app/assets/auth/Frame 427319652.png";
+import img2 from "@/app/assets/auth/Google.png";
 
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);

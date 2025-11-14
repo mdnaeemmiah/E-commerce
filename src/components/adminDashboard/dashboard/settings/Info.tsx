@@ -19,7 +19,7 @@ export default function Info() {
                     Personal Information
                 </h2>
             </div>
-          <Link href='/adminDashboard/settings/edit' className="flex items-center cursor-pointer gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+          <Link href='/adminDashboard/settings/edit' className="flex mb-10 md:mb-5 w-46 text-center justify-center items-center cursor-pointer gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
             <FaPen size={14} /> Edit Profile
           </Link>
         </div>

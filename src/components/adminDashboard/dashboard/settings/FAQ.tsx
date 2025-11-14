@@ -342,7 +342,7 @@ export default function FAQ() {
     };
 
     return (
-        <div className="py-10">
+        <div className="py-10 px-2 md:px-0">
             <div className="space-y-4">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-2 mb-10">

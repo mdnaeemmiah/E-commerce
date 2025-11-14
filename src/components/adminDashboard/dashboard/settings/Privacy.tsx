@@ -5,7 +5,7 @@ import { IoMdArrowBack } from 'react-icons/io'
 
 export default function Privacy() {
     return (
-        <div className='mt-10'>
+        <div className='mt-10 px-4 md:px-0'>
             <div className="flex items-center gap-2 mb-10">
                 <Link href='/adminDashboard/settings'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
                 <h2 className="text-xl font-semibold text-gray-700">

@@ -30,7 +30,7 @@ export default function Edit() {
                             Personal Information
                         </h2>
                     </div>
-                    <button className="flex items-center cursor-pointer gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+                    <button className="flex mb-10 md:mb-5 justify-center w-46 items-center cursor-pointer gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
                         Save Change
                     </button>
                 </div>
