@@ -76,7 +76,7 @@ const SingUp: React.FC = () => {
                             placeholder="Enter email"
                         />
                     </div>
-                    
+
                     {/* location */}
                     <div className="mb-4">
                         <label
@@ -121,19 +121,59 @@ const SingUp: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Remember me / Forgot password */}
-                    <div className="flex items-center justify-between mb-6">
-                        <label className="inline-flex items-center text-md text-gray-700">
-                            <input type="checkbox" className="form-checkbox" />
-                            <span className="ml-2">Remember me</span>
-                        </label>
-                        <Link
-                            href="/adminAuth/forgetPassword"
-                            className="text-md text-indigo-600 hover:text-indigo-800"
+{/* 
+                    <div className="mb-4">
+                        <label
+                            htmlFor="location"
+                            className="block text-md font-medium text-gray-700"
                         >
-                            Forgot password?
-                        </Link>
-                    </div>
+                            Category
+                        </label>
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            className="w-full text-[#1F1D1D] p-3 mt-1 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            placeholder="Enter category"
+                        />
+                    </div> */}
+
+
+<div className="mb-4">
+    <label
+        htmlFor="category"
+        className="block text-md font-medium text-gray-700"
+    >
+        Category
+    </label>
+    <select
+        id="category"
+        name="category"
+        className="w-full text-gray-500 py-4 px-2 mt-1 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    >
+        <option value="">Select a category</option>
+        <option value="fashion">Fashion</option>
+        <option value="food">Food</option>
+        <option value="electronics">Electronics</option>
+        <option value="organic_food">Organic Food</option>
+    </select>
+</div>
+
+<div className="mb-4 flex items-center">
+    <input
+        type="checkbox"
+        id="terms"
+        name="terms"
+        className="h-4 w-4 border-gray-300 rounded"
+    />
+    <label
+        htmlFor="terms"
+        className="ml-2 text-sm font-medium text-gray-700"
+    >
+        Accept terms & conditions
+    </label>
+</div>
+
 
                     {/* Submit */}
                     <button

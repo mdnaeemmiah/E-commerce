@@ -1,11 +1,9 @@
-
-import Code from '@/components/BrandDashboard/auth/Code'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      <Code></Code>
+      <h2>analitics</h2>
     </div>
   )
 }
