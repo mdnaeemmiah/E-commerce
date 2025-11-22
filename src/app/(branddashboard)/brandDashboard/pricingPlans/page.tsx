@@ -3,7 +3,14 @@ import React from 'react'
 export default function page() {
   return (
     <div>
-      <h2>pricing plans</h2>
+      <div className=" mt-4">
+        <div>
+          <h2 className="text-2xl font-bold mb-2 text-black">Pricing Plans</h2>
+          <p className="text-gray-600">
+            Chose the Plan that fits your campaign needs
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
