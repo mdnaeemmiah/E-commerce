@@ -1,3 +1,4 @@
+import PricingPlans from '@/components/BrandDashboard/dashboard/PricingPlans'
 import React from 'react'
 
 export default function page() {
@@ -11,6 +12,7 @@ export default function page() {
           </p>
         </div>
       </div>
+      <PricingPlans></PricingPlans>
     </div>
   )
 }
