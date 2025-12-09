@@ -25,7 +25,7 @@ export default function Edit() {
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6">
                     <div className="flex items-center gap-2 mb-10">
-                        <Link href='/brandDashboard/settings'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
+                        <Link href='/adminDashboard/settings'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
                         <h2 className="text-xl font-semibold text-gray-700">
                             Personal Information
                         </h2>

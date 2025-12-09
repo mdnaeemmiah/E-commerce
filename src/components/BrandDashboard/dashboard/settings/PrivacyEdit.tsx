@@ -32,7 +32,7 @@ export default function PrivacyEdit() {
     return (
         <div className="mt-10">
             <div className="flex items-center gap-2 mb-10">
-                <Link href='/brandDashboard/settings'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
+                <Link href='/adminDashboard/settings'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
                 <h2 className="text-xl font-semibold text-gray-700">
                     Privacy Policy
                 </h2>

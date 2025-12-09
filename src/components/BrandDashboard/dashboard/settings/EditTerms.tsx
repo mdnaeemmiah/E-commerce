@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -6,7 +5,7 @@ import { useState } from "react";
 import { FaBold, FaItalic, FaUnderline, FaAlignLeft, FaAlignCenter, FaAlignRight, FaLink, FaCode } from "react-icons/fa";
 import { IoIosArrowDown, IoMdArrowBack } from "react-icons/io";
 
-export default function PrivacyEdit() {
+export default function EditTerms() {
     const [fontSize, setFontSize] = useState("16");
     const [color, setColor] = useState("#000000");
     const [isBold, setIsBold] = useState(false);
@@ -32,9 +31,9 @@ export default function PrivacyEdit() {
     return (
         <div className="mt-10">
             <div className="flex items-center gap-2 mb-10">
-                <Link href='/brandDashboard/settings'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
+                <Link href='/adminDashboard/settings'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
                 <h2 className="text-xl font-semibold text-gray-700">
-                    Privacy Policy
+                    Terms & Conditions
                 </h2>
             </div>
             <div className=" w-full bg-white shadow-md rounded-lg md:p-6 mt-10">

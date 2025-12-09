@@ -14,12 +14,12 @@ export default function Info() {
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
             <div className="flex items-center gap-2 mb-10">
-                <Link href='/brandDashboard/settings'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
+                <Link href='/adminDashboard/settings'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
                 <h2 className="text-xl font-semibold text-gray-700">
                     Personal Information
                 </h2>
             </div>
-          <Link href='/brandDashboard/settings/edit' className="flex mb-10 md:mb-5 w-46 text-center justify-center items-center cursor-pointer gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+          <Link href='/adminDashboard/settings/edit' className="flex mb-10 md:mb-5 w-46 text-center justify-center items-center cursor-pointer gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
             <FaPen size={14} /> Edit Profile
           </Link>
         </div>

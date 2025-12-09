@@ -8,7 +8,7 @@ export default function AddFaq() {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold text-gray-700">Add FAQ</h2>
           <button className="text-indigo-600 hover:text-indigo-800 ">
-             <Link href='/brandDashboard/settings/faq'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
+             <Link href='/adminDashboard/settings/faq'><IoMdArrowBack className="text-xl cursor-pointer" /></Link>
           </button>
         </div>
 

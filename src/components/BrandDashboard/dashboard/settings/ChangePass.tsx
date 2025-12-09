@@ -24,7 +24,7 @@ const ChangePass: React.FC = () => {
                 </div>
 
                 <h2 className="flex items-center text-2xl font-semibold  text-gray-700 mb-4 ">
-                    <Link href='/brandDashboard/settings'><IoMdArrowBack className="mr-2" /></Link> Change Password
+                    <Link href='/adminDashboard/settings'><IoMdArrowBack className="mr-2" /></Link> Change Password
                 </h2>
                 <p className=" text-[16px] md:text-[20px] text-[#575757] mb-6">Your password must be 8-10 character long.</p>
 

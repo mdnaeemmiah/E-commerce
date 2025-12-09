@@ -6,11 +6,11 @@ import { IoIosArrowForward } from "react-icons/io";
 export default function SettingsPage() {
 
   const settings = [
-    { id: 1, title: "Personal Information", href: "/adminDashboard/settings/personalInfo" },
-    { id: 2, title: "Change Password", href: "/adminDashboard/settings/changePassword" },
-    { id: 3, title: "Terms & Condition", href: "/adminDashboard/settings/terms&conditions" },
-    { id: 4, title: "Privacy Policy", href: "/adminDashboard/settings/privacy" },
-    { id: 5, title: "FAQ", href: "/adminDashboard/settings/faq" },
+    { id: 1, title: "Personal Information", href: "/brandDashboard/settings/personalInfo" },
+    { id: 2, title: "Change Password", href: "/brandDashboard/settings/changePassword" },
+    { id: 3, title: "Terms & Condition", href: "/brandDashboard/settings/terms&conditions" },
+    { id: 4, title: "Privacy Policy", href: "/brandDashboard/settings/privacy" },
+    { id: 5, title: "FAQ", href: "/brandDashboard/settings/faq" },
   ];
 
   return (

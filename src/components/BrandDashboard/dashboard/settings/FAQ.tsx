@@ -346,12 +346,12 @@ export default function FAQ() {
             <div className="space-y-4">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-2 mb-10">
-                        <Link href="/brandDashboard/settings">
+                        <Link href="/adminDashboard/settings">
                             <IoMdArrowBack className="text-xl cursor-pointer" />
                         </Link>
                         <h2 className="text-xl font-semibold text-gray-700">FAQ</h2>
                     </div>
-                    <Link href="/brandDashboard/settings/addfaq">
+                    <Link href="/adminDashboard/settings/addfaq">
                         <button className="flex items-center text-center cursor-pointer gap-2 bg-indigo-600 text-white px-15 py-3 rounded-md hover:bg-indigo-700 transition">
                             Add New FAQ
                         </button>
