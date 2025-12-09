@@ -189,7 +189,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             />
                             <span className="absolute top-2 right-2 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500"></span> */}
 
-              <Link href="/adminDashboard/notifications">
+              <Link href="/brandDashboard/notifications">
                 <div className="relative z-50">
                   <IoNotificationsOutline className="text-gray-600 bg-[#E0E0E0] rounded-full hover:text-black cursor-pointer w-10 h-10 p-2" />
                   <span className="absolute top-1 right-1 bg-indigo-600 text-white text-[10px] rounded-full px-1">
