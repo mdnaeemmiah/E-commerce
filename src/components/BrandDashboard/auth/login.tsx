@@ -197,7 +197,7 @@ const Login: React.FC = () => {
           <h1 className="text-[#828282]">
             Don’t have an account?{" "}
             <span className="font-semibold text-[#3E3EDF] cursor-pointer">
-              <Link href="/brandAuth/signup">Sign up</Link>
+              <Link href="/brandAuth/singup">Sign up</Link>
             </span>
           </h1>
         </div>
