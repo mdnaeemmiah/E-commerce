@@ -136,11 +136,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="mt-6 p-4">
           <button
             onClick={handleLogout}
-            className="mt-8 bg-gray-100 w-full text-blue-600 font-semibold py-3 rounded-lg hover:bg-gray-200 justify-center"
+            className="mt-8 bg-gray-100 cursor-pointer w-full text-blue-600 font-semibold py-3 rounded-lg hover:bg-gray-200 justify-center"
           >
             <div className="flex justify-center gap-4">
               <Image src={img11} alt="Log out icon" width={20} height={14} />
-              <p className="text-[18px] font-medium text-[#FF5C5C]">Log out</p>
+              <p className="text-[18px] font-medium  text-[#FF5C5C]">Log out</p>
             </div>
           </button>
         </div>

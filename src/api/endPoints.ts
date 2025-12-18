@@ -9,13 +9,11 @@ export const ENDPOINTS = {
   newPassword:"/user/api/v1/set-new-password-after-otp/",
   createCampaigns:"/commerce/api/v1/campaigns/",
   allCampaigns:"/commerce/api/v1/campaigns/all/",
-//   codeVarify: "/api/verify-otp/",
-//   resendCode: "/api/resend-otp/",
-//   USERLOGIN: "/api/login/",
-//   updateUser: "/api/me/",
-//   getUser: "/api/me/", 
-//   vendorLogin:"api/login/",
-//   vendorPrifile:"/api/complete-vendor-profile/",
-//   LOGOUT: "auth/jwt/refresh/", 
+  brandDashboardHome:"/commerce/api/v1/brand/dashboard/",
+  generateCampaignQr:"/commerce/api/v1/qr/generate/",
+  getAllCampaign:"/commerce/api/v1/campaigns/all/",
+
+  shopperRegister:"/user/api/v1/register/",
+  shopperLogin:"/user/api/v1/user/login/",
 };
 

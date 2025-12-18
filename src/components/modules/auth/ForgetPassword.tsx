@@ -12,9 +12,12 @@ const ForgetPassword: React.FC = () => {
             <div className="bg-white  p-6 rounded-lg shadow-md w-full max-w-lg md:pb-15">
 
                 <div className="pt-10">
-                    <h2 className="flex items-center text-2xl font-semibold text-center text-gray-700 mb-4 justify-center">
-                        <IoMdArrowBack className="mr-2" /> Forgot Password
-                    </h2>
+<h2 className="flex items-center text-2xl font-semibold text-gray-700 mb-4 justify-center">
+  <Link href='/auth/login' className="flex items-center">
+    <IoMdArrowBack className="mr-2" />
+    Forgot Password
+  </Link>
+</h2>
                     <p className="text-center mb-10 text-[#575757]">Please enter your email address to reset
                         your password.</p>
                 </div>
