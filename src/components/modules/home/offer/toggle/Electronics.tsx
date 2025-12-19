@@ -8,9 +8,9 @@ import { FaStar } from 'react-icons/fa';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+// import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 
 // Offer Data
@@ -133,21 +133,21 @@ const Electronics: React.FC = () => {
                   <span className="text-[#575757]">({offer.reviews})</span>
                 </h3>
                 <div className="flex">
-                  <div className="grid grid-cols-2 gap-2 w-full">
-                    <div>
+                  <div className="grid grid-cols-1 gap-2 w-full">
+                    {/* <div>
                       <Link
                         href={offer.claimUrl}
                         className="flex items-center justify-center mt-3 text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-2.5 rounded-lg"
                       >
                         Claim offer
                       </Link>
-                    </div>
+                    </div> */}
                     <div>
                       <Link
                         href={`/offer/fashion/${offer?.id}`}
                         className="flex items-center justify-center mt-3 border border-[#3E3EDF] text-black hover:bg-indigo-600 hover:text-white px-1 py-2 rounded-lg"
                       >
-                        View Offer
+                        Claim offer
                       </Link>
                     </div>
                   </div>
