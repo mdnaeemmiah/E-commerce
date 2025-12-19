@@ -12,6 +12,7 @@
     "@tiptap/react": "^3.10.0",
     "@tiptap/starter-kit": "^3.10.0",
     "@types/react-icons": "^2.2.7",
+    "@types/swiper": "^5.4.3",
     "axios": "^1.13.2",
     "jspdf": "^3.0.3",
     "lucide-react": "^0.553.0",

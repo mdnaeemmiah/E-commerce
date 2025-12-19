@@ -56,7 +56,6 @@ export default function GenerateQr() {
             scans: item.total_scans ?? 0,
             qr_image: item.qr_image,
             conversions: item.total_conversions ?? 0,
-
             rate: item.conversion_rate ? `${item.conversion_rate}%` : "0%",
           }));
 
