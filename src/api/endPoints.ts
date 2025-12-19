@@ -15,5 +15,6 @@ export const ENDPOINTS = {
 
   shopperRegister:"/user/api/v1/register/",
   shopperLogin:"/user/api/v1/user/login/",
+  receiptUpload:"/commerce/api/v1/receipts/upload/",
 };
 
