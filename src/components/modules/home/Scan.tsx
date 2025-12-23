@@ -258,98 +258,98 @@
 //         </div>
 //       </div>
 
-      // {showPopup && (
-      //   <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
-      //     {/* Overlay */}
-      //     <div
-      //       className="absolute inset-0 bg-black opacity-70"
-      //       onClick={() => setShowPopup(false)}
-      //     ></div>
+// {showPopup && (
+//   <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
+//     {/* Overlay */}
+//     <div
+//       className="absolute inset-0 bg-black opacity-70"
+//       onClick={() => setShowPopup(false)}
+//     ></div>
 
-      //     {/* Modal */}
-      //     <div className="relative z-10 bg-white rounded-2xl p-6 w-full md:max-w-md lg:max-w-lg shadow-xl overflow-y-auto max-h-[90vh]">
-      //       {/* Chat Section */}
-      //       <div className="space-y-5">
-      //         {/* Bot message */}
-      //         <div className="flex flex-col items-start">
-      //           <p className="text-gray-700 mb-2 flex items-center gap-1">
-      //             <span className="text-lg">👋</span> Hey there! How did you
-      //             like the popcorn?
-      //           </p>
-      //           <Image
-      //             src={popcorn}
-      //             alt="Popcorn"
-      //             width={120}
-      //             height={120}
-      //             className="rounded-lg border border-gray-200"
-      //           />
-      //         </div>
+//     {/* Modal */}
+//     <div className="relative z-10 bg-white rounded-2xl p-6 w-full md:max-w-md lg:max-w-lg shadow-xl overflow-y-auto max-h-[90vh]">
+//       {/* Chat Section */}
+//       <div className="space-y-5">
+//         {/* Bot message */}
+//         <div className="flex flex-col items-start">
+//           <p className="text-gray-700 mb-2 flex items-center gap-1">
+//             <span className="text-lg">👋</span> Hey there! How did you
+//             like the popcorn?
+//           </p>
+//           <Image
+//             src={popcorn}
+//             alt="Popcorn"
+//             width={120}
+//             height={120}
+//             className="rounded-lg border border-gray-200"
+//           />
+//         </div>
 
-      //         {/* User reply */}
-      //         <div className="text-right">
-      //           <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
-      //             It was delicious, and the whole bag was super fresh!
-      //           </div>
-      //         </div>
+//         {/* User reply */}
+//         <div className="text-right">
+//           <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
+//             It was delicious, and the whole bag was super fresh!
+//           </div>
+//         </div>
 
-      //         {/* Bot question */}
-      //         <div className="flex flex-col items-start">
-      //           <p className="text-gray-700">
-      //             Glad to hear it! What did you like most—taste, texture, or
-      //             ingredients?
-      //           </p>
-      //         </div>
+//         {/* Bot question */}
+//         <div className="flex flex-col items-start">
+//           <p className="text-gray-700">
+//             Glad to hear it! What did you like most—taste, texture, or
+//             ingredients?
+//           </p>
+//         </div>
 
-      //         {/* User reply */}
-      //         <div className="text-right">
-      //           <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
-      //             Mostly the great flavor.
-      //           </div>
-      //         </div>
+//         {/* User reply */}
+//         <div className="text-right">
+//           <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
+//             Mostly the great flavor.
+//           </div>
+//         </div>
 
-      //         {/* Bot question */}
-      //         <div className="flex flex-col items-start">
-      //           <p className="text-gray-700">
-      //             Would you purchase it again or recommend it to others?
-      //           </p>
-      //         </div>
+//         {/* Bot question */}
+//         <div className="flex flex-col items-start">
+//           <p className="text-gray-700">
+//             Would you purchase it again or recommend it to others?
+//           </p>
+//         </div>
 
-      //         {/* User reply */}
-      //         <div className="text-right">
-      //           <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
-      //             Yes, it’s a tasty and healthy snack.
-      //           </div>
-      //         </div>
+//         {/* User reply */}
+//         <div className="text-right">
+//           <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
+//             Yes, it’s a tasty and healthy snack.
+//           </div>
+//         </div>
 
-      //         {/* Summary Box */}
-      //         <div className="bg-gray-100 p-4 rounded-xl mt-4 border border-gray-200">
-      //           <p className="text-gray-800 text-sm mb-2 leading-relaxed">
-      //             The popcorn was delicious, and the whole bag tasted super
-      //             fresh. I also loved the great flavor. It’s a tasty and healthy
-      //             snack.
-      //           </p>
-      //           <button className="text-blue-600 text-sm underline hover:text-blue-800">
-      //             Edit
-      //           </button>
-      //         </div>
+//         {/* Summary Box */}
+//         <div className="bg-gray-100 p-4 rounded-xl mt-4 border border-gray-200">
+//           <p className="text-gray-800 text-sm mb-2 leading-relaxed">
+//             The popcorn was delicious, and the whole bag tasted super
+//             fresh. I also loved the great flavor. It’s a tasty and healthy
+//             snack.
+//           </p>
+//           <button className="text-blue-600 text-sm underline hover:text-blue-800">
+//             Edit
+//           </button>
+//         </div>
 
-      //         {/* Message Input Section */}
-      //         <div className="mt-6 pt-4">
-      //           <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2">
-      //             <input
-      //               type="text"
-      //               placeholder="Write message"
-      //               className="flex-1 bg-transparent outline-none text-gray-700 text-sm"
-      //             />
-      //             <button className=" text-[#2b2bd4] p-2 rounded-lg transition">
-      //               <IoSend className="text-xl" />
-      //             </button>
-      //           </div>
-      //         </div>
-      //       </div>
-      //     </div>
-      //   </div>
-      // )}
+//         {/* Message Input Section */}
+// <div className="mt-6 pt-4">
+//   <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2">
+//     <input
+//       type="text"
+//       placeholder="Write message"
+//       className="flex-1 bg-transparent outline-none text-gray-700 text-sm"
+//     />
+//     <button className=" text-[#2b2bd4] p-2 rounded-lg transition">
+//       <IoSend className="text-xl" />
+//     </button>
+//   </div>
+// </div>
+//       </div>
+//     </div>
+//   </div>
+// )}
 
 //       {/* Receipt History Section */}
 //       <div className="bg-white p-4 rounded-lg border border-gray-100 shadow-md mb-6 mt-10">
@@ -416,55 +416,55 @@
 //         </button>
 //       </div>
 
-      // {showPopup1 && (
-      //   <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
-      //     {/* Overlay */}
-      //     <div
-      //       className="absolute inset-0 bg-black opacity-70"
-      //       onClick={() => setShowPopup1(false)}
-      //     ></div>
+// {showPopup1 && (
+//   <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
+//     {/* Overlay */}
+//     <div
+//       className="absolute inset-0 bg-black opacity-70"
+//       onClick={() => setShowPopup1(false)}
+//     ></div>
 
-      //     {/* Modal */}
-      //     <div className="relative z-10 bg-white rounded-2xl p-6 w-full max-w-md shadow-lg overflow-y-auto max-h-[90vh] text-center">
-      //       {/* Header */}
-      //       <h2 className="text-xl font-semibold mb-2">
-      //         Invite Friends, Earn $5
-      //       </h2>
-      //       <p className="text-gray-500 mb-6 text-sm">
-      //         Get $5 when your friend uploads their first receipt and completes
-      //         $5 in review.
-      //       </p>
+//     {/* Modal */}
+//     <div className="relative z-10 bg-white rounded-2xl p-6 w-full max-w-md shadow-lg overflow-y-auto max-h-[90vh] text-center">
+//       {/* Header */}
+//       <h2 className="text-xl font-semibold mb-2">
+//         Invite Friends, Earn $5
+//       </h2>
+//       <p className="text-gray-500 mb-6 text-sm">
+//         Get $5 when your friend uploads their first receipt and completes
+//         $5 in review.
+//       </p>
 
-      //       {/* Form */}
-      //       <div className="space-y-4">
-      //         <input
-      //           type="text"
-      //           placeholder="Friend's full name"
-      //           className="border border-gray-300 w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
-      //         />
-      //         <input
-      //           type="text"
-      //           placeholder="E-mail address or phone number"
-      //           className="border border-gray-300 w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
-      //         />
+//       {/* Form */}
+//       <div className="space-y-4">
+//         <input
+//           type="text"
+//           placeholder="Friend's full name"
+//           className="border border-gray-300 w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
+//         />
+//         <input
+//           type="text"
+//           placeholder="E-mail address or phone number"
+//           className="border border-gray-300 w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#3E3EDF]"
+//         />
 
-      //         <button className="bg-[#3E3EDF] text-white w-full py-3 rounded-md hover:bg-[#2e2edf] transition duration-200">
-      //           Send Invite
-      //         </button>
-      //       </div>
+//         <button className="bg-[#3E3EDF] text-white w-full py-3 rounded-md hover:bg-[#2e2edf] transition duration-200">
+//           Send Invite
+//         </button>
+//       </div>
 
-      //       {/* Close Button */}
-      //       <div className="text-center mt-6">
-      //         <button
-      //           onClick={() => setShowPopup1(false)}
-      //           className="text-gray-600 underline cursor-pointer"
-      //         >
-      //           Close
-      //         </button>
-      //       </div>
-      //     </div>
-      //   </div>
-      // )}
+//       {/* Close Button */}
+//       <div className="text-center mt-6">
+//         <button
+//           onClick={() => setShowPopup1(false)}
+//           className="text-gray-600 underline cursor-pointer"
+//         >
+//           Close
+//         </button>
+//       </div>
+//     </div>
+//   </div>
+// )}
 
 //       {/* Upload New Receipt Section */}
 //       <div className="bg-white p-4 rounded-lg shadow-md my-10 border-gray-100 border">
@@ -490,34 +490,603 @@
 
 // export default Scan;
 
+// "use client";
+// import React, { useState, useEffect } from "react";
+// import { FiUpload, FiX } from "react-icons/fi";
+// import { toast } from "sonner";
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
+// import { IoSend } from "react-icons/io5";
+// import Image from "next/image";
 
+// const Scan: React.FC = () => {
+//   const [showPopup, setShowPopup] = useState(false);
+//   const [image, setImage] = useState<File | null>(null);
+//   const [imagePreview, setImagePreview] = useState<string | null>(null);
+//   const [uploading, setUploading] = useState(false);
+//   const [receiptData, setReceiptData] = useState<any>(null);
+//   const [items, setItems] = useState<any[]>([]);
+//   const [questionData, setQuestionData] = useState<any>(null);
+//   const [answer, setAnswer] = useState<string>("");
+//   const [sessionId, setSessionId] = useState<string>(""); // For tracking current session ID
+//   const [answeredQuestions, setAnsweredQuestions] = useState<any[]>([]); // Store answered questions
+//   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0); // Track the current question index
 
+//   // Load session data from local storage or start fresh
+//   useEffect(() => {
+//     const savedSession = localStorage.getItem("session_data");
+//     if (savedSession) {
+//       const parsedSession = JSON.parse(savedSession);
+//       setAnsweredQuestions(parsedSession.answeredQuestions || []);
+//       setSessionId(parsedSession.sessionId || "");
+//       setQuestionData(parsedSession.questionData || null);
+//     }
+//   }, []);
+
+//   // Save session data to local storage to persist across page reloads
+//   useEffect(() => {
+//     if (sessionId) {
+//       const sessionData = {
+//         sessionId,
+//         answeredQuestions,
+//         questionData,
+//       };
+//       localStorage.setItem("session_data", JSON.stringify(sessionData));
+//     }
+//   }, [sessionId, answeredQuestions, questionData]);
+
+//   // Handle image change and preview
+//   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     const file = e.target.files ? e.target.files[0] : null;
+//     if (file) {
+//       setImage(file);
+//       const reader = new FileReader();
+//       reader.onloadend = () => {
+//         setImagePreview(reader.result as string);
+//       };
+//       reader.readAsDataURL(file);
+//     }
+//   };
+
+//   // Handle image removal
+//   const handleImageRemove = () => {
+//     setImage(null);
+//     setImagePreview(null);
+//   };
+
+//   // Handle receipt upload
+//   const handleUpload = async () => {
+//     const token = localStorage.getItem("access_token");
+
+//     if (!token) {
+//       toast.error("Token not found, please login again.");
+//       return;
+//     }
+
+//     if (!image) {
+//       toast.error("Please select an image to upload.");
+//       return;
+//     }
+
+//     setUploading(true);
+
+//     try {
+//       const formData = new FormData();
+//       formData.append("receipt_image", image);
+
+//       // First API call to upload receipt
+//       const receiptUploadResponse = await baseApi.post(
+//         ENDPOINTS?.receiptUpload,
+//         formData,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//             "Content-Type": "multipart/form-data",
+//           },
+//         }
+//       );
+
+//       if (receiptUploadResponse?.data) {
+//         const responseData = receiptUploadResponse.data;
+
+//         if (
+//           responseData?.receipt_data?.line_items &&
+//           responseData?.receipt_data?.line_items.length > 0
+//         ) {
+//           const payloadForAi = {
+//             receipt_data: responseData?.receipt_data,
+//           };
+
+//           // Second API call to process receipt data
+//           const receiptUploadAiResponse = await baseApi.post(
+//             "http://10.10.7.114:8001/api/receipt/upload",
+//             payloadForAi,
+//             {
+//               headers: {
+//                 Authorization: `Bearer ${token}`,
+//                 "Content-Type": "application/json",
+//               },
+//             }
+//           );
+
+//           const data = receiptUploadAiResponse.data;
+//           setReceiptData(data);
+//           setItems(data?.products);
+//           setImagePreview(null);
+//           setImage(null);
+
+//           toast.success("Receipt uploaded successfully!");
+//         } else {
+//           toast.error("No line items found in the uploaded receipt.");
+//         }
+//       } else {
+//         toast.error("Failed to upload receipt image.");
+//       }
+//     } catch (error) {
+//       toast.error("Failed to upload receipt. Please try again.");
+//     } finally {
+//       setUploading(false);
+//     }
+//   };
+
+//   // Handle starting the review for a selected product
+//   const handleStartReview = async (item: any) => {
+//     const token = localStorage.getItem("access_token");
+
+//     if (!token) {
+//       toast.error("Token not found, please login again.");
+//       return;
+//     }
+
+//     if (!receiptData) {
+//       toast.error("Please upload a receipt to start a review.");
+//       return;
+//     }
+
+//     const productIdentifier = item.product_name;
+
+//     if (!productIdentifier) {
+//       console.error(
+//         `Product with identifier '${productIdentifier}' not found in receipt '${receiptData.receipt_id}'`
+//       );
+//       toast.error(
+//         `Product '${productIdentifier}' not found in receipt '${receiptData.receipt_id}'`
+//       );
+//       return;
+//     }
+
+//     const payload = {
+//       receipt_id: receiptData.receipt_id,
+//       product_identifier: productIdentifier,
+//     };
+
+//     try {
+//       const response = await baseApi.post(
+//         "http://10.10.7.114:8001/api/review/start",
+//         payload,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//             "Content-Type": "application/json",
+//           },
+//         }
+//       );
+
+//       // Reset previous session data
+//       setAnsweredQuestions([]);
+//       setSessionId(response.data.session_id);
+//       setQuestionData(response.data);
+//       setShowPopup(true);
+//       setCurrentQuestionIndex(0); // Start from the first question
+//       toast.success("Review started successfully!");
+//     } catch (error) {
+//       console.error("Error starting review:", error);
+//       toast.error("Failed to start the review. Please try again.");
+//     }
+//   };
+
+//   // Handle the user's answer submission
+//   // const handleAnswerSubmit = async () => {
+//   //   if (!answer.trim()) {
+//   //     toast.error("Please provide an answer.");
+//   //     return;
+//   //   }
+
+//   //   const token = localStorage.getItem("access_token");
+
+//   //   if (!token) {
+//   //     toast.error("Token not found, please login again.");
+//   //     return;
+//   //   }
+
+//   //   try {
+//   //     const payload = {
+//   //       session_id: sessionId,
+//   //       answer: answer,
+//   //     };
+
+//   //     // Log the payload to ensure it's being sent correctly
+//   //     console.log("Submitting answer with payload:", payload);
+
+//   //     // Submit the answer to the API
+//   //     const response = await baseApi.post(
+//   //       "http://10.10.7.114:8001/api/review/answer",
+//   //       payload,
+//   //       {
+//   //         headers: {
+//   //           Authorization: `Bearer ${token}`,
+//   //           "Content-Type": "application/json",
+//   //         },
+//   //       }
+//   //     );
+
+//   //     // Log the API response to see the next question data
+//   //     // console.log("API response:", response);
+
+//   //     // Store the answered question and proceed to the next one
+//   //     setAnsweredQuestions((prev) => [
+//   //       ...prev,
+//   //       { question: questionData?.question, answer: answer },
+//   //     ]);
+
+//   //     setAnswer("");
+
+//   //     // Update the question data with the next question from the API response
+//   //     setQuestionData((prev) => ({
+//   //       ...prev,
+//   //       question: response.data.next_question, // Set the next question from the API
+//   //       question_number: prev?.question_number + 1, // Increment the question number
+//   //     }));
+
+//   //     // If it's the last question, close the popup and reset session data
+//   //     if (response.data.question_number === response.data.total_questions) {
+//   //       toast.success("All questions answered. Thank you for your review!");
+//   //       setShowPopup(false);
+//   //       setSessionId(""); // Reset session for the next product
+//   //     }
+//   //   } catch (error) {
+//   //     console.error("Error submitting answer:", error);
+//   //     toast.error("Failed to submit your answer. Please try again.");
+//   //   }
+//   // };
+
+//   const handleAnswerSubmit = async () => {
+//   if (!answer.trim()) {
+//     toast.error("Please provide an answer.");
+//     return;
+//   }
+
+//   const token = localStorage.getItem("access_token");
+
+//   if (!token) {
+//     toast.error("Token not found, please login again.");
+//     return;
+//   }
+
+//   try {
+//     const payload = {
+//       session_id: sessionId,
+//       answer: answer,
+//     };
+
+//     // Log the payload to ensure it's being sent correctly
+//     console.log("Submitting answer with payload:", payload);
+
+//     // Submit the answer to the API
+//     const response = await baseApi.post(
+//       "http://10.10.7.114:8001/api/review/answer",
+//       payload,
+//       {
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+
+//     // Log the API response to see the next question data
+//     console.log("API response:", response);
+
+//     // Store the answered question and proceed to the next one
+//     setAnsweredQuestions((prev) => [
+//       ...prev,
+//       { question: questionData?.question, answer: answer },
+//     ]);
+
+//     setAnswer(""); // Clear the answer input
+
+//     // Update the question data with the next question from the API response
+//     setQuestionData((prev) => ({
+//       ...prev,
+//       question: response.data.next_question, // Set the next question from the API
+//       question_number: prev?.question_number + 1, // Increment the question number
+//     }));
+
+//     // If it's the last question, submit the rating and finalize the review
+//     if (response.data.question_number === response.data.total_questions) {
+//       toast.success("All questions answered. Please provide a rating.");
+
+//       // Create payload for rating submission
+//       const ratingPayload = {
+//         session_id: sessionId,
+//         rating: 5, // You can dynamically set the rating here based on user input
+//       };
+
+//       // Call the API to submit the rating
+//       const ratingResponse = await baseApi.post(
+//         "http://10.10.7.114:8001/api/review/rating",
+//         ratingPayload,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//             "Content-Type": "application/json",
+//           },
+//         }
+//       );
+
+//       console.log("Rating submitted:", ratingResponse);
+
+//       // Call the API to finalize the review
+//       const finalizePayload = {
+//         session_id: sessionId,
+//       };
+
+//       const finalizeResponse = await baseApi.post(
+//         "http://10.10.7.114:8001/api/review/finalize",
+//         finalizePayload,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//             "Content-Type": "application/json",
+//           },
+//         }
+//       );
+
+//       console.log("Review finalized:", finalizeResponse);
+
+//       // Store the rating and finalized data in localStorage
+//       const reviewData = {
+//         answeredQuestions,
+//         rating: 5, // You can store the rating dynamically here
+//         sessionId,
+//       };
+//       localStorage.setItem("review_data", JSON.stringify(reviewData));
+
+//       toast.success("Thank you for your rating and review!");
+
+//       // Reset session and state for the next review
+//       setShowPopup(false);
+//       setSessionId(""); // Reset session for the next product
+//     }
+//   } catch (error) {
+//     console.error("Error submitting answer:", error);
+//     toast.error("Failed to submit your answer. Please try again.");
+//   }
+// };
+
+//   const handleAnswerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     setAnswer(e.target.value);
+//   };
+
+//   return (
+//     <div className="max-w-4xl lg:max-w-5xl mx-auto py-6 mt-6">
+//       {/* Header */}
+//       <div className="text-center mb-10">
+//         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
+//           Your rewards Hub
+//         </h2>
+//       </div>
+
+//       {/* Pending Rebates Section */}
+//       <div className="bg-white p-4 rounded-lg border border-gray-100 shadow-md mb-6">
+//         <div className="flex gap-2">
+//           <FiUpload size={24} color="#3E3EDF" />
+//           <h3 className="text-[18px] font-medium">Pending Rebates</h3>
+//         </div>
+//         <div className="space-y-4 mt-4">
+//           <div className="flex justify-between items-center border-b pb-3 border-gray-300">
+//             <span>Noosa 50$ Rebates</span>
+//             <input
+//               type="file"
+//               accept="image/*"
+//               onChange={handleImageChange}
+//               className="hidden"
+//               id="upload-input"
+//             />
+//             {!imagePreview && (
+//               <label
+//                 htmlFor="upload-input"
+//                 className="bg-[#3E3EDF] cursor-pointer text-[20px] text-white px-4 py-2 rounded-xl flex items-center"
+//               >
+//                 <FiUpload size={20} className="mr-2" />
+//                 Upload Receipt
+//               </label>
+//             )}
+//             {image && !uploading && (
+//               <button
+//                 onClick={handleUpload}
+//                 className="bg-[#3E3EDF] md:ml-90 lg:ml-120 mt-26 text-white px-4 py-2 rounded-xl"
+//               >
+//                 {uploading ? "Uploading..." : "Upload Receipt"}
+//               </button>
+//             )}
+//             {imagePreview && (
+//               <div className="flex items-center gap-2 mt-4">
+//                 <img
+//                   src={imagePreview}
+//                   alt="Selected Receipt"
+//                   className="w-32 h-32 object-cover rounded-lg border border-gray-200"
+//                 />
+//                 <button
+//                   onClick={handleImageRemove}
+//                   className="bg-red-500 mb-30 text-white rounded-full p-1 flex items-center justify-center"
+//                 >
+//                   <FiX size={20} />
+//                 </button>
+//               </div>
+//             )}
+//           </div>
+
+//           <div className="flex justify-between items-center border-b pb-3 border-gray-300">
+//             <span>LaCroix Grapefruit</span>
+//             <span className="text-[#00A671] font-semibold">
+//               Receipt Verified
+//             </span>
+//           </div>
+//           <p className="text-[#575757]">
+//             Upload receipts to complete pending rebate offers.
+//           </p>
+//         </div>
+//       </div>
+
+//       {/* Want to earn more? Section */}
+//       <div className="bg-[#E8E8FF] p-4 rounded-lg shadow-md mb-6 mt-10">
+//         <div className="text-center mb-2">
+//           <h3 className="text-[24px] font-medium">Want to earn more?</h3>
+//           <p>
+//             Complete quick reviews from any verified receipt to earn an extra $1
+//             per review.
+//           </p>
+//         </div>
+
+//         <div className="space-y-4 mt-8">
+//           {/* Dynamically render items */}
+//           {Array.isArray(items) && items.length > 0 ? (
+//             items.map((item, index) => (
+//               <div
+//                 key={index}
+//                 className="flex justify-between items-center border-b pb-3 border-gray-300"
+//               >
+//                 <span>{item?.product_name}</span>
+//                 <button
+//                   onClick={() => handleStartReview(item)} // Pass the item as a parameter
+//                   className="bg-[#3E3EDF] text-white px-4 py-2 rounded cursor-pointer"
+//                 >
+//                   Start Review
+//                 </button>
+//               </div>
+//             ))
+//           ) : (
+//             <p>No items available to review yet.</p>
+//           )}
+//         </div>
+//       </div>
+
+//       {/* Question Popup */}
+//       {showPopup && questionData && (
+//         <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
+//           {/* Overlay */}
+//           <div
+//             className="absolute inset-0 bg-black opacity-70"
+//             onClick={() => setShowPopup(false)}
+//           ></div>
+
+//           {/* Modal */}
+//           <div className="relative z-10 bg-white rounded-2xl p-6 w-full md:max-w-md lg:max-w-lg shadow-xl overflow-y-auto max-h-[90vh]">
+//             {/* Chat Section */}
+//             <div className="space-y-5">
+//               {/* Display previous questions and answers */}
+//               {answeredQuestions.length > 0 &&
+//                 answeredQuestions.map((qa, index) => (
+//                   <div key={index} className=" items-start space-x-4 mb-4">
+//                     {/* Display Question */}
+//                     <div className="flex-1 text-left text-gray-700 font-semibold">
+//                       <p>{qa.question}</p>
+//                     </div>
+//                     {/* Display Answer */}
+//                     <div className="flex-1 text-right text-gray-700">
+//                       <p className="bg-gray-100 p-3 rounded-xl mt-5">
+//                         {qa.answer}
+//                       </p>
+//                     </div>
+//                   </div>
+//                 ))}
+
+//               {/* Display current question */}
+//               <div className=" items-start space-x-4 mt-4">
+//                 {/* Display current question */}
+//                 <div className="flex-1 text-left text-gray-700 font-semibold">
+//                   <p>{questionData?.question}</p>
+//                 </div>
+//               </div>
+
+//               <div className="mt-6 pt-4">
+//                 <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 ">
+//                   <input
+//                     type="text"
+//                     value={answer}
+//                     onChange={handleAnswerChange}
+//                     placeholder="Your answer"
+//                     className="bg-gray-100 text-gray-700 px-4 py-2 rounded-2xl w-full border-none outline-none"
+//                   />
+//                   <button
+//                     onClick={handleAnswerSubmit}
+//                     className=" text-[#2b2bd4] cursor-pointer p-2 rounded-lg transition"
+//                   >
+//                     <IoSend className="text-xl" />
+//                   </button>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Scan;
 
 
 
 
 "use client";
-import React, { useState } from "react";
-import { FaCheckCircle } from "react-icons/fa";
-import { FiCamera, FiUpload, FiWatch, FiX } from "react-icons/fi";
-import { RiHomeLine } from "react-icons/ri";
-import popcorn from "@/app/assets/home/Rectangle 15.png";
-import { FaStar, FaUserFriends } from "react-icons/fa";
-import Image from "next/image";
-import { IoSend } from "react-icons/io5";
+import React, { useState, useEffect } from "react";
+import { FiUpload, FiX } from "react-icons/fi";
+import { toast } from "sonner";
 import baseApi from "@/api/baseApi";
 import { ENDPOINTS } from "@/api/endPoints";
-import { toast } from "sonner";
+import { IoSend } from "react-icons/io5";
+import Image from "next/image";
 
-// State for dynamic items
 const Scan: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [receiptData, setReceiptData] = useState<any>(null);
-  const [items, setItems] = useState<any[]>([]); // State for dynamic items (line_items)
+  const [items, setItems] = useState<any[]>([]);
+  const [questionData, setQuestionData] = useState<any>(null);
+  const [answer, setAnswer] = useState<string>("");
+  const [sessionId, setSessionId] = useState<string>(""); // For tracking current session ID
+  const [answeredQuestions, setAnsweredQuestions] = useState<any[]>([]); // Store answered questions
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0); // Track the current question index
+  const [rating, setRating] = useState<number | null>(null); // Rating state
 
+  // Load session data from local storage or start fresh
+  useEffect(() => {
+    const savedSession = localStorage.getItem("session_data");
+    if (savedSession) {
+      const parsedSession = JSON.parse(savedSession);
+      setAnsweredQuestions(parsedSession.answeredQuestions || []);
+      setSessionId(parsedSession.sessionId || "");
+      setQuestionData(parsedSession.questionData || null);
+    }
+  }, []);
+
+  // Save session data to local storage to persist across page reloads
+  useEffect(() => {
+    if (sessionId) {
+      const sessionData = {
+        sessionId,
+        answeredQuestions,
+        questionData,
+      };
+      localStorage.setItem("session_data", JSON.stringify(sessionData));
+    }
+  }, [sessionId, answeredQuestions, questionData]);
+
+  // Handle image change and preview
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     if (file) {
@@ -530,11 +1099,13 @@ const Scan: React.FC = () => {
     }
   };
 
+  // Handle image removal
   const handleImageRemove = () => {
     setImage(null);
     setImagePreview(null);
   };
 
+  // Handle receipt upload
   const handleUpload = async () => {
     const token = localStorage.getItem("access_token");
 
@@ -554,22 +1125,54 @@ const Scan: React.FC = () => {
       const formData = new FormData();
       formData.append("receipt_image", image);
 
-      const response = await baseApi.post(ENDPOINTS?.receiptUpload, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      // First API call to upload receipt
+      const receiptUploadResponse = await baseApi.post(
+        ENDPOINTS?.receiptUpload,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-      console.log(response)
+      if (receiptUploadResponse?.data) {
+        const responseData = receiptUploadResponse.data;
 
-      const data = response.data;
-      setReceiptData(data); // Store response data
-      setItems(data?.extracted_data?.receipt_data?.line_items); // Populate items dynamically
-      setImagePreview(null);
-      setImage(null);
+        if (
+          responseData?.receipt_data?.line_items &&
+          responseData?.receipt_data?.line_items.length > 0
+        ) {
+          const payloadForAi = {
+            receipt_data: responseData?.receipt_data,
+          };
 
-      toast.success("Receipt uploaded successfully!");
+          // Second API call to process receipt data
+          const receiptUploadAiResponse = await baseApi.post(
+            "http://10.10.7.114:8001/api/receipt/upload",
+            payloadForAi,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          const data = receiptUploadAiResponse.data;
+          setReceiptData(data);
+          setItems(data?.products);
+          setImagePreview(null);
+          setImage(null);
+
+          toast.success("Receipt uploaded successfully!");
+        } else {
+          toast.error("No line items found in the uploaded receipt.");
+        }
+      } else {
+        toast.error("Failed to upload receipt image.");
+      }
     } catch (error) {
       toast.error("Failed to upload receipt. Please try again.");
     } finally {
@@ -577,13 +1180,187 @@ const Scan: React.FC = () => {
     }
   };
 
-  const handleStartReview = () => {
-    if (receiptData) {
-      setShowPopup(true);
-    } else {
+  // Handle starting the review for a selected product
+  const handleStartReview = async (item: any) => {
+    const token = localStorage.getItem("access_token");
+
+    if (!token) {
+      toast.error("Token not found, please login again.");
+      return;
+    }
+
+    if (!receiptData) {
       toast.error("Please upload a receipt to start a review.");
+      return;
+    }
+
+    const productIdentifier = item.product_name;
+
+    if (!productIdentifier) {
+      console.error(
+        `Product with identifier '${productIdentifier}' not found in receipt '${receiptData.receipt_id}'`
+      );
+      toast.error(
+        `Product '${productIdentifier}' not found in receipt '${receiptData.receipt_id}'`
+      );
+      return;
+    }
+
+    const payload = {
+      receipt_id: receiptData.receipt_id,
+      product_identifier: productIdentifier,
+    };
+
+    try {
+      const response = await baseApi.post(
+        "http://10.10.7.114:8001/api/review/start",
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      // Reset previous session data
+      setAnsweredQuestions([]);
+      setSessionId(response.data.session_id);
+      setQuestionData(response.data);
+      setShowPopup(true);
+      setCurrentQuestionIndex(0); // Start from the first question
+      toast.success("Review started successfully!");
+    } catch (error) {
+      console.error("Error starting review:", error);
+      toast.error("Failed to start the review. Please try again.");
     }
   };
+
+
+
+
+const handleAnswerSubmit = async () => {
+  if (!answer.trim()) {
+    toast.error("Please provide an answer.");
+    return;
+  }
+
+  const token = localStorage.getItem("access_token");
+
+  if (!token) {
+    toast.error("Token not found, please login again.");
+    return;
+  }
+
+  try {
+    const payload = {
+      session_id: sessionId,
+      answer: answer,
+    };
+
+    // Submit the answer to the API
+    const response = await baseApi.post(
+      "http://10.10.7.114:8001/api/review/answer",
+      payload,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    // Store the answered question and proceed to the next one
+    setAnsweredQuestions((prev) => [
+      ...prev,
+      { question: questionData?.question, answer: answer },
+    ]);
+    setAnswer(""); // Clear the answer input
+
+    // Update the question data with the next question from the API response
+    setQuestionData((prev) => ({
+      ...prev,
+      question: response.data.next_question, // Set the next question from the API
+      question_number: prev?.question_number + 1, // Increment the question number
+    }));
+
+    // If it's the last question, ask for rating and provide an overview
+    if (response.data.question_number === response.data.total_questions) {
+      toast.success("All questions answered. Please provide a rating.");
+
+      // Prompt for rating (you can handle this separately)
+      const handleRatingSubmit = async () => {
+        if (!rating) {
+          toast.error("Please provide a rating.");
+          return;
+        }
+
+        try {
+          // Rating Payload
+          const ratingPayload = {
+            session_id: sessionId,
+            rating: rating, // Dynamic rating value from user input
+          };
+
+          // Submit the rating to the API
+          const ratingResponse = await baseApi.post(
+            "http://10.10.7.114:8001/api/review/rating",
+            ratingPayload,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          // Finalize the review
+          const finalizePayload = {
+            session_id: sessionId,
+          };
+
+          const finalizeResponse = await baseApi.post(
+            "http://10.10.7.114:8001/api/review/finalize",
+            finalizePayload,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          // Store the rating and finalized data in localStorage
+          const reviewData = {
+            answeredQuestions,
+            rating: rating, // Store the dynamic rating
+            sessionId,
+          };
+
+          localStorage.setItem("review_data", JSON.stringify(reviewData));
+
+          toast.success("Thank you for your rating and review!");
+          setSessionId(""); // Reset session for the next product
+        } catch (error) {
+          console.error("Error submitting rating:", error);
+          toast.error("Failed to submit your rating. Please try again.");
+        }
+      };
+
+      // You can either call this function directly after the last question,
+      // or prompt the user to provide the rating.
+      // For now, we're just calling it in the same flow.
+      handleRatingSubmit();
+    }
+  } catch (error) {
+    console.error("Error submitting answer:", error);
+    toast.error("Failed to submit your answer. Please try again.");
+  }
+};
+
+
+
+
 
   return (
     <div className="max-w-4xl lg:max-w-5xl mx-auto py-6 mt-6">
@@ -603,7 +1380,6 @@ const Scan: React.FC = () => {
         <div className="space-y-4 mt-4">
           <div className="flex justify-between items-center border-b pb-3 border-gray-300">
             <span>Noosa 50$ Rebates</span>
-
             <input
               type="file"
               accept="image/*"
@@ -611,8 +1387,6 @@ const Scan: React.FC = () => {
               className="hidden"
               id="upload-input"
             />
-
-            {/* Button to trigger file input */}
             {!imagePreview && (
               <label
                 htmlFor="upload-input"
@@ -622,18 +1396,14 @@ const Scan: React.FC = () => {
                 Upload Receipt
               </label>
             )}
-
-            {/* Upload Receipt Button */}
             {image && !uploading && (
               <button
                 onClick={handleUpload}
-                className="bg-[#3E3EDF] md:ml-90 lg:ml-120 mt-26 text-white px-4 py-2 rounded-xl "
+                className="bg-[#3E3EDF] md:ml-90 lg:ml-120 mt-26 text-white px-4 py-2 rounded-xl"
               >
                 {uploading ? "Uploading..." : "Upload Receipt"}
               </button>
             )}
-
-            {/* Preview image after selection */}
             {imagePreview && (
               <div className="flex items-center gap-2 mt-4">
                 <img
@@ -675,16 +1445,15 @@ const Scan: React.FC = () => {
 
         <div className="space-y-4 mt-8">
           {/* Dynamically render items */}
-          {items.length > 0 ? (
-            items.map((item: any, index: number) => (
+          {Array.isArray(items) && items.length > 0 ? (
+            items.map((item, index) => (
               <div
                 key={index}
                 className="flex justify-between items-center border-b pb-3 border-gray-300"
               >
-                {/* Display raw_item_text */}
-                <span>{item?.raw_item_text}</span>
+                <span>{item?.product_name}</span>
                 <button
-                  onClick={handleStartReview} // Trigger start review
+                  onClick={() => handleStartReview(item)} // Pass the item as a parameter
                   className="bg-[#3E3EDF] text-white px-4 py-2 rounded cursor-pointer"
                 >
                   Start Review
@@ -697,7 +1466,8 @@ const Scan: React.FC = () => {
         </div>
       </div>
 
-      {showPopup && (
+      {/* Question Popup */}
+      {showPopup && questionData && (
         <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
           {/* Overlay */}
           <div
@@ -709,78 +1479,44 @@ const Scan: React.FC = () => {
           <div className="relative z-10 bg-white rounded-2xl p-6 w-full md:max-w-md lg:max-w-lg shadow-xl overflow-y-auto max-h-[90vh]">
             {/* Chat Section */}
             <div className="space-y-5">
-              {/* Bot message */}
-              <div className="flex flex-col items-start">
-                <p className="text-gray-700 mb-2 flex items-center gap-1">
-                  <span className="text-lg">👋</span> Hey there! How did you
-                  like the popcorn?
-                </p>
-                <Image
-                  src={popcorn}
-                  alt="Popcorn"
-                  width={120}
-                  height={120}
-                  className="rounded-lg border border-gray-200"
-                />
-              </div>
+              {/* Display previous questions and answers */}
+              {answeredQuestions.length > 0 &&
+                answeredQuestions.map((qa, index) => (
+                  <div key={index} className=" items-start space-x-4 mb-4">
+                    {/* Display Question */}
+                    <div className="flex-1 text-left text-gray-700 font-semibold">
+                      <p>{qa.question}</p>
+                    </div>
+                    {/* Display Answer */}
+                    <div className="flex-1 text-right text-gray-700">
+                      <p className="bg-gray-100 p-3 rounded-xl mt-5">
+                        {qa.answer}
+                      </p>
+                    </div>
+                  </div>
+                ))}
 
-              {/* User reply */}
-              <div className="text-right">
-                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
-                  It was delicious, and the whole bag was super fresh!
+              {/* Display current question */}
+              <div className=" items-start space-x-4 mt-4">
+                {/* Display current question */}
+                <div className="flex-1 text-left text-gray-700 font-semibold">
+                  <p>{questionData?.question}</p>
                 </div>
               </div>
 
-              {/* Bot question */}
-              <div className="flex flex-col items-start">
-                <p className="text-gray-700">
-                  Glad to hear it! What did you like most—taste, texture, or
-                  ingredients?
-                </p>
-              </div>
-
-              {/* User reply */}
-              <div className="text-right">
-                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
-                  Mostly the great flavor.
-                </div>
-              </div>
-
-              {/* Bot question */}
-              <div className="flex flex-col items-start">
-                <p className="text-gray-700">
-                  Would you purchase it again or recommend it to others?
-                </p>
-              </div>
-
-              {/* User reply */}
-              <div className="text-right">
-                <div className="inline-block bg-[#3E3EDF] text-white px-4 py-2 rounded-2xl shadow-sm">
-                  Yes, it’s a tasty and healthy snack.
-                </div>
-              </div>
-
-              {/* Summary Box */}
-              <div className="bg-gray-100 p-4 rounded-xl mt-4 border border-gray-200">
-                <p className="text-gray-800 text-sm mb-2 leading-relaxed">
-                  The popcorn was delicious, and the whole bag tasted super
-                  fresh. I also loved the great flavor. It’s a tasty and healthy
-                  snack.
-                </p>
-                <button className="text-blue-600 text-sm underline hover:text-blue-800">
-                  Edit
-                </button>
-              </div>
-
-              {/* Message Input Section */}
               <div className="mt-6 pt-4">
-                <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2">
+                <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 ">
                   <input
                     type="text"
-                    placeholder="Write message"
-                    className="flex-1 bg-transparent outline-none text-gray-700 text-sm"
+                    value={answer}
+                    onChange={(e) => setAnswer(e.target.value)}
+                    placeholder="Your answer"
+                    className="bg-gray-100 text-gray-700 px-4 py-2 rounded-2xl w-full border-none outline-none"
                   />
-                  <button className=" text-[#2b2bd4] p-2 rounded-lg transition">
+                  <button
+                    onClick={handleAnswerSubmit}
+                    className=" text-[#2b2bd4] cursor-pointer p-2 rounded-lg transition"
+                  >
                     <IoSend className="text-xl" />
                   </button>
                 </div>
