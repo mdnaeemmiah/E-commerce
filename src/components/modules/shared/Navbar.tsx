@@ -5,19 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { useState } from "react";
+import {  useState } from "react";
 import img1 from "@/app/assets/auth/Ellipse 2.png"; // profile
 import img2 from "@/app/assets/auth/logo.png"; // logo
 import { IoNotificationsOutline, IoSearchSharp, IoWalletOutline } from "react-icons/io5";
-import { FaSearch } from "react-icons/fa";
 import ViewWallet from "../home/offer/ViewWallet";
 import Search from "../home/offer/Search";
+
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isSearchVisible, setIsSearchVisible] = useState(false); // state to toggle search input visibility
     const [isWalletVisible, setIsWalletVisible] = useState(false); // state to toggle wallet visibility
+
     const pathname = usePathname();
+
 
     const links = [
         { name: "Offer", path: "/offer" },

@@ -1,5 +1,7 @@
 // src/api/endpoints.js
 
+import { get } from "axios";
+
 export const ENDPOINTS = {
   BASEURL: "http://10.10.7.85:8001",
   BrandRegister: "/brand/api/v1/brand/create/",
@@ -18,6 +20,10 @@ export const ENDPOINTS = {
 
   
   receiptUpload:"/commerce/api/v1/receipts/upload/",
+  receiptHistory:"/commerce/api/v1/receipts/",
+  walletPayment:"/payments/api/v1/wallet/",
+  getRewards:"/payments/api/v1/rewards/",
+  getTransactionHistory:"/payments/api/v1/wallet/withdrawals/",
 
   receiptUploadAi:"/api/receipt/upload/",
   startReview:"/api/review/start/",
