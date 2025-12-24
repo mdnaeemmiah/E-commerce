@@ -492,6 +492,8 @@
 
 
 
+
+
 "use client";
 import React, { useState, useEffect } from "react";
 import { FiUpload, FiX } from "react-icons/fi";
@@ -520,7 +522,7 @@ const Scan: React.FC = () => {
   const [receiptHistory, setReceiptHistory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [itemsPerPage] = useState(10); // Number of items per page
+  const [itemsPerPage] = useState(5); // Number of items per page
 
   // Load session data from local storage or start fresh
   useEffect(() => {
@@ -847,7 +849,7 @@ const Scan: React.FC = () => {
             )}
             {imagePreview && (
               <div className="flex items-center gap-2 mt-4">
-                <Image
+                <img
                   src={imagePreview}
                   alt="Selected Receipt"
                   className="w-32 h-32 object-cover rounded-lg border border-gray-200"
