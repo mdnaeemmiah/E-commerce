@@ -10,16 +10,30 @@ import { Pagination, Navigation } from "swiper/modules";
 import baseApi from "@/api/baseApi";
 import { ENDPOINTS } from "@/api/endPoints";
 import { toast } from "sonner";
+import { useSearchParams } from "next/navigation";
 
 // Offer Data (fallback images)
 import img1 from "@/app/assets/saved/2CEDCEDD-EDBE-4B6B-B11F-30DBA2DCA260 1 (1).png";
 import img2 from "@/app/assets/saved/457FC2B0-B590-407B-AE21-B28CDD2D4582 1 (1).png";
 
 const All: React.FC = () => {
+  const searchParams = useSearchParams();
+  const searchValue = searchParams.get('value') || '';
+  
   const [offers, setOffers] = useState<any[]>([]); // Initialize offers as an empty array
   const [loading, setLoading] = useState<boolean>(true); // State to manage loading state
   const [currentPage, setCurrentPage] = useState(1); // Default page for pagination
   const [error, setError] = useState<string | null>(null); // State to manage error messages
+
+  // Filter offers based on search value
+  const filteredOffers = offers.filter((offer) => {
+    if (!searchValue) return true;
+    const search = searchValue.toLowerCase();
+    return (
+      offer.title?.toLowerCase().includes(search) ||
+      offer.description?.toLowerCase().includes(search)
+    );
+  });
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
@@ -50,12 +64,14 @@ const All: React.FC = () => {
             qr_image: item.qr_image,
             total_scans: item.total_scans ?? 0,
             total_conversions: item.total_conversions ?? 0,
-            conversion_rate: item.conversion_rate ? `${item.conversion_rate}%` : "0%",
+            conversion_rate: item.conversion_rate
+              ? `${item.conversion_rate}%`
+              : "0%",
             expiration: item.end_date, // Add expiration if available
             rating: 4.5, // Fallback rating for now (you can modify it based on your data)
             reviews: item.reviews ?? 0, // Assuming you have review count in your API
             image: img1, // Default fallback image
-            discount: item.discount_value
+            discount: item.discount_value,
           }));
 
           setOffers(formatted);
@@ -69,7 +85,6 @@ const All: React.FC = () => {
         setLoading(false); // Set loading to false even if there's an error
       }
     };
-
 
     fetchCampaigns();
   }, [currentPage]);
@@ -114,8 +129,8 @@ const All: React.FC = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        {offers.length > 0 ? (
-          offers.map((offer) => (
+        {filteredOffers.length > 0 ? (
+          filteredOffers.map((offer) => (
             <SwiperSlide key={offer.id}>
               <div className="flex-shrink-0 text-white overflow-hidden shadow-2xl p-4 rounded-xl">
                 <div className="relative">
@@ -134,8 +149,9 @@ const All: React.FC = () => {
                   <div className="flex justify-between mb-2">
                     <p className="text-gray-500 text-sm">Beast By</p>
                     <p className="text-gray-500 text-sm">
-  Expires {new Date(offer.expiration).toLocaleDateString("en-GB")}
-</p>
+                      Expires{" "}
+                      {new Date(offer.expiration).toLocaleDateString("en-GB")}
+                    </p>
                   </div>
                   <h3 className="text-[18px] mt-2 font-semibold text-[#2D2D2D] mb-1">
                     {offer.title}
@@ -177,7 +193,9 @@ const All: React.FC = () => {
             </SwiperSlide>
           ))
         ) : (
-          <div>No offers available at the moment.</div>
+          <div className="text-center py-8 text-gray-600">
+            {searchValue ? `No offers found for "${searchValue}"` : 'No offers available at the moment.'}
+          </div>
         )}
       </Swiper>
 

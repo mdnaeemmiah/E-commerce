@@ -8,6 +8,7 @@ import { FaStar } from 'react-icons/fa';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 // import 'swiper/css';
 // import 'swiper/css/pagination';
 // import 'swiper/css/navigation';
@@ -71,6 +72,16 @@ const offers = [
 ];
 
 const Food: React.FC = () => {
+  const searchParams = useSearchParams();
+  const searchValue = searchParams.get('value') || '';
+
+  // Filter offers based on search value
+  const filteredOffers = offers.filter((offer) => {
+    if (!searchValue) return true;
+    const search = searchValue.toLowerCase();
+    return offer.title?.toLowerCase().includes(search);
+  });
+
   return (
     <div className="relative shadow-2xl overflow-hidden">
       {/* Swiper Container */}
@@ -102,7 +113,8 @@ const Food: React.FC = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        {offers.map((offer) => (
+        {filteredOffers.length > 0 ? (
+          filteredOffers.map((offer) => (
           <SwiperSlide key={offer.id}>
             <div className="flex-shrink-0 text-white overflow-hidden shadow-2xl p-4 rounded-xl">
               <div className="relative">
@@ -155,7 +167,12 @@ const Food: React.FC = () => {
               </div>
             </div>
           </SwiperSlide>
-        ))}
+          ))
+        ) : (
+          <div className="text-center py-8 text-gray-600">
+            {searchValue ? `No offers found for "${searchValue}"` : 'No offers available at the moment.'}
+          </div>
+        )}
       </Swiper>
 
       {/* Custom Previous and Next Buttons */}

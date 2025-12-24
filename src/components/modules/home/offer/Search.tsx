@@ -1,7 +1,27 @@
-import React from 'react';
+
 import { FaSearch } from 'react-icons/fa';
+import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function Search() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [searchValue, setSearchValue] = useState(searchParams.get('value') || '');
+
+  const handleSearch = () => {
+    if (searchValue.trim()) {
+      router.push(`?value=${encodeURIComponent(searchValue)}`);
+    } else {
+      router.push('?');
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="flex flex-col  items-center shadow-sm bg-white border border-gray-100 mt-6 w-[90%] md:w-[90%] lg:w-[1550px] mx-auto rounded-xl">
       <div className="flex flex-row gap-4 items-center w-full px-5">
@@ -16,12 +36,18 @@ export default function Search() {
           <input
             type="text"
             placeholder="Search Offers..."
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyPress={handleKeyPress}
             className="flex-1 py-3 px-4 text-gray-700 focus:outline-none"
           />
         </div>
 
         {/* Search Button */}
-        <button className="bg-[#3E3EDF] cursor-pointer text-white font-medium py-3 px-6 sm:px-8 sm:py-3 md:px-10 md:py-3 lg:px-14  rounded-xl hover:bg-[#3434c4] transition-all duration-200 text-[16px] sm:text-base lg:text-lg">
+        <button 
+          onClick={handleSearch}
+          className="bg-[#3E3EDF] cursor-pointer text-white font-medium py-3 px-6 sm:px-8 sm:py-3 md:px-10 md:py-3 lg:px-14  rounded-xl hover:bg-[#3434c4] transition-all duration-200 text-[16px] sm:text-base lg:text-lg"
+        >
           Search
         </button>
       </div>

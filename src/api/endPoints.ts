@@ -27,6 +27,10 @@ export const ENDPOINTS = {
   getRewards:"/payments/api/v1/rewards/",
   getTransactionHistory:"/payments/api/v1/wallet/withdrawals/",
 
+  searchField:"/commerce/api/v1/category/",
+  qrScanGenerate:"/commerce/api/v1/qr/generate/",
+  receiveRedeem:"/commerce/api/v1/qr/redeem/",
+
   receiptUploadAi:"/api/receipt/upload/",
   startReview:"/api/review/start/",
 };
