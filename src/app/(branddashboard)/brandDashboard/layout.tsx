@@ -13,6 +13,7 @@ import {
   FaHome,
   FaStore,
   FaGift,
+  FaBox,
 } from "react-icons/fa";
 import img1 from "@/app/assets/auth/image3.png";
 import img2 from "@/app/assets/auth/logo.png";
@@ -54,6 +55,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   // Menu items list
   const menuItems = [
     { href: "/brandDashboard/dashboard", label: "Dashboard", icon: <FaHome /> },
+    {
+      href: "/brandDashboard/products",
+      label: "Products",
+      icon: <FaBox />,
+    },
     {
       href: "/brandDashboard/campaigns",
       label: "Campaigns",

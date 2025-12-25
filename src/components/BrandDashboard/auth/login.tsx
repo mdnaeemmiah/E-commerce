@@ -62,11 +62,12 @@ const Login: React.FC = () => {
 
       // If login is successful, response contains the tokens
       if (response.status === 200) {
-        const { access, refresh } = response.data;
+        const { access, refresh, id } = response.data;
 
         // Save tokens in localStorage
         localStorage.setItem("access_token", access);
         localStorage.setItem("refresh_token", refresh);
+        localStorage.setItem("id", id.toString());
 
         // Show success toast and redirect
         toast.success("Login successful! Redirecting...");

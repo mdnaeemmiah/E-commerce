@@ -44,7 +44,7 @@ export default function Navbar() {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-4">
-                    <ul className="flex space-x-10 text-gray-700 font-medium">
+                    <ul className="flex space-x-6 text-gray-700 font-medium">
                         {links.map((link) => (
                             <li key={link.name}>
                                 <Link

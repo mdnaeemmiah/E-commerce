@@ -495,7 +495,7 @@
 
 
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FiUpload, FiX } from "react-icons/fi";
 import { toast } from "sonner";
 import baseApi from "@/api/baseApi";
@@ -512,17 +512,29 @@ const Scan: React.FC = () => {
   const [uploading, setUploading] = useState(false);
   const [receiptData, setReceiptData] = useState<any>(null);
   const [items, setItems] = useState<any[]>([]);
+  const [loadingItems, setLoadingItems] = useState(false);
+  const [startingReview, setStartingReview] = useState<number | null>(null);
+  const [submittingAnswer, setSubmittingAnswer] = useState(false);
   const [questionData, setQuestionData] = useState<any>(null);
   const [answer, setAnswer] = useState<string>("");
   const [sessionId, setSessionId] = useState<string>(""); // For tracking current session ID
   const [answeredQuestions, setAnsweredQuestions] = useState<any[]>([]); // Store answered questions
-  const [setCurrentQuestionIndex] = useState<number>(0); // Track the current question index
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0); // Track the current question index
   const [rating, setRating] = useState<number | null>(null); // Rating state
   const [reviewText, setReviewText] = useState<any>(null);
   const [receiptHistory, setReceiptHistory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [itemsPerPage] = useState(5); // Number of items per page
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [answeredQuestions, questionData, reviewText]);
 
   // Load session data from local storage or start fresh
   useEffect(() => {
@@ -581,6 +593,7 @@ const Scan: React.FC = () => {
     }
 
     setUploading(true);
+    setLoadingItems(true);
 
     try {
       const formData = new FormData();
@@ -626,6 +639,7 @@ const Scan: React.FC = () => {
           setItems(data?.products);
           setImagePreview(null);
           setImage(null);
+          setLoadingItems(false);
 
           toast.success("Receipt uploaded successfully!");
         } else {
@@ -636,13 +650,14 @@ const Scan: React.FC = () => {
       }
     } catch (error) {
       toast.error("Failed to upload receipt. Please try again.");
+      setLoadingItems(false);
     } finally {
       setUploading(false);
     }
   };
 
   // Handle starting the review for a selected product
-  const handleStartReview = async (item: any) => {
+  const handleStartReview = async (item: any, index: number) => {
     const token = localStorage.getItem("access_token");
 
     if (!token) {
@@ -672,6 +687,8 @@ const Scan: React.FC = () => {
       product_identifier: productIdentifier,
     };
 
+    setStartingReview(index);
+
     try {
       const response = await baseApi.post(
         "http://10.10.7.114:8001/api/review/start",
@@ -696,6 +713,8 @@ const Scan: React.FC = () => {
     } catch (error) {
       console.error("Error starting review:", error);
       toast.error("Failed to start the review. Please try again.");
+    } finally {
+      setStartingReview(null);
     }
   };
 
@@ -711,6 +730,8 @@ const Scan: React.FC = () => {
       toast.error("Token not found, please login again.");
       return;
     }
+
+    setSubmittingAnswer(true);
 
     try {
       const payload = {
@@ -753,6 +774,8 @@ const Scan: React.FC = () => {
     } catch (error) {
       console.error("Error submitting answer:", error);
       toast.error("Failed to submit your answer. Please try again.");
+    } finally {
+      setSubmittingAnswer(false);
     }
   };
 
@@ -839,11 +862,18 @@ const Scan: React.FC = () => {
                 Upload Receipt
               </label>
             )}
-            {image && !uploading && (
+            {image && (
               <button
                 onClick={handleUpload}
-                className="bg-[#3E3EDF] md:ml-90 lg:ml-120 mt-26 text-white px-4 py-2 rounded-xl"
+                disabled={uploading}
+                className="bg-[#3E3EDF] md:ml-90 lg:ml-120 mt-26 text-white px-4 py-2 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
               >
+                {uploading && (
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                )}
                 {uploading ? "Uploading..." : "Upload Receipt"}
               </button>
             )}
@@ -888,7 +918,14 @@ const Scan: React.FC = () => {
 
         <div className="space-y-4 mt-8">
           {/* Dynamically render items */}
-          {Array.isArray(items) && items.length > 0 ? (
+          {loadingItems ? (
+            <div className="flex justify-center items-center py-8">
+              <svg className="animate-spin h-8 w-8 text-[#3E3EDF]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </div>
+          ) : Array.isArray(items) && items.length > 0 ? (
             items.map((item, index) => (
               <div
                 key={index}
@@ -896,9 +933,16 @@ const Scan: React.FC = () => {
               >
                 <span>{item?.product_name}</span>
                 <button
-                  onClick={() => handleStartReview(item)} // Pass the item as a parameter
-                  className="bg-[#3E3EDF] text-white px-4 py-2 rounded cursor-pointer"
+                  onClick={() => handleStartReview(item, index)} // Pass the item and index
+                  disabled={startingReview === index}
+                  className="bg-[#3E3EDF] text-white px-4 py-2 rounded cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
+                  {startingReview === index && (
+                    <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  )}
                   Start Review
                 </button>
               </div>
@@ -919,21 +963,21 @@ const Scan: React.FC = () => {
           ></div>
 
           {/* Modal */}
-          <div className="relative z-10 bg-white rounded-2xl p-6 w-full md:max-w-md lg:max-w-lg shadow-xl overflow-y-auto max-h-[90vh]">
-            {/* Chat Section */}
-            <div className="space-y-5">
+          <div className="relative z-10 bg-white rounded-2xl w-full md:max-w-md lg:max-w-lg shadow-xl h-[300px] md:h-[650px] flex flex-col">
+            {/* Chat Section - Scrollable */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-5">
               {/* Display previous questions and answers */}
               {answeredQuestions.length > 0 &&
                 answeredQuestions.map((qa, index) => (
                   <div key={index} className="items-start space-x-4 mb-4">
                     {/* Display Question */}
-                    <div className="flex-1 text-left text-gray-700 font-semibold">
+                    <div className="flex-1 text-left text-gray-700 text-md  bg-[#f0f8fb] px-3 py-2 rounded-xl">
                       <p>{qa.question}</p>
                     </div>
                     {/* Display Answer */}
                     <div className="flex-1 text-right text-gray-700">
-                      <p className="bg-[#2b2bd4] text-white px-3 py-2 rounded-xl mt-5 inline-block">
-                        {qa.answer || qa.review_text}
+                      <p className="bg-[#2b2bd4] text-white px-3 py-1.5 rounded-xl mt-5 inline-block">
+                        {qa.answer}
                       </p>
                     </div>
                   </div>
@@ -942,41 +986,50 @@ const Scan: React.FC = () => {
               {/* Display current question */}
               <div className="items-start space-x-4 mt-4">
                 {/* Display current question */}
-                <div className="flex-1 text-left text-gray-700 font-semibold">
+                <div className="flex-1 text-left text-md  bg-[#f0f8fb] px-3 py-2 rounded-xl">
                   <p>{questionData?.question}</p>
                 </div>
               </div>
 
               {reviewText && (
-                <div className="mt-6 pt-4 bg-gray-100 p-4 rounded-xl border border-gray-200">
-                  <p className="text-gray-800 text-sm mb-2 leading-relaxed">
+                <div className="mt-6 pt-4 bg-[#f0f8fb] p-4 rounded-xl border border-gray-200">
+                  <p className="text-gray-800 text-md mb-2 leading-relaxed">
                     {reviewText}
                   </p>
-                  <button className="text-blue-600 text-sm underline hover:text-blue-800">
+                  {/* <button className="text-blue-600 text-sm underline hover:text-blue-800">
                     Edit
-                  </button>
+                  </button> */}
                 </div>
               )}
+              <div ref={messagesEndRef} />
+            </div>
 
-              <div className="mt-6 pt-4">
+            {/* Input Section - Fixed at bottom */}
+            <div className="p-4 border-t border-gray-100 bg-white rounded-b-2xl">
                 <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2">
                   <input
                     type="text"
                     value={answer}
                     onChange={(e) => setAnswer(e.target.value)}
                     placeholder="Your answer"
-                    className="bg-gray-100 text-gray-700 px-4 py-2 rounded-2xl w-full border-none outline-none"
+                    disabled={submittingAnswer}
+                    className=" text-gray-700 px-4 py-2 rounded-2xl w-full border-none outline-none disabled:opacity-50"
                   />
                   <button
                     onClick={handleAnswerSubmit}
-                    className="text-[#2b2bd4] cursor-pointer p-2 rounded-lg transition"
+                    disabled={submittingAnswer}
+                    className="text-[#2b2bd4] cursor-pointer p-2 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <IoSend className="text-xl" />
+                    {submittingAnswer ? (
+                      <svg className="animate-spin h-5 w-5 text-[#2b2bd4]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                    ) : (
+                      <IoSend className="text-xl" />
+                    )}
                   </button>
                 </div>
-              </div>
-
-              {/* Display review text when rating is provided or questions are complete */}
             </div>
           </div>
         </div>

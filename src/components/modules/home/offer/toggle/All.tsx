@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FaStar } from "react-icons/fa";
-import { ChevronLeft, ChevronRight, ClockFading } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Pagination, Navigation } from "swiper/modules";
