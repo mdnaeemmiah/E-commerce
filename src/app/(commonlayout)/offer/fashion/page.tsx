@@ -1,10 +1,12 @@
 import Fashion from '@/components/modules/home/offer/toggle/Fashion'
-import React from 'react'
+import { Suspense } from 'react'
 
 export default function page() {
   return (
     <div>
-      <Fashion></Fashion>
+      <Suspense fallback={<div className="py-8 text-center text-gray-400">Loading...</div>}>
+        <Fashion></Fashion>
+      </Suspense>
     </div>
   )
 }
