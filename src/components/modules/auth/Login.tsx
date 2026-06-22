@@ -7,8 +7,8 @@ import Image from "next/image";
 import img1 from "@/app/assets/auth/Frame 427319652.png";
 import img2 from "@/app/assets/auth/Google.png";
 import Link from "next/link";
-import baseApi from "@/api/baseApi";
-import { ENDPOINTS } from "@/api/endPoints";
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -24,32 +24,10 @@ const Login: React.FC = () => {
     setLoading(true);
     setError(null);
 
-    try {
-      const response = await baseApi.post<{ access: string; refresh: string }>(ENDPOINTS.shopperLogin, {
-        email: formData.email,
-        password: formData.password,
-      });
-
-      if (response.status === 200) {
-        const { access, refresh } = response.data;
-
-        // Save tokens in localStorage
-        localStorage.setItem("access_token", access);
-        localStorage.setItem("refresh_token", refresh);
-
-        // Show success toast and redirect
-        toast.success("Login successful! Redirecting...");
-        setTimeout(() => {
-          router.push("/offer"); // Redirect to the homepage
-        }, 2000);
-      }
-    } catch (err: any) {
-      setError("Failed to login, please try again.");
-      console.error("Login error:", err);
-      toast.error("Failed to login, please try again.");
-    } finally {
-      setLoading(false);
-    }
+    // API disabled — static mode
+    // await baseApi.post(ENDPOINTS.shopperLogin, { email, password })
+    toast.success("Login successful! Redirecting...");
+    setTimeout(() => { router.push("/offer"); setLoading(false); }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -145,9 +123,9 @@ const Login: React.FC = () => {
         {error && <p className="text-red-500 text-center mt-4">{error}</p>}
 
         <div className="flex items-center mt-5">
-          <div className="h-[1px] w-full bg-gray-300"></div>
+          <div className="h-px w-full bg-gray-300"></div>
           <p className="mx-4 text-[#575757]">or</p>
-          <div className="h-[1px] w-full bg-gray-300"></div>
+          <div className="h-px w-full bg-gray-300"></div>
         </div>
 
         {/* Google & Apple Login */}

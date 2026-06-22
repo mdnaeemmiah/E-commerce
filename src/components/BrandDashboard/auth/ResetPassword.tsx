@@ -9,8 +9,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import baseApi from "@/api/baseApi";
-import { ENDPOINTS } from "@/api/endPoints";
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 
 const ResetPassword: React.FC = () => {
   const router = useRouter();
@@ -46,33 +46,16 @@ const ResetPassword: React.FC = () => {
 
     setLoading(true);
 
-    try {
-      const response = await baseApi.post(ENDPOINTS.newPassword, {
-        reset_token: resetToken,
-        new_password: password1,
-        confirm_password: password2,
-      });
+    // API call disabled — static mode
+    // try {
+    //   const response = await baseApi.post(ENDPOINTS.newPassword, { reset_token: resetToken, new_password: password1, confirm_password: password2 });
+    //   if (response.status === 200) { toast.success("Password reset successfully!"); localStorage.removeItem("reset_token"); localStorage.removeItem("email"); setTimeout(() => { router.push("/brandAuth/login"); }, 1500); }
+    // } catch (err: any) { toast.error("Failed to reset password."); } finally { setLoading(false); }
 
-      if (response.status === 200) {
-        toast.success("Password reset successfully 🎉");
-
-        // ✅ Cleanup sensitive data
-        localStorage.removeItem("reset_token");
-        localStorage.removeItem("email");
-
-        // ✅ Redirect to login
-        setTimeout(() => {
-          router.push("/brandAuth/login");
-        }, 1500);
-      }
-    } catch (err: any) {
-      toast.error(
-        err?.response?.data?.message ||
-          "Failed to reset password. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
+    toast.success("Password reset successfully!");
+    localStorage.removeItem("reset_token");
+    localStorage.removeItem("email");
+    setTimeout(() => { router.push("/brandAuth/login"); setLoading(false); }, 1000);
   };
 
   return (

@@ -5,16 +5,20 @@ import Image from "next/image";
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { FaBars, FaTimes } from "react-icons/fa";
 import {
-  FaBars,
-  FaTimes,
-  FaUserCircle,
-  FaCog,
-  FaHome,
-  FaStore,
-  FaGift,
-  FaBox,
-} from "react-icons/fa";
+  MdDashboard,
+  MdCardGiftcard,
+  MdStarOutline,
+  MdBarChart,
+  MdPeopleAlt,
+  MdAccountBalanceWallet,
+  MdLocalOffer,
+  MdSettings,
+  MdReceiptLong,
+  MdVideoLibrary,
+  MdLibraryBooks,
+} from "react-icons/md";
 import img1 from "@/app/assets/auth/image3.png";
 import img2 from "@/app/assets/auth/logo.png";
 import img3 from "@/app/assets/auth/Ellipse 2.png";
@@ -52,32 +56,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     },
   ];
 
-  // Menu items list
   const menuItems = [
-    { href: "/brandDashboard/dashboard", label: "Dashboard", icon: <FaHome /> },
-    {
-      href: "/brandDashboard/products",
-      label: "Products",
-      icon: <FaBox />,
-    },
-    {
-      href: "/brandDashboard/campaigns",
-      label: "Campaigns",
-      icon: <FaUserCircle />,
-    },
-    { href: "/brandDashboard/qrCodes", label: "QR Codes", icon: <FaGift /> },
-    {
-      href: "/brandDashboard/analytics",
-      label: "Analytics",
-      icon: <FaStore />,
-    },
-    {
-      href: "/brandDashboard/pricingPlans",
-      label: "Pricing Plans",
-      icon: <FaCog />,
-    },
-    { href: "/brandDashboard/settings", label: "Settings", icon: <FaGift /> },
-    { href: "/brandDashboard/support", label: "Support", icon: <FaGift /> },
+    { href: "/brandDashboard/dashboard", label: "Dashboard", icon: <MdDashboard size={20} /> },
+   { href: "/brandDashboard/productLibrary", label: "Product Library", icon: <MdLibraryBooks size={20} /> },
+    { href: "/brandDashboard/rebate", label: "Rebate", icon: <MdCardGiftcard size={20} /> },
+    { href: "/brandDashboard/reviews", label: "Reviews", icon: <MdStarOutline size={20} /> },
+    { href: "/brandDashboard/redemptions", label: "Redemptions", icon: <MdReceiptLong size={20} /> },
+    { href: "/brandDashboard/analytics", label: "Analytics", icon: <MdBarChart size={20} /> },
+    { href: "/brandDashboard/customers", label: "Customers", icon: <MdPeopleAlt size={20} /> },
+    
+    { href: "/brandDashboard/wallet", label: "Wallet", icon: <MdAccountBalanceWallet size={20} /> },
+    { href: "/brandDashboard/tagGenerator", label: "Tag Generator", icon: <MdLocalOffer size={20} /> },
+    { href: "/brandDashboard/plans", label: "Plans", icon: <MdVideoLibrary size={20} /> },
+    { href: "/brandDashboard/settings", label: "Settings", icon: <MdSettings size={20} /> },
   ];
 
   const handleLogout = () => {

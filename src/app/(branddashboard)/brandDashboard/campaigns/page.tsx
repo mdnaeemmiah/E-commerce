@@ -3,10 +3,10 @@ import Campaign from "@/components/BrandDashboard/dashboard/Campaign";
 import { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
-import baseApi from "@/api/baseApi"; // Ensure baseApi is set up correctly
-import { ENDPOINTS } from "@/api/endPoints"; // Ensure ENDPOINTS is set up
-import { useRouter } from "next/navigation"; // Use Next.js router for page navigation
-import { toast } from "sonner"; // For toast notifications
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
+// import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 
 const stats = [
@@ -34,35 +34,17 @@ export default function Page() {
     product: "", // Added product field
   });
 
+  // API call disabled — static mode
   useEffect(() => {
-    fetchProducts();
+    setProducts([
+      { id: "p1", name: "Kettle Sea Salt Chips" },
+      { id: "p2", name: "Nitro Cold Brew" },
+      { id: "p3", name: "Wild Berry Trail Mix" },
+      { id: "p4", name: "Zesty Lime Sparkler" },
+    ]);
   }, []);
 
-  const fetchProducts = async () => {
-    try {
-      const token = localStorage.getItem("access_token");
-      const response = await baseApi.get(ENDPOINTS.productList, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (response.status === 200) {
-        const data = response.data;
-        if (Array.isArray(data)) {
-          setProducts(data);
-        } else if (data.results && Array.isArray(data.results)) {
-          setProducts(data.results);
-        } else if (data.products && Array.isArray(data.products)) {
-          setProducts(data.products);
-        } else {
-          setProducts([]);
-        }
-      }
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      setProducts([]);
-    }
-  };
+  // const fetchProducts = async () => { ... };
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -74,35 +56,16 @@ export default function Page() {
 
 //   const router = useRouter();
 
-    const handleSubmit = async () => {
-    try {
-      const token = localStorage.getItem("access_token"); // Assuming the token is stored in localStorage
-      if (!token) {
-        toast.error("Token not found, please login again.");
-        return;
-      }
+  const handleSubmit = async () => {
+    // API call disabled — static mode
+    // try {
+    //   const token = localStorage.getItem("access_token");
+    //   const response = await baseApi.post(ENDPOINTS.createCampaigns, campaignData, { headers: { Authorization: `Bearer ${token}` } });
+    //   if (response.status === 200 || response.status === 201) { toast.success("Campaign created successfully!"); setIsPopupOpen(false); }
+    // } catch (error) { toast.error("An error occurred."); }
 
-      // Prepare request headers with authorization token
-      const headers = {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      };
-
-      // Send the POST request to create a campaign
-      const response = await baseApi.post(ENDPOINTS.createCampaigns, campaignData, {
-        headers,
-      });
-
-      if (response.status === 200 || response.status === 201) {
-        toast.success("Campaign created successfully!");
-        setIsPopupOpen(false); // Close the popup after success
-        // router.push("/dashboard"); // Optionally redirect to the dashboard
-      } else {
-        toast.error("Failed to create campaign.");
-      }
-    } catch (error) {
-      toast.error("An error occurred while creating the campaign.");
-    }
+    toast.success("Campaign created successfully!");
+    setIsPopupOpen(false);
   };
 
   return (

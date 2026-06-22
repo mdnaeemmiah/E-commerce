@@ -6,8 +6,8 @@ import Image from "next/image";
 import img2 from "@/app/assets/auth/Google.png";
 import Link from "next/link";
 import img1 from "@/app/assets/auth/Frame 427319652.png";
-import baseApi from "@/api/baseApi";
-import { ENDPOINTS } from "@/api/endPoints";
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -41,7 +41,8 @@ const Register: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await baseApi.post(ENDPOINTS.shopperRegister, formData);
+      // const response = await baseApi.post(ENDPOINTS.shopperRegister, formData);
+      const response = { status: 201 };
 
       if (response.status === 201 || response.status === 200) {
         toast.success(

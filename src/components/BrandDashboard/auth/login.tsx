@@ -8,10 +8,10 @@ import img1 from "@/app/assets/auth/logo.png";
 import Link from "next/link";
 import img3 from "@/app/assets/auth/Frame 427319652.png";
 import img2 from "@/app/assets/auth/Google.png";
-import baseApi from "@/api/baseApi"; // Ensure baseApi is set up correctly
-import { ENDPOINTS } from "@/api/endPoints"; // Ensure ENDPOINTS is set up
-import { useRouter } from "next/navigation"; // Use Next.js router for page navigation
-import { toast } from "sonner"; // For toast notifications
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 // Define the form data type
 interface LoginFormData {
@@ -54,35 +54,32 @@ const Login: React.FC = () => {
     setLoading(true);
     setError(null);
 
-    try {
-      const response = await baseApi.post<LoginResponse>(ENDPOINTS.BrandLogin, {
-        email: formData.email,
-        password: formData.password,
-      });
+    // API call disabled — static mode
+    // try {
+    //   const response = await baseApi.post<LoginResponse>(ENDPOINTS.BrandLogin, {
+    //     email: formData.email,
+    //     password: formData.password,
+    //   });
+    //   if (response.status === 200) {
+    //     const { access, refresh, id } = response.data;
+    //     localStorage.setItem("access_token", access);
+    //     localStorage.setItem("refresh_token", refresh);
+    //     localStorage.setItem("id", id.toString());
+    //     toast.success("Login successful! Redirecting...");
+    //     setTimeout(() => { router.push("/brandDashboard/dashboard"); }, 2000);
+    //   }
+    // } catch (err: any) {
+    //   setError("Failed to login, please try again.");
+    //   toast.error("Failed to login, please try again.");
+    // } finally {
+    //   setLoading(false);
+    // }
 
-      // If login is successful, response contains the tokens
-      if (response.status === 200) {
-        const { access, refresh, id } = response.data;
-
-        // Save tokens in localStorage
-        localStorage.setItem("access_token", access);
-        localStorage.setItem("refresh_token", refresh);
-        localStorage.setItem("id", id.toString());
-
-        // Show success toast and redirect
-        toast.success("Login successful! Redirecting...");
-        setTimeout(() => {
-          router.push("/brandDashboard/dashboard"); // Redirect to dashboard or home page
-        }, 2000);
-      }
-    } catch (err: any) {
-      // Handle errors from the server
-      setError("Failed to login, please try again.");
-      console.error("Login error:", err);
-      toast.error("Failed to login, please try again.");
-    } finally {
+    toast.success("Login successful! Redirecting...");
+    setTimeout(() => {
+      router.push("/brandDashboard/dashboard");
       setLoading(false);
-    }
+    }, 1000);
   };
 
   return (

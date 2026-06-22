@@ -33,44 +33,23 @@ export default function SettingsTabs() {
   }
 
   return (
-    <div className=" ">
-      <h2 className='text-2xl mb-4 font-semibold'>Your Rewards</h2>
-      {/* Responsive Tab Buttons Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 shadow-sm p-3 rounded-2xl md:w-1/2">
-
-        <button
-          onClick={() => setActiveTab('All')}
-          className={`py-2 rounded w-full text-center cursor-pointer ${activeTab === 'All' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
+    <div>
+      <h2 className="text-xl font-semibold text-gray-900 mb-4">Your Rewards</h2>
+      {/* Pill tabs */}
+      <div className="flex gap-2 mb-5 flex-wrap">
+        {(['All', 'Fashion', 'Food', 'Electronics'] as const).map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`px-4 py-1.5 rounded-full text-sm font-semibold transition ${
+              activeTab === tab
+                ? 'bg-gray-900 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
-        >
-          All
-        </button>
-
-        <button
-          onClick={() => setActiveTab('Fashion')}
-          className={`py-2 rounded w-full text-center cursor-pointer ${activeTab === 'Fashion' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
-            }`}
-        >
-          Fashion
-        </button>
-
-        <button
-          onClick={() => setActiveTab('Food')}
-          className={`py-2 rounded w-full text-center cursor-pointer ${activeTab === 'Food' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
-            }`}
-        >
-          Food
-        </button>
-
-
-
-        <button
-          onClick={() => setActiveTab('Electronics')}
-          className={`py-2 rounded w-full text-center cursor-pointer ${activeTab === 'Electronics' ? 'bg-[#3E3EDF] text-white' : 'bg-[#FFF6FA] text-gray-700'
-            }`}
-        >
-          Electronics
-        </button>
+          >
+            {tab}
+          </button>
+        ))}
       </div>
 
       {/* Tab Content */}

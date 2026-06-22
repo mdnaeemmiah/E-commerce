@@ -7,8 +7,8 @@ import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
 import { FiX } from "react-icons/fi"
 import { toast } from "sonner"
-import baseApi from "@/api/baseApi"
-import { ENDPOINTS } from "@/api/endPoints";
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 import jsQR from "jsqr"
 
 export default function UploadScan() {
@@ -131,341 +131,118 @@ export default function UploadScan() {
 
       console.log('Extracted QR Code ID:', qrCodeId);
 
-      const token = localStorage.getItem("access_token");
-      if (!token) {
-        toast.error("Token not found, please login again.");
-        setIsProcessing(false);
-        setIsScanned(false);
-        return;
-      }
+      // API call disabled — static mode
+      // Simulate successful redemption
+      setRewardData({ reward: "$5.00", campaign: "Summer Cashback" });
+      setShowSuccessModal(true);
+      stopCamera();
 
-      // Call API to redeem - baseApi already adds Authorization header via interceptor
-      const response = await baseApi.get(`${ENDPOINTS.qrScanGenerate}/${qrCodeId}/redeem/`);
-
-      console.log('API Response:', response);
-
-      if (response.status === 200 || response.status === 201) {
-        const rewardAmount = response.data?.reward_amount || '0.00';
-        const isRedeemed = response.data?.is_redeemed || false;
-
-        setRewardData({
-          rewardAmount,
-          isAlreadyRedeemed: isRedeemed,
-        });
-        setShowSuccessModal(true);
-      } else {
-        setErrorMessage(response.data?.message || 'Failed to redeem QR code');
-        setShowErrorModal(true);
-      }
-    } catch (error: any) {
-      console.error('Error redeeming QR code:', error);
-      
-      // Handle 401 Unauthorized
-      if (error.response?.status === 401) {
-        toast.error("Session expired. Please login again.");
-        localStorage.removeItem("access_token");
-        setTimeout(() => {
-          window.location.href = "/auth/login";
-        }, 2000);
-        return;
-      }
-      
-      setErrorMessage(
-        error.response?.data?.message || 
-        error.response?.data?.detail || 
-        error.message || 
-        'Error redeeming QR code'
-      );
+    } catch (err) {
+      console.error('QR redeem error:', err);
+      setErrorMessage("Failed to process QR code. Please try again.");
       setShowErrorModal(true);
     } finally {
       setIsProcessing(false);
     }
   };
-
   const toggleTorch = async () => {
-    if (streamRef.current) {
-      const track = streamRef.current.getVideoTracks()[0];
-      const capabilities = track.getCapabilities() as any;
-      
-      if (capabilities.torch) {
-        try {
-          await track.applyConstraints({
-            advanced: [{ torch: !isTorchOn } as any]
-          });
-          setIsTorchOn(!isTorchOn);
-        } catch (error) {
-          toast.error("Could not toggle torch");
-        }
-      } else {
-        toast.error("Torch not available on this device");
-      }
+    if (!streamRef.current) return;
+    const track = streamRef.current.getVideoTracks()[0];
+    const capabilities = track.getCapabilities?.() as any;
+    if (capabilities?.torch) {
+      await track.applyConstraints?.({ advanced: [{ torch: !isTorchOn } as any] });
+      setIsTorchOn(!isTorchOn);
     }
-  };
-
-  const switchCamera = async () => {
-    stopCamera();
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: streamRef.current ? "user" : "environment" }
-      });
-      
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        streamRef.current = stream;
-        videoRef.current.onloadedmetadata = () => {
-          startScanning();
-        };
-      }
-    } catch (error) {
-      toast.error("Could not switch camera");
-      startCamera();
-    }
-  };
-
-  const handleCloseScanner = () => {
-    stopCamera();
-    setShowScanner(false);
-    setIsScanned(false);
-    setIsProcessing(false);
-  };
-
-  const handleSuccessClose = () => {
-    setShowSuccessModal(false);
-    handleCloseScanner();
-  };
-
-  const handleErrorRetry = () => {
-    setShowErrorModal(false);
-    setIsScanned(false);
-    setIsProcessing(false);
-  };
-
-  const handleErrorClose = () => {
-    setShowErrorModal(false);
-    handleCloseScanner();
   };
 
   return (
-    <div className="mt-20">
-      <h2 className='text-2xl text-center font-semibold '>Scan & Receipt</h2>
-      <div className='w-[90%] mx-auto lg:container mt-10 mb-10 flex items-center justify-center '>
-        <div className="flex flex-col md:flex-row gap-6">
-          <div 
-            onClick={() => setShowScanner(true)}
-            className="border border-gray-100 w-56 p-6 rounded-2xl flex flex-col items-center shadow cursor-pointer hover:shadow-lg transition-shadow"
-          >
-            <Image
-              src={img1}
-              alt="qr"
-              width={60}
-              height={20}
-            ></Image>
-            <h1 className="text-[18px] font-semibold mt-4">Scan QR</h1>
-            <p className="text-[#959595]">Earn rewards instantly</p>
+    <div>
+      {/* Trigger Buttons */}
+      <div className="grid grid-cols-2 gap-3">
+        <button
+          onClick={() => setShowScanner(true)}
+          className="flex flex-col items-center gap-2 bg-white border border-gray-200 rounded-2xl py-5 px-3 hover:shadow-md transition"
+        >
+          <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
+            <Image src={img1} alt="Scan QR" width={28} height={28} />
           </div>
-          <Link href="/scan" className="border border-gray-100 w-56 p-6 rounded-2xl flex flex-col  items-center shadow">
-            <Image
-              src={img2}
-              alt="qr"
-              width={60}
-              height={20}
-            ></Image>
-            <h1 className="text-[18px] font-semibold mt-4">Upload Receipt</h1>
-            <p className="text-[#959595]">Get cashback</p>
-          </Link>
-        </div>
+          <p className="font-semibold text-gray-800 text-sm">Scan QR</p>
+          <p className="text-xs text-gray-400 text-center">Earn Rewards Faster</p>
+        </button>
+
+        <button className="flex flex-col items-center gap-2 bg-white border border-gray-200 rounded-2xl py-5 px-3 hover:shadow-md transition">
+          <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
+            <Image src={img2} alt="Upload" width={28} height={28} />
+          </div>
+          <p className="font-semibold text-gray-800 text-sm">Upload Receipt</p>
+          <p className="text-xs text-gray-400 text-center">Get Cashback</p>
+        </button>
       </div>
 
-      {/* QR Scanner Modal */}
+      {/* Scanner Modal */}
       {showScanner && (
-        <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
-          {/* Overlay */}
-          <div
-            className="absolute inset-0 bg-black opacity-70"
-            onClick={handleCloseScanner}
-          ></div>
-
-          {/* Modal */}
-          <div className="relative z-10 bg-white rounded-2xl p-6 w-full max-w-md shadow-xl">
-            {/* Close Button */}
-            <button
-              onClick={handleCloseScanner}
-              className="absolute top-4 right-4 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 transition z-20"
-            >
-              <FiX size={20} />
+        <div className="fixed inset-0 bg-black z-50 flex flex-col">
+          <div className="flex items-center justify-between px-4 py-3 bg-black">
+            <p className="text-white font-semibold">Scan QR Code</p>
+            <button onClick={() => { setShowScanner(false); setIsScanned(false); }} className="text-white">
+              <FiX size={24} />
             </button>
-
-            {/* Scanner Header */}
-            <div className="text-center mb-4">
-              <h2 className="text-2xl font-semibold mb-2">Scan QR Code</h2>
-              <div className="flex justify-center gap-4 mt-2">
-                <button
-                  onClick={toggleTorch}
-                  className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition"
-                  title="Toggle Flash"
-                >
-                  {isTorchOn ? "🔦" : "💡"}
-                </button>
-                <button
-                  onClick={switchCamera}
-                  className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition"
-                  title="Switch Camera"
-                >
-                  🔄
-                </button>
+          </div>
+          <div className="flex-1 relative overflow-hidden">
+            <video ref={videoRef} autoPlay playsInline className="w-full h-full object-cover" />
+            <canvas ref={canvasRef} className="hidden" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-64 h-64 border-2 border-white/40 rounded-2xl relative">
+                <div className="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-[#3E3EDF] rounded-tl-lg" />
+                <div className="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-[#3E3EDF] rounded-tr-lg" />
+                <div className="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-[#3E3EDF] rounded-bl-lg" />
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-[#3E3EDF] rounded-br-lg" />
               </div>
             </div>
-
-            {/* Scanner Area */}
-            <div className="relative bg-gray-900 rounded-xl overflow-hidden" style={{ aspectRatio: '1/1' }}>
-              <video
-                ref={videoRef}
-                className="w-full h-full object-cover"
-                autoPlay
-                playsInline
-                muted
-              ></video>
-              
-              {/* Hidden canvas for QR detection */}
-              <canvas ref={canvasRef} className="hidden"></canvas>
-              
-              {/* Scanning Frame Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="relative w-64 h-64">
-                  {/* Corner borders */}
-                  <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-[#3E3EDF] rounded-tl-lg"></div>
-                  <div className="absolute top-0 right-0 w-12 h-12 border-t-4 border-r-4 border-[#3E3EDF] rounded-tr-lg"></div>
-                  <div className="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-[#3E3EDF] rounded-bl-lg"></div>
-                  <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-[#3E3EDF] rounded-br-lg"></div>
-                  
-                  {/* Scanning line animation */}
-                  {scanning && !isProcessing && (
-                    <div className="absolute top-0 left-0 w-full h-1 bg-[#3E3EDF] shadow-lg shadow-[#3E3EDF] animate-scan"></div>
-                  )}
+            {isProcessing && (
+              <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                <div className="text-white text-center">
+                  <div className="w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+                  <p className="text-sm">Processing...</p>
                 </div>
               </div>
-
-              {/* Loading state */}
-              {!scanning && (
-                <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
-                  <div className="text-white text-center">
-                    <svg className="animate-spin h-10 w-10 mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <p className="text-sm">Starting camera...</p>
-                  </div>
-                </div>
-              )}
-
-              {/* Processing overlay */}
-              {isProcessing && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70">
-                  <div className="text-white text-center">
-                    <svg className="animate-spin h-10 w-10 mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <p className="text-sm">Processing...</p>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Info Text */}
-            <div className="mt-4 text-center">
-              <p className="text-sm text-gray-600">
-                {isProcessing ? 'Processing QR code...' : 'Position QR code within the frame'}
-              </p>
-            </div>
+            )}
+          </div>
+          <div className="px-4 py-4 bg-black flex items-center justify-center">
+            <button onClick={toggleTorch} className={`text-white text-xs font-semibold px-4 py-2 rounded-lg border ${isTorchOn ? "border-yellow-400 text-yellow-400" : "border-white"}`}>
+              {isTorchOn ? "Torch Off" : "Torch On"}
+            </button>
           </div>
         </div>
       )}
 
       {/* Success Modal */}
-      {showSuccessModal && rewardData && (
-        <div className="fixed  inset-0 z-50 flex justify-center items-center px-4">
-          <div className="absolute inset-0 bg-black opacity-70"></div>
-          
-          <div className="relative z-10 rounded-2xl p-6 w-full max-w-md shadow-xl bg-gradient-to-br from-[#4B3FF2] to-[#6C5CE7]">
-            <div className="flex flex-col items-center">
-              {/* Success Icon */}
-              <div className="w-32 h-32 rounded-full bg-white bg-opacity-20 flex items-center justify-center mb-6">
-                <span className="text-6xl">
-                  {rewardData.isAlreadyRedeemed ? "✓" : "🎁"}
-                </span>
-              </div>
-
-              {/* Title */}
-              <h2 className="text-3xl font-bold text-white mb-4">
-                {rewardData.isAlreadyRedeemed ? 'Already Redeemed!' : 'Congratulations!'}
-              </h2>
-
-              {/* Reward Amount */}
-              <div className="bg-white bg-opacity-20 rounded-xl px-6 py-4 mb-4">
-                <p className="text-[#4B3FF2] text-opacity-70 text-lg text-center mb-1">Reward</p>
-                <p className="text-4xl font-bold text-[#4B3FF2]">${rewardData.rewardAmount}</p>
-              </div>
-
-              {/* Message */}
-              <p className="text-white text-opacity-80 text-center mb-6">
-                {rewardData.isAlreadyRedeemed 
-                  ? 'Buy the product in-store'
-                  : `
-    Buy the product in-store,
-    Upload your receipt and pick this campaign when approving
- `}
-              </p>
-
-              {/* Done Button */}
-              <button
-                onClick={handleSuccessClose}
-                className="w-full bg-white cursor-pointer text-[#4B3FF2] font-bold py-3 rounded-xl hover:bg-opacity-90 transition"
-              >
-                Done
-              </button>
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-sm text-center shadow-2xl">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-3xl">🎉</span>
             </div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Reward Claimed!</h3>
+            <p className="text-sm text-gray-500 mb-4">You have successfully redeemed {rewardData?.reward} from {rewardData?.campaign}.</p>
+            <button onClick={() => { setShowSuccessModal(false); setIsScanned(false); setShowScanner(false); }} className="w-full bg-[#3E3EDF] text-white font-semibold py-3 rounded-xl hover:bg-[#3232c0] transition">Done</button>
           </div>
         </div>
       )}
 
       {/* Error Modal */}
       {showErrorModal && (
-        <div className="fixed inset-0 z-50 flex justify-center items-center px-4">
-          <div className="absolute inset-0 bg-black opacity-70"></div>
-          
-          <div className="relative z-10 bg-white rounded-2xl p-6 w-full max-w-md shadow-xl">
-            <div className="flex flex-col items-center">
-              {/* Error Icon */}
-              <div className="w-24 h-24 rounded-full bg-red-100 flex items-center justify-center mb-6">
-                <span className="text-5xl text-red-500">⚠️</span>
-              </div>
-
-              {/* Title */}
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Oops!</h2>
-
-              {/* Error Message */}
-              <p className="text-gray-600 text-center mb-6">{errorMessage}</p>
-
-              {/* Buttons */}
-              <div className="flex gap-3 w-full">
-                <button
-                  onClick={handleErrorClose}
-                  className="flex-1 border-2 border-[#4B3FF2] text-[#4B3FF2] font-semibold py-3 rounded-xl hover:bg-gray-50 transition"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleErrorRetry}
-                  className="flex-1 bg-[#4B3FF2] text-white font-semibold py-3 rounded-xl hover:bg-[#3E2FD1] transition"
-                >
-                  Retry
-                </button>
-              </div>
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-sm text-center shadow-2xl">
+            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-3xl">❌</span>
             </div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Scan Failed</h3>
+            <p className="text-sm text-gray-500 mb-4">{errorMessage}</p>
+            <button onClick={() => { setShowErrorModal(false); setIsScanned(false); setIsProcessing(false); }} className="w-full bg-red-500 text-white font-semibold py-3 rounded-xl hover:bg-red-600 transition">Try Again</button>
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }

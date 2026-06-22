@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import GenerateQr from "@/components/BrandDashboard/dashboard/GenerateQr";
 import { IoQrCodeOutline } from "react-icons/io5";
 import { FiX } from "react-icons/fi";
-import baseApi from "@/api/baseApi";
-import { ENDPOINTS } from "@/api/endPoints";
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 
 const stats = [
   { label: "Total QR Codes", value: 3, value1: "2 Active, 1 paused" },
@@ -24,30 +24,14 @@ export default function Page() {
   });
   const [campaignTitles, setCampaignTitles] = useState<{ id: string | number; title: string }[]>([]); // Store the campaign titles fetched from API
 
-  // Fetch campaigns data when the component mounts
+  // API call disabled — static mode
   useEffect(() => {
-    const fetchCampaignData = async () => {
-      try {
-        const response = await baseApi.get(ENDPOINTS.getAllCampaign);
-
-        // console.log(response.data, "response");
-
-        const campaigns = (response?.data as any)?.campaigns || [];
-
-        // Map the campaigns to include both title and id
-        const titles = campaigns.map((campaign:any) => ({
-          id: campaign.id,
-          title: campaign.title,
-        }));
-
-        setCampaignTitles(titles); // Set the campaign titles and ids to state
-      } catch (error) {
-        console.error("Error fetching campaigns:", error);
-      }
-    };
-
-    fetchCampaignData();
-  }, []); // Empty dependency array ensures this runs once when the component mounts
+    setCampaignTitles([
+      { id: 1, title: "Summer Splash Rebate" },
+      { id: 2, title: "Premium Brand Launch" },
+      { id: 3, title: "Winter Glow Sale" },
+    ]);
+  }, []);
 
   const handleInputChange = (e:any) => {
     const { name, value } = e.target;
@@ -65,22 +49,12 @@ export default function Page() {
   };
 
   const handleSubmit = async () => {
-    if (!campaignData.campaign_id) {
-      console.error("No campaign selected");
-      return;
-    }
-
-    try {
-      // Send the campaign ID in the request
-      const response = await baseApi.post(ENDPOINTS.generateCampaignQr, {
-        campaign_id: campaignData.campaign_id, // Send the campaign_id
-      });
-
-      console.log("Campaign QR generated:", response.data);
-      setIsPopupOpen(false); // Close the popup after submit
-    } catch (error) {
-      console.error("Error generating campaign QR:", error);
-    }
+    if (!campaignData.campaign_id) return;
+    // API call disabled — static mode
+    // try {
+    //   await baseApi.post(ENDPOINTS.generateCampaignQr, { campaign_id: campaignData.campaign_id });
+    // } catch (error) { console.error(error); }
+    setIsPopupOpen(false);
   };
 
   return (

@@ -5,8 +5,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import baseApi from "@/api/baseApi";
-import { ENDPOINTS } from "@/api/endPoints";
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 import Link from "next/link";
 
 const ResetPassword: React.FC = () => {
@@ -42,30 +42,13 @@ const ResetPassword: React.FC = () => {
 
     setLoading(true);
 
+    // API disabled — static mode
+    toast.success("Password reset successfully!");
+    localStorage.removeItem("reset_token");
+    localStorage.removeItem("email");
+    setTimeout(() => { router.push("/auth/login"); }, 1000);
     try {
-      const response = await baseApi.post(ENDPOINTS.newPassword, {
-        reset_token: resetToken,
-        new_password: password1,
-        confirm_password: password2,
-      });
-
-      if (response.status === 200) {
-        toast.success("Password reset successfully 🎉");
-
-        // ✅ Cleanup sensitive data
-        localStorage.removeItem("reset_token");
-        localStorage.removeItem("email");
-
-        // ✅ Redirect to login
-        setTimeout(() => {
-          router.push("/auth/login");
-        }, 1500);
-      }
     } catch (err: any) {
-      toast.error(
-        err?.response?.data?.message ||
-          "Failed to reset password. Please try again."
-      );
     } finally {
       setLoading(false);
     }

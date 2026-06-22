@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div>
+    <div className="px-4 md:px-12 lg:px-40">
       <Wallet></Wallet>
     </div>
   )

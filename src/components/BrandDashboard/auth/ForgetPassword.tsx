@@ -6,8 +6,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import img1 from "@/app/assets/auth/image3.png";
 import { IoMdArrowBack } from "react-icons/io";
-import baseApi from "@/api/baseApi"; // assuming you have a baseApi configured
-import { ENDPOINTS } from "@/api/endPoints"; // assuming you have an ENDPOINTS configuration
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify"; // Import react-toastify
 import Link from "next/link";
@@ -40,39 +40,22 @@ const ForgetPassword: React.FC = () => {
 
     const emailData = { email }; // Prepare email data to send
 
-    try {
-      // Make the API call with the email data
-      const response = await baseApi.post(ENDPOINTS.forgetPassword, emailData);
+    // API call disabled — static mode
+    // try {
+    //   const response = await baseApi.post(ENDPOINTS.forgetPassword, emailData);
+    //   if (!response || response.status !== 200) throw new Error("Something went wrong.");
+    //   localStorage.setItem("email", email);
+    //   toast.success("OTP sent successfully!", { position: "top-center", autoClose: 6000 });
+    //   setTimeout(() => { router.push("/brandAuth/code"); }, 1000);
+    // } catch (error: any) {
+    //   setError(error.message || "Failed to send OTP.");
+    //   toast.error(error.message || "Failed to send OTP.", { position: "top-center", autoClose: 3000 });
+    // } finally { setIsLoading(false); }
 
-      if (!response || response.status !== 200) {
-        throw new Error("Something went wrong. Please try again.");
-      }
-
-      // Save the email in localStorage and redirect
-      localStorage.setItem("email", email);
-      
-      // Success toast notification
-      toast.success("OTP sent successfully!", {
-        position: "top-center",
-        autoClose: 6000,
-        hideProgressBar: true,
-      });
-
-      setTimeout(() => {
-        router.push("/brandAuth/code"); // Redirect to the OTP page
-      }, 1000);
-    } catch (error: any) {
-      setError(error.message || "Failed to send OTP. Please try again.");
-      
-      // Error toast notification
-      toast.error(error.message || "Failed to send OTP. Please try again.", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: true,
-      });
-    } finally {
-      setIsLoading(false); // Hide loading state
-    }
+    localStorage.setItem("email", email);
+    toast.success("OTP sent successfully!", { position: "top-center", autoClose: 3000, hideProgressBar: true });
+    setTimeout(() => { router.push("/brandAuth/code"); }, 1000);
+    setIsLoading(false);
   };
 
   return (

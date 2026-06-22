@@ -4,8 +4,8 @@ import { IoMdArrowBack } from "react-icons/io";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import baseApi from "@/api/baseApi";
-import { ENDPOINTS } from "@/api/endPoints";
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 import { toast } from "sonner";
 
 const ForgetPassword: React.FC = () => {
@@ -38,7 +38,8 @@ const ForgetPassword: React.FC = () => {
 
     try {
       // Make the API call with the email data
-      const response = await baseApi.post(ENDPOINTS.forgetPassword, emailData);
+      // const response = await baseApi.post(ENDPOINTS.forgetPassword, emailData);
+      const response = { status: 200 };
 
       if (!response || response.status !== 200) {
         throw new Error("Something went wrong. Please try again.");

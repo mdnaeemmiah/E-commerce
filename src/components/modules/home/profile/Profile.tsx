@@ -1,233 +1,173 @@
-"use client";
+'use client';
 
+import Image from 'next/image';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import profileImg from '@/app/assets/auth/Ellipse 2.png';
 import {
-  FaUserEdit,
-  FaBookmark,
-  FaBell,
-  FaSignOutAlt,
-  FaTrashAlt,
-  FaHeadset,
-} from "react-icons/fa";
-import { IoIosArrowForward } from "react-icons/io";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { MdPolicy } from "react-icons/md";
-import { JSX, useEffect, useState } from "react";
-import Link from "next/link";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import baseApi from "@/api/baseApi";
-import { ENDPOINTS } from "@/api/endPoints";
-import { jwtDecode } from "jwt-decode";
+  MdEdit,
+  MdOutlineSave,
+  MdPrivacyTip,
+  MdOutlineDescription,
+  MdNotifications,
+  MdHelpOutline,
+  MdLogout,
+  MdDeleteOutline,
+} from 'react-icons/md';
+import { FiChevronRight } from 'react-icons/fi';
 
-// Define types for API responses
-interface ProfileData {
-  full_name: string;
-  image?: string;
-  email?: string;
-}
-
-interface DecodedToken {
-  user_id: string | number;
-  exp?: number;
-}
+const MenuItem = ({
+  icon,
+  label,
+  onClick,
+  danger = false,
+  right,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  onClick?: () => void;
+  danger?: boolean;
+  right?: React.ReactNode;
+}) => (
+  <button
+    onClick={onClick}
+    className={`w-full flex items-center justify-between px-5 py-4 border-b border-gray-100 last:border-none transition ${
+      danger ? 'hover:bg-red-50' : 'hover:bg-gray-50'
+    }`}
+  >
+    <div className="flex items-center gap-4">
+      <span
+        className={`w-9 h-9 flex items-center justify-center rounded-xl ${
+          danger ? 'bg-red-50 text-red-500' : 'bg-indigo-50 text-[#3E3EDF]'
+        }`}
+      >
+        {icon}
+      </span>
+      <span className={`text-sm font-medium ${danger ? 'text-red-500' : 'text-gray-700'}`}>
+        {label}
+      </span>
+    </div>
+    {right ?? <FiChevronRight size={16} className="text-gray-400" />}
+  </button>
+);
 
 export default function Profile() {
-  const [enabled, setEnabled] = useState(true);
   const router = useRouter();
-  const [previewUrl, setPreviewUrl] = useState<string>("");
-  const [profileImage, setProfileImage] = useState<string>("");
-  const [fullName, setFullName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-
-  useEffect(() => {
-    const token = localStorage.getItem("access_token");
-
-    if (!token) {
-      toast.error("Token not found, please login again.");
-      return;
-    }
-
-    // Decode the token to extract the user_id
-    let userId: string | number;
-    try {
-      const decodedToken = jwtDecode<DecodedToken>(token);
-      userId = decodedToken?.user_id;
-    } catch (err) {
-      toast.error("Invalid token, please login again.");
-      console.error("Token decode error:", err);
-      return;
-    }
-
-    if (!userId) {
-      toast.error("User ID not found in token.");
-      return;
-    }
-
-    const fetchProfile = async () => {
-      try {
-        const response = await baseApi.get<ProfileData>(
-          `${ENDPOINTS.getShopperProfile}${userId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const profileData = response.data;
-
-        if (profileData) {
-          setFullName(profileData.full_name || "");
-          setEmail(profileData.email || "");
-          if (profileData.image) {
-            setProfileImage(profileData.image);
-            setPreviewUrl(""); // Clear preview when loading backend image
-          }
-        }
-      } catch (err) {
-        toast.error("Failed to fetch profile. Please try again.");
-        console.error("Fetch profile error:", err);
-      }
-    };
-
-    fetchProfile();
-  }, []);
+  const [notificationOn, setNotificationOn] = useState(true);
 
   const handleLogout = () => {
-    // Remove the tokens from localStorage
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    toast.success("You have been logged out successfully!");
-    // Redirect to login page
-    router.push("/auth/login");
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    router.push('/login');
   };
 
   return (
-    <div className=" md:w-[90%]  lg:w-[50%] mx-auto py-6 mt-4 md:mt-10">
-      {/* Profile Header */}
-      <div className="flex flex-col items-center mb-6">
-        <div className="w-24 h-24 rounded-full overflow-hidden">
-          {previewUrl ? (
-            <img
-              src={previewUrl}
-              alt="Profile Preview"
-              width={96}
-              height={96}
-              className="w-full h-full object-cover"
-            />
-          ) : profileImage ? (
-            <img
-              src={`http://10.10.7.85:8001${profileImage}`}
-              alt="Profile"
-              width={96}
-              height={96}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <img
-              src="/default-image.png"
-              alt="Default Profile"
-              width={96}
-              height={96}
-              className="w-full h-full object-cover"
-            />
-          )}
+    <div className="py-8 flex flex-col items-center">
+      <div className="w-full max-w-2xl space-y-6">
+
+        {/* Avatar Card */}
+        <div className="bg-linear-to-br from-[#3E3EDF] to-[#6b6bf5] rounded-3xl p-8 flex flex-col items-center gap-4 shadow-lg shadow-indigo-200">
+          <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-md">
+            <Image src={profileImg} alt="Profile" fill className="object-cover" />
+          </div>
+          <div className="text-center">
+            <p className="text-xl font-bold text-white">Tamim Sarker</p>
+            <p className="text-sm text-indigo-200 mt-0.5">tamim@gmail.com</p>
+          </div>
+          <div className="flex gap-6 mt-2">
+            {[
+              { label: 'Rewards', value: '$42.50' },
+              { label: 'Claims', value: '14' },
+              { label: 'Rating', value: '4.8 ★' },
+            ].map((s, i) => (
+              <div key={i} className="text-center">
+                <p className="text-lg font-black text-white">{s.value}</p>
+                <p className="text-xs text-indigo-200 uppercase tracking-wide">{s.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <h2 className="text-lg text-[#575757] font-semibold mt-2">
-          {fullName || "Guest User"}
-        </h2>
-        <p className="text-sm text-gray-500">{email || "No email available"}</p>
-      </div>
 
-      {/* Account Information */}
-      <div className="bg-white rounded-lg shadow p-4 mb-4">
-        <p className="text-[#575757] mb-2">Account Information</p>
-        <Link href="/profile/editProfile">
-          <ProfileItem icon={<FaUserEdit />} label="Edit Profile" />
-        </Link>
-        <Link href="/profile/savedOffer">
-          <ProfileItem icon={<FaBookmark />} label="Saved" />
-        </Link>
-      </div>
-
-      {/* Policy Center */}
-      <div className="bg-white rounded-lg shadow p-4 mb-4">
-        <p className="text-[#575757] mb-2">Policy Center</p>
-        <Link href="/profile/Privacy">
-          <ProfileItem icon={<MdPolicy />} label="Privacy Policy" />
-        </Link>
-        <Link href="/profile/term">
-          <ProfileItem
-            icon={<RiLockPasswordLine />}
-            label="Terms & Condition"
-          />
-        </Link>
-      </div>
-
-      {/* Settings */}
-      <div className="bg-white rounded-lg shadow p-4">
-        <p className="text-[#575757]  mb-2">Settings</p>
-        <div className="flex items-center justify-between py-3 cursor-pointer">
-          <Link href="/profile/notifications">
-            <div className="flex  items-center gap-3 text-gray-700  ">
-              <FaBell />
-              <span>Notification</span>
-            </div>
-          </Link>
-          <label className="relative inline-flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              className="sr-only peer"
-              checked={enabled}
-              onChange={() => setEnabled(!enabled)}
+        {/* Account Information */}
+        <div>
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 px-1">
+            Account Information
+          </p>
+          <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+            <MenuItem
+              icon={<MdEdit size={18} />}
+              label="Edit Profile"
+              onClick={() => router.push('/profile/editProfile')}
             />
-            <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-indigo-600 transition-all duration-300"></div>
-            <div
-              className={`absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
-                enabled ? "translate-x-5" : "translate-x-0"
-              }`}
-            ></div>
-          </label>
+            <MenuItem
+              icon={<MdOutlineSave size={18} />}
+              label="Saved"
+              onClick={() => router.push('/profile/savedOffer')}
+            />
+          </div>
         </div>
-        <Link href="/profile/helpSupport">
-          <ProfileItem icon={<FaHeadset />} label="Help & Support" />
-        </Link>
-        <ProfileItem
-          icon={<FaSignOutAlt />}
-          label="Log Out"
-          onClick={handleLogout}
-        />
-        <ProfileItem
-          icon={<FaTrashAlt />}
-          label="Delete Account"
-          textColor="text-red-500"
-        />
+
+        {/* Policy Centre */}
+        <div>
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 px-1">
+            Policy Centre
+          </p>
+          <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+            <MenuItem
+              icon={<MdPrivacyTip size={18} />}
+              label="Privacy Policy"
+              onClick={() => router.push('/profile/Privacy')}
+            />
+            <MenuItem
+              icon={<MdOutlineDescription size={18} />}
+              label="Terms & Condition"
+              onClick={() => router.push('/profile/term')}
+            />
+          </div>
+        </div>
+
+        {/* Settings */}
+        <div>
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 px-1">
+            Settings
+          </p>
+          <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+            <MenuItem
+              icon={<MdNotifications size={18} />}
+              label="Notification"
+              right={
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setNotificationOn(!notificationOn);
+                  }}
+                  className={`w-12 h-6 rounded-full transition-colors duration-300 relative ${
+                    notificationOn ? 'bg-[#3E3EDF]' : 'bg-gray-300'
+                  }`}
+                >
+                  <span
+                    className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-300 ${
+                      notificationOn ? 'translate-x-6' : 'translate-x-0.5'
+                    }`}
+                  />
+                </button>
+              }
+            />
+            <MenuItem
+              icon={<MdHelpOutline size={18} />}
+              label="Help & Support"
+              onClick={() => router.push('/profile/helpSupport')}
+            />
+            <MenuItem icon={<MdLogout size={18} />} label="Log Out" onClick={handleLogout} />
+            <MenuItem
+              icon={<MdDeleteOutline size={18} />}
+              label="Delete Account"
+              danger
+              onClick={() => {}}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-
-// Reusable Profile Item Component
-const ProfileItem = ({
-  icon,
-  label,
-  textColor = "text-gray-700",
-  onClick,
-}: {
-  icon: JSX.Element;
-  label: string;
-  textColor?: string;
-  onClick?: () => void;
-}) => {
-  return (
-    <div
-      className={`flex items-center justify-between py-3 hover:bg-gray-200  rounded-xl px-2   cursor-pointer ${textColor}`}
-      onClick={onClick}
-    >
-      <div className="flex items-center gap-3 text-[#575757] ">
-        {icon}
-        <span>{label}</span>
-      </div>
-      <IoIosArrowForward className="text-gray-600" />
-    </div>
-  );
-};

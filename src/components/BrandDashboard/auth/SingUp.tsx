@@ -7,8 +7,8 @@ import img1 from "@/app/assets/auth/logo.png";
 import Link from "next/link";
 import img3 from "@/app/assets/auth/Frame 427319652.png";
 import img2 from "@/app/assets/auth/Google.png";
-import baseApi from "@/api/baseApi"; // Make sure baseApi is set up correctly
-import { ENDPOINTS } from "@/api/endPoints"; // Make sure ENDPOINTS is set up correctly
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -44,31 +44,17 @@ const SignUp: React.FC = () => {
     setError(null);
     setSuccessMessage(null);
 
-    try {
-      const response = await baseApi.post(ENDPOINTS.BrandRegister, {
-        name: formData.username,
-        email: formData.email,
-        password: formData.password,
-        phone: formData.phone,
-        location: formData.location,
-        category: formData.category,
-      });
+    // API call disabled — static mode
+    // try {
+    //   const response = await baseApi.post(ENDPOINTS.BrandRegister, { ... });
+    //   if (response.status === 201) { ... }
+    // } catch (err) { ... } finally { setLoading(false); }
 
-      if (response.status === 201) {
-        // setSuccessMessage("Registration successful! Redirecting to login...");
-        toast.success("Registration successful! Redirecting to login...");
-
-        setTimeout(() => {
-          router.push("/brandAuth/login");
-        }, 1000);
-      }
-    } catch (err) {
-      setError("Failed to register, please try again.");
-    //   console.error(err);
-      toast.error("Failed to register, please try again."); // Show toast notification on error
-    } finally {
+    toast.success("Registration successful! Redirecting to login...");
+    setTimeout(() => {
+      router.push("/brandAuth/login");
       setLoading(false);
-    }
+    }, 1000);
   };
 
   return (

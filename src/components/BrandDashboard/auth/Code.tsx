@@ -4,8 +4,8 @@ import Image from "next/image";
 import img1 from "@/app/assets/auth/image3.png";
 import { IoMdArrowBack } from "react-icons/io";
 import { useState } from "react";
-import baseApi from "@/api/baseApi";
-import { ENDPOINTS } from "@/api/endPoints";
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -78,69 +78,38 @@ const Code: React.FC = () => {
     setIsSubmitting(true);
     setError(""); // Clear previous errors
 
-    try {
-      // Send OTP and email to API for verification
-      const response = await baseApi.post<{ reset_token: string }>(ENDPOINTS.verifyOtp, {
-        email: email,
-        otp: otp.join(""), // Join OTP array into a single string
-      });
+    // API call disabled — static mode
+    // try {
+    //   const response = await baseApi.post(ENDPOINTS.verifyOtp, { email, otp: otp.join("") });
+    //   if (response.status === 200) {
+    //     localStorage.setItem("reset_token", response.data?.reset_token);
+    //     toast.success("OTP verified successfully!");
+    //     setTimeout(() => { router.push("/brandAuth/resetPassword"); });
+    //   }
+    // } catch (error) { setError("An error occurred."); } finally { setIsSubmitting(false); }
 
-      if (response.status === 200) {
-        const resetToken = response.data?.reset_token;
-
-        if (!resetToken) {
-          throw new Error("Reset token not received");
-        }
-
-        // ✅ Save token in localStorage
-        localStorage.setItem("reset_token", resetToken);
-
-        // Redirect to reset password page upon success
-        toast.success("otp verified successfully!");
-
-        setTimeout(() => {
-          router.push("/brandAuth/resetPassword"); // Redirect to the OTP page
-        });
-      } else {
-        // Handle error if verification fails
-        const errorMessage =
-          typeof response.data === "object" &&
-          response.data !== null &&
-          "message" in response.data
-            ? (response.data as { message: string }).message
-            : "OTP verification failed.";
-        setError(errorMessage);
-      }
-    } catch (error) {
-      setError("An error occurred. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    localStorage.setItem("reset_token", "static-reset-token");
+    toast.success("OTP verified successfully!");
+    setTimeout(() => { router.push("/brandAuth/resetPassword"); });
+    setIsSubmitting(false);
   };
 
 
   const handleResendCode = async () => {
-  const email = localStorage.getItem("email");
+    const email = localStorage.getItem("email");
+    if (!email) { toast.error("Email not found. Please go back and try again."); return; }
 
-  if (!email) {
-    toast.error("Email not found. Please go back and try again.");
-    return;
-  }
+    // API call disabled — static mode
+    // try {
+    //   setIsResending(true);
+    //   await baseApi.post(ENDPOINTS.forgetPassword, { email });
+    //   toast.success("OTP resent successfully!");
+    // } catch (error) { toast.error("Failed to resend OTP."); } finally { setIsResending(false); }
 
-  try {
     setIsResending(true);
-
-    await baseApi.post(ENDPOINTS.forgetPassword, {
-      email: email,
-    });
-
     toast.success("OTP resent successfully!");
-  } catch (error) {
-    toast.error("Failed to resend OTP. Please try again.");
-  } finally {
     setIsResending(false);
-  }
-};
+  };
 
 
   return (

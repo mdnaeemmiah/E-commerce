@@ -169,7 +169,9 @@ export default function Navbar() {
 
             {/* Wallet Display Below Navbar */}
             {isWalletVisible && (
-                <ViewWallet></ViewWallet>
+                <div className="w-[90%] mx-auto max-w-2xl">
+                    <ViewWallet />
+                </div>
             )}
 
             {/* Main Content Below */}

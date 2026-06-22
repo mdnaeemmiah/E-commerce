@@ -455,8 +455,8 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import baseApi from "@/api/baseApi";
-import { ENDPOINTS } from "@/api/endPoints";
+// import baseApi from "@/api/baseApi";
+// import { ENDPOINTS } from "@/api/endPoints";
 import { FiPlus, FiTrash2, FiUpload, FiImage, FiSave, FiX } from "react-icons/fi";
 import { toast } from "sonner";
 
@@ -482,76 +482,37 @@ export default function CreateProductPage() {
   const [newCategoryName, setNewCategoryName] = useState("");
   const [creatingCategory, setCreatingCategory] = useState(false);
 
+  // API call disabled — static mode
   useEffect(() => {
-    fetchCategories();
+    setCategoriesList([
+      { id: 1, name: "Snacks" },
+      { id: 2, name: "Beverages" },
+      { id: 3, name: "Health & Wellness" },
+      { id: 4, name: "Chocolate" },
+      { id: 5, name: "Organic" },
+    ]);
   }, []);
 
-  const fetchCategories = async () => {
-    try {
-      const token = localStorage.getItem("access_token");
-      const response = await baseApi.get(ENDPOINTS.categoryList, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      // Ensure we are properly updating the categories list
-      console.log(response.data, "naeem data");
-      
-      if (response.status === 200) {
-        const data = response.data;
-        if (Array.isArray(data)) {
-          setCategoriesList(data);
-        } else if (Array.isArray(data.categories)) {
-          setCategoriesList(data.categories);
-        } else {
-          setCategoriesList([]);
-        }
-      }
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-      toast.error("Failed to fetch categories");
-    }
-  };
+  // const fetchCategories = async () => { ... };
 
   const handleCreateCategory = async () => {
-    if (!newCategoryName.trim()) {
-      toast.error("Category name is required");
-      return;
-    }
-
+    if (!newCategoryName.trim()) { toast.error("Category name is required"); return; }
     setCreatingCategory(true);
-    try {
-      const token = localStorage.getItem("access_token");
-      const response = await baseApi.post(ENDPOINTS.createCategory, {
-        name: newCategoryName,
-        is_active: true,
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.status === 200 || response.status === 201) {
-        toast.success("Category created successfully");
-        setNewCategoryName("");
-        setShowCategoryModal(false);
-        fetchCategories(); // Refresh list
-      }
-    } catch (error) {
-      console.error("Error creating category:", error);
-      toast.error("Failed to create category");
-    } finally {
-      setCreatingCategory(false);
-    }
+    // API call disabled — static mode
+    // try { await baseApi.post(ENDPOINTS.createCategory, { name: newCategoryName, is_active: true }, { headers: { Authorization: `Bearer ${token}` } }); } catch {}
+    toast.success("Category created successfully");
+    setCategoriesList((prev) => [...prev, { id: Date.now(), name: newCategoryName }]);
+    setNewCategoryName("");
+    setShowCategoryModal(false);
+    setCreatingCategory(false);
   };
 
   // Handle form field changes for dynamic categories and tags
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, fieldName: string, index: number, arrayName: string) => {
     const value = e.target.value;
 
-    setProductData((prevData) => {
-      const newArray = prevData[arrayName].map((item:any, i:any) => {
+    setProductData((prevData: any) => {
+      const newArray = (prevData[arrayName] as any[]).map((item: any, i: any) => {
         if (i === index) {
           return { ...item, [fieldName]: value };
         }
@@ -580,8 +541,8 @@ export default function CreateProductPage() {
 
   // Remove a dynamic field (category or tag)
   const removeField = (index: number, arrayName: string) => {
-    setProductData((prevData) => {
-      const newArray = [...prevData[arrayName]];
+    setProductData((prevData: any) => {
+      const newArray = [...(prevData[arrayName] as any[])];
       newArray.splice(index, 1);
       return {
         ...prevData,
@@ -620,35 +581,18 @@ export default function CreateProductPage() {
     formData.append("created_by", brandId!);
     formData.append("updated_by", brandId!);
 
-    try {
-      // API call to create product
-      const token = localStorage.getItem("access_token");
-      const response = await baseApi.post(ENDPOINTS.createProduct, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+    // API call disabled — static mode
+    // try {
+    //   const token = localStorage.getItem("access_token");
+    //   const response = await baseApi.post(ENDPOINTS.createProduct, formData, { headers: { Authorization: `Bearer ${token}` } });
+    //   if (response.status === 200) { toast.success("Product created successfully!"); }
+    // } catch (error) { toast.error("Error creating product."); } finally { setIsLoading(false); }
 
-      if (response.status === 200) {
-        toast.success("Product created successfully!");
-        setProductData({
-          name: "",
-          description: "",
-          categories: [{ name: "" }],
-          barcode: "",
-          price: "",
-          tags: [{ name: "" }],
-          is_active: true,
-        });
-        setImage(null);
-        setImagePreview(null);
-      }
-    } catch (error) {
-      toast.error("Error creating product. Please try again.");
-      console.error("Error creating product:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    toast.success("Product created successfully!");
+    setProductData({ name: "", description: "", categories: [{ name: "" }], barcode: "", price: "", tags: [{ name: "" }], is_active: true });
+    setImage(null);
+    setImagePreview(null);
+    setIsLoading(false);
   };
 
   return (

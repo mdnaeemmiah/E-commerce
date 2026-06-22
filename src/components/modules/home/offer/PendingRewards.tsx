@@ -162,8 +162,8 @@ const PendingRewards: React.FC = () => {
   };
 
   return (
-    <div className="w-[90%] mx-auto lg:container mt-20 mb-10">
-      <h2 className="text-2xl mb-4 font-semibold">Your Pending Rewards</h2>
+    <div>
+      <h2 className="text-xl mb-4 font-semibold text-gray-900">Your Pending Rewards</h2>
 
       <Swiper
         pagination={pagination}
